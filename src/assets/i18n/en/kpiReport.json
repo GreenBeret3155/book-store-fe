@@ -1,0 +1,48 @@
+{
+  "kpiReport" : {
+    "column": {
+      "index": "No.",
+      "dateTime": "Date time",
+      "kpiId": "KPI Id",
+      "kpiName": "KPI Name",
+      "inputLevelsSelect": "Select input levels",
+      "objCode": "Object",
+      "valAcc": "Value acc",
+      "val": "Value",
+      "valTotal": "Value total",
+      "unit": "Unit",
+      "valPlanYear": "Value Plan Year"
+    },
+    "label": {
+      "correlateChart": "Correlate chart",
+      "title": "KPI search",
+      "kpi": "KPI",
+      "outputSearch": "Output Search",
+      "outputSearchSelect": "Select Output Search",
+      "outputSearchNotFound": "Not found Output Search",
+      "valueType": "Value Type",
+      "valueTypeSelect": "Select Value Type",
+      "valueTypeNotFound": "Not found Value Type",
+      "timeType": "Time type",
+      "timeTypeSelect": "Select time type",
+      "timeTypeNotFound": "Not found time type",
+      "fromDate": "From date",
+      "toDate": "To date",
+      "fromValue": "From Value(>=)",
+      "toValue": "To Value(<=)",
+      "inputLevels": "Input Levels",
+      "inputLevelsSelect": "Select input levels",
+      "inputLevelsNotFound": "Not found input levels",
+      "object": "Object",
+      "export": "Export",
+      "display": "Display",
+      "search": "Search",
+      "drawChart": "Draw chart",
+      "record": "Record",
+      "close": "close",
+      "notFoundChart": "Not found chart data",
+      "enterToSearch": "Enter to search",
+      "conditionFilter": "Keyword"
+    }
+  }
+}

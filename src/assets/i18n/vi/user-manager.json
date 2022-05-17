@@ -1,0 +1,97 @@
+{
+  "dropdown": {
+    "placeholder": "Chọn"
+  },
+  "user": {
+    "column": {
+      "index": "STT",
+      "account": "Tên đăng nhập",
+      "email": "Email",
+      "status": "Trạng thái",
+      "phoneNumber": "Điện thoại",
+      "createDate": "Ngày tạo",
+      "active": "Hành động",
+      "password": "Mật khẩu",
+      "confirmPassword": "Xác nhận mật khẩu",
+      "firstName": "Họ",
+      "lastName": "Tên",
+      "getAlerted": "Nhận cảnh bảo người đứng đầu",
+      "language": "Ngôn ngũ",
+      "role": "Nhóm quyền",
+      "domain": "Lĩnh vực",
+      "authoritiesName": "Nhóm quyền",
+      "domainCode": "Lĩnh vực"
+    },
+    "label": {
+      "record": "bản ghi",
+      "title": "Quản lý User",
+      "add": "Thêm mới",
+      "edit": "Cập nhật người dùng",
+      "new": "Thêm mới người dùng",
+      "search": "Tìm kiếm",
+      "active": "Hoạt động",
+      "inactive": "Không hoạt động",
+      "cancel": "Hủy bỏ",
+      "save": "Lưu lại"
+    },
+    "placeHolder": "Lựa chọn",
+    "notFoundText": "Không có bản ghi",
+    "status": {
+      "active": "Hoạt động",
+      "inactive": "Không hoạt động",
+      "0": "Bị khóa",
+      "1": "Hoạt động"
+    },
+    "changeStatusSuccess": "Chuyển trạng thái người dùng thành công",
+    "title_notification": "Thông báo",
+    "changeStatus": "Chuyển trạng thái"
+  },
+  "role_module": {
+    "title": "Quản lý Quyền",
+    "title_add": "Thêm mới quyền",
+    "title_edit": "Sửa quyền",
+    "content_add_success": "Thêm quyền thành công",
+    "content_edit_success": "Sửa quyền thành công",
+    "message_delete": "Bạn có chắc muốn xóa quyền",
+    "message_multi_delete": "Bạn có chắc muốn xóa tất cả các quyền đã chọn",
+    "delete_success": "Xóa quyền thành công",
+    "title_map_popup": "Quyền",
+    "save": "Lưu lại",
+    "cancel": "Hủy bỏ",
+    "unknown_error": "Lỗi không xác định!",
+    "map_popup_success": "Sửa thành công",
+    "add_btn": "Thêm mới quyền",
+    "code": "Mã quyền",
+    "name": "Tên quyền",
+    "status": "Trạng thái",
+    "level": "Thứ tự",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "search": "Tìm kiếm",
+    "map_popup": "Thao tác quyền với module",
+    "tools": "Thao tác",
+    "update_time": "Ngày cập nhật",
+    "index": "STT",
+    "description": "Mô tả",
+    "default_module": "Module mặc định",
+    "error": {
+      "code": {
+        "required": "Mã quyền không được để trống",
+        "maxlength": "Mã quyền không được quá 200 ký tự"
+      },
+      "name": {
+        "required": "Tên quyền không được để trống",
+        "maxlength": "Tên quyền không được quá 250 ký tự"
+      },
+      "status": {
+        "required": "Trạng thái không được để trống"
+      },
+      "description": {
+        "maxlength": "Mô tả không được quá 500 ký tự"
+      },
+      "defaultModule": {
+        "required": "Module mặc định không được để trống"
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: block;
+
+  gridster {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .overviewButton {
+    background-color: #e29714 !important;
+    border-color: #e29714 !important;
+    color: #ffffff !important;
+  }
+
+  .open-chart-map-button {
+    background-color: #e29714 !important;
+    border-color: #e29714 !important;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    min-width: 3rem;
+    border-radius: 0.3rem;
+  }
+
+  .open-chart-map-button img {
+    background-color: #e29714 !important;
+    border: none;
+    min-width: 1.8rem;
+  }
+
+  .close-form-search {
+    position: absolute;
+    z-index: 9999999;
+    top: 0.1rem;
+    right: 0.1rem;
+    width: 1.5rem;
+    height: 1rem;
+    color: #555;
+    cursor: pointer;
+  }
+
+}

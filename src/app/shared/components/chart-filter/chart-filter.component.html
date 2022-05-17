@@ -1,0 +1,33 @@
+<ng-template #overlay>
+  <nb-card>
+    <nb-card-body>
+      <form [formGroup]="filterChartForm">
+        <div class="form-group">
+          <label for="timeType" class="label">Loại đữ liệu</label>
+          <ng-select [items]="timeTypes" bindLabel="itemName" bindValue="itemValue" id="timeType"
+                     formControlName="timeType" appendTo="body">
+
+          </ng-select>
+        </div>
+        <div class="form-group" [hidden]="!chartViewerComponent?.chartData?.filterParams?.FROMDATE">
+          <label for="fromDate" class="label">Từ thời gian</label>
+          <ngx-hero-picker id="fromDate" formControlName="fromDate" (enter)="filterChart()"
+                           [timeType]="getTimeType(this.filterChartForm.value.timeType)"></ngx-hero-picker>
+          <!--        <ngx-vn-picker id="fromDate" [control]="filterChartForm.get('fromDate')"-->
+          <!--                       [type]="this.filterChartForm.value.timeType" [isStart]="true"></ngx-vn-picker>-->
+        </div>
+        <div class="form-group">
+          <label for="toDate" class="label">Đến thời gian</label>
+          <ngx-hero-picker id="toDate" formControlName="toDate" (enter)="filterChart()"
+                           [timeType]="getTimeType(this.filterChartForm.value.timeType)"></ngx-hero-picker>
+          <!--        <ngx-vn-picker id="toDate" [control]="filterChartForm.get('toDate')"-->
+          <!--                       [type]="this.filterChartForm.value.timeType" [isStart]="false"></ngx-vn-picker>-->
+        </div>
+
+        <div class="form-group">
+          <button type="button" fullWidth class="btn btn-primary w-100" (click)="filterChart()">Xem</button>
+        </div>
+      </form>
+    </nb-card-body>
+  </nb-card>
+</ng-template>

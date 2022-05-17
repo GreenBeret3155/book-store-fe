@@ -1,0 +1,73 @@
+{
+  "catGraphKpi": {
+    "confirm": {
+      "delete": "Bạn có chắc chắn muốn xóa chỉ tiêu này?"
+    },
+    "success": {
+      "clone": "Sao chép thành công!",
+      "delete": "Xóa chỉ tiêu thành công"
+    },
+    "column": {
+      "index": "STT",
+      "kpiCode": "Mã chỉ tiêu",
+      "kpiId": "ID chỉ tiêu",
+      "kpiDisplay": "Tên hiển thị",
+      "kpiName": "Tên",
+      "unitKpi": "Đơn vị tính",
+      "unitViewName": "Đơn vị hiển thị",
+      "rate": "Tỷ lệ chuyển đơn vị",
+      "groupKpiCode": "Nhóm chỉ tiêu",
+      "source": "Nguồn số liệu",
+      "actionBtn": "Hành động",
+      "updateTime": "Thời điểm tác động",
+      "updateUser": "User tác động",
+      "domainCode": "Lĩnh vực",
+      "description": "Mô tả",
+      "orderIndex": "Thứ tự",
+      "synonym": "Hashtag"
+    },
+    "label": {
+      "keyword": "Tên chỉ tiêu",
+      "kpiId": "ID chỉ tiêu",
+      "search": "Tìm kiếm",
+      "exportPDF": "Xuất file PDF",
+      "exportEXCEL": "Xuất file Excel",
+      "exportHTL": "Báo cáo",
+      "exportTEXT": "Xuất file Text",
+      "new": "Thêm mới chỉ tiêu",
+      "edit": "Cập nhật chỉ tiêu",
+      "delete": "Xóa thông tin",
+      "clone": "Sao chép",
+      "default": "Mặc định",
+      "overview": "Tổng quan",
+      "normal": "Bình thường",
+      "record": "bản ghi",
+      "title": "Cấu hình chỉ tiêu",
+      "domainCode": "Lĩnh vực",
+      "status": "Trạng thái",
+      "kpiType": "Loại chỉ tiêu",
+      "alarmThresholdType": "Loại ngưỡng đánh giá",
+      "original": "Gốc",
+      "synthetic": "Tổng hợp",
+      "formulaLevel": "Công thức giật cấp đơn vị",
+      "formulaAcc": "Công thức lũy kế",
+      "formulaQuar": "Công thức tính quý",
+      "formulaYear": "Công thức tính năm",
+      "positive": "Tích cực",
+      "negative": "Tiêu cực",
+      "active": "Hoạt động",
+      "source": "Nguồn số liệu",
+      "inactive": "Không hoạt động",
+      "rate": "Tỷ lệ",
+      "alarmPlanType": "Loại kế hoạch",
+      "save": "Lưu lại",
+      "cancel": "Hủy bỏ",
+      "synonymNotFoundText": "Gõ để thêm mới hashtag",
+      "position": "Thứ tự hiển thị trên bản đồ",
+      "positionChart": "Thứ tự hiển thị trên biểu đồ",
+      "showOnMap": "Hiển thị trên bản đồ",
+      "isAlarm": "Có cảnh báo nhập liệu"
+    },
+    "notification": "Thông báo"
+  }
+}

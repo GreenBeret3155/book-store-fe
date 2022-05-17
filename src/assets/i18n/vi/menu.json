@@ -1,0 +1,45 @@
+{
+  "menu": {
+    "confirm": {
+      "delete": "Bạn có chắc chắn muốn xóa menu này?"
+    },
+    "success": {
+      "clone": "Sao chép thành công!",
+      "delete": "Xóa menu thành công"
+    },
+    "column": {
+      "index": "STT",
+      "menuCode": "Mã menu",
+      "menuName": "Tên menu",
+      "isDefault": "Loại",
+      "actionBtn": "Hành động",
+      "updateTime": "Thời điểm tác động",
+      "updateUser": "User tác động",
+      "domainName": "Lĩnh vực",
+      "description": "Mô tả",
+      "orderIndex": "Thứ tự",
+      "status": "Trạng thái"
+    },
+    "label": {
+      "menu": "Menu",
+      "menuItem": "Thẻ menu",
+      "keyword": "Tên/Mã menu",
+      "search": "Tìm kiếm",
+      "new": "Thêm mới menu",
+      "edit": "Sửa mneu",
+      "delete": "Xóa thông tin",
+      "clone": "Sao chép",
+      "default": "Mặc định",
+      "overview": "Tổng quan",
+      "normal": "Bình thường",
+      "record": "bản ghi",
+      "title": "Cấu hình menu",
+      "domainCode": "Lĩnh vực",
+      "active": "Hoạt động",
+      "inactive": "Không hoạt động",
+      "cancel": "Hủy bỏ",
+      "save": "Lưu lại"
+    },
+    "notification": "Thông báo"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "login": {
+    "in": "Login",
+    "out": "Logout",
+    "account": "Account",
+    "password": "Password",
+    "failIn": "Login Fail",
+    "forgotPassword": "Forgot Password"
+  }
+}

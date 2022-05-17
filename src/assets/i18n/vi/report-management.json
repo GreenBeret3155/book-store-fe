@@ -1,0 +1,29 @@
+{
+  "reportManagement": {
+    "column": {
+      "index": "STT",
+      "reportCode": "Mã báo cáo",
+      "reportName": "Tên báo cáo",
+      "category": "Danh mục",
+      "folderName": "Tên file",
+      "description": "Mô tả",
+      "status": "Trạng thái",
+      "actionBtn": "Hành động",
+      "updateTime": "Thời gian tác động",
+      "updateUser": "User tác động"
+    },
+    "label": {
+      "keyword": "Mã/Tên báo cáo",
+      "reportCode": "Mã báo cáo",
+      "reportName": "Tên báo cáo",
+      "folder": "File template",
+      "new": "Thêm mới",
+      "status": "Trạng thái",
+      "search": "Tìm kiếm",
+      "record": "Bản ghi",
+      "edit": "Sửa",
+      "delete": "Xóa",
+      "title": "Quản lý báo cáo"
+    }
+  }
+}

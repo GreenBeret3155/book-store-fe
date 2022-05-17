@@ -1,0 +1,58 @@
+<nb-card class="h-100 w-100">
+  <nb-card-header (click)="goToScreen()" style="font-weight: normal;" class="d-flex objLink">
+    {{chartViewerComponent?.chartData?.titleChart}}
+
+    <button nbButton size="tiny" ghost class="ml-auto"
+            (click)="popover.show()"
+            type="button"
+            [nbPopover]="form" [nbPopoverPlacement]="'bottom'" [nbPopoverTrigger]="'noop'">
+      <nb-icon icon="filter" pack="fa"></nb-icon>
+    </button>
+  </nb-card-header>
+  <nb-card-body>
+    <ngx-chart-viewer #chartViewerComponent *ngIf="charts.length>0 && charts[0]" [chartId]="charts[0].chartId"
+                      [screenIdNexto]="charts[0].screenIdNextto"></ngx-chart-viewer>
+  </nb-card-body>
+</nb-card>
+
+
+<ng-template #form>
+  <div class="p-2">
+    <form [formGroup]="filterChartForm">
+      <div class="form-group">
+        <label for="fromDate" class="label">Từ:</label>
+        <input nbInput
+               fullWidth
+               id="fromDate"
+               placeholder="Từ ngày" [nbDatepicker]="fromDate" formControlName="fromDate">
+        <nb-datepicker #fromDate format="dd/MM/yyyy"></nb-datepicker>
+      </div>
+      <div class="form-group">
+        <label for="toDate" class="label">Đến:</label>
+        <input nbInput
+               fullWidth
+               id="toDate"
+               placeholder="Đến ngày"
+               [nbDatepicker]="toDate" formControlName="toDate">
+        <nb-datepicker #toDate format="dd/MM/yyyy"></nb-datepicker>
+      </div>
+
+      <div class="form-group">
+        <label for="timeType" class="label">Kiểu:</label>
+        <ng-select [items]="timeTypes" bindLabel="itemName" bindValue="itemValue" id="timeType" formControlName="timeType">
+
+        </ng-select>
+      </div>
+      <div class="form-group row">
+        <div class="col-6">
+          <button type="button" fullWidth class="btn btn-primary w-100" (click)="filterChart()">Lưu</button>
+        </div>
+        <div class="col-6">
+          <button type="button" fullWidth class="btn btn-primary" nbButton status="warning"
+                  (click)="popover.hide(); filterChartForm.reset()">Hủy
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

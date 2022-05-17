@@ -1,0 +1,204 @@
+.nb-theme-default nav.ng-pagination-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.nb-theme-default nav.ng-pagination-nav .pagination {
+  display: flex;
+  padding: 0;
+}
+
+.nb-theme-default nav.ng-pagination-nav .pagination .page-item.disabled .page-link,
+.nb-theme-default nav.ng-pagination-nav .pagination .page-item.disabled .page-link:focus,
+.nb-theme-default nav.ng-pagination-nav .pagination .page-item.disabled .page-link:hover {
+  background-color: transparent;
+  color: rgba(143, 155, 179, 0.48);
+}
+
+.nb-theme-default nav.ng-pagination-nav .pagination {
+  font-family: Open Sans, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  border: 1px solid #edf1f7;
+  border-radius: 0.25rem;
+}
+
+.nb-theme-default nav.ng-pagination-nav .pagination li {
+  overflow: hidden;
+}
+
+[dir=ltr] .nb-theme-default nav.ng-pagination-nav .pagination li:not(:last-child) {
+  border-right: 1px solid #edf1f7;
+}
+
+[dir=rtl] .nb-theme-default nav.ng-pagination-nav .pagination li:not(:last-child) {
+  border-left: 1px solid #edf1f7;
+}
+
+.nb-theme-default nav.ng-pagination-nav .pagination li a.page-link-next,
+.nb-theme-default nav.ng-pagination-nav .pagination li a.page-link-prev {
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+
+.nb-theme-default nav.ng-pagination-nav .pagination li > span,
+.nb-theme-default nav.ng-pagination-nav .pagination li a {
+  font-size: 0.875rem;
+  line-height: 1rem;
+  background-color: transparent;
+  color: #36f;
+  padding: 0.75rem 1.25rem;
+  border: none;
+}
+
+.nb-theme-default nav.ng-pagination-nav .pagination li > span:focus,
+.nb-theme-default nav.ng-pagination-nav .pagination li a:focus {
+  border-color: #36f;
+  color: #36f;
+}
+
+.nb-theme-default nav.ng-pagination-nav .pagination li > span:hover,
+.nb-theme-default nav.ng-pagination-nav .pagination li a:hover {
+  background-color: transparent;
+  border-color: #36f;
+  color: #36f;
+  text-decoration: none;
+}
+
+[dir=ltr] .nb-theme-default nav.ng-pagination-nav .pagination li:first-child > span,
+[dir=ltr] .nb-theme-default nav.ng-pagination-nav .pagination li:first-child a {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+[dir=ltr] .nb-theme-default nav.ng-pagination-nav .pagination li:last-child > span,
+[dir=ltr] .nb-theme-default nav.ng-pagination-nav .pagination li:last-child a,
+[dir=rtl] .nb-theme-default nav.ng-pagination-nav .pagination li:first-child > span,
+[dir=rtl] .nb-theme-default nav.ng-pagination-nav .pagination li:first-child a {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+[dir=rtl] .nb-theme-default nav.ng-pagination-nav .pagination li:last-child > span,
+[dir=rtl] .nb-theme-default nav.ng-pagination-nav .pagination li:last-child a {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.nb-theme-default nav.ng-pagination-nav .pagination li.active > span,
+.nb-theme-default nav.ng-pagination-nav .pagination li.active > span:focus,
+.nb-theme-default nav.ng-pagination-nav .pagination li.active > span:hover,
+.nb-theme-default nav.ng-pagination-nav .pagination li.active a,
+.nb-theme-default nav.ng-pagination-nav .pagination li.active a:focus,
+.nb-theme-default nav.ng-pagination-nav .pagination li.active a:hover {
+  color: #fff;
+  background-color: #36f;
+}
+
+.nb-theme-dark table-cell-edit-mode {
+  display: block;
+  margin: -7.5px -12px;
+}
+
+.nb-theme-dark ng2-smart-table-pager {
+  display: block;
+}
+
+.nb-theme-dark nav.ng-pagination-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.nb-theme-dark nav.ng-pagination-nav .pagination {
+  display: flex;
+  padding: 0;
+}
+
+.nb-theme-dark nav.ng-pagination-nav .pagination .page-item.disabled .page-link,
+.nb-theme-dark nav.ng-pagination-nav .pagination .page-item.disabled .page-link:focus,
+.nb-theme-dark nav.ng-pagination-nav .pagination .page-item.disabled .page-link:hover {
+  background-color: transparent;
+  color: rgba(143, 155, 179, 0.48);
+}
+
+.nb-theme-dark nav.ng-pagination-nav .pagination {
+  font-family: Open Sans, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  border: 1px solid #151a30;
+  border-radius: 0.25rem;
+}
+
+.nb-theme-dark nav.ng-pagination-nav .pagination li {
+  overflow: hidden;
+}
+
+[dir=ltr] .nb-theme-dark nav.ng-pagination-nav .pagination li:not(:last-child) {
+  border-right: 1px solid #151a30;
+}
+
+[dir=rtl] .nb-theme-dark nav.ng-pagination-nav .pagination li:not(:last-child) {
+  border-left: 1px solid #151a30;
+}
+
+.nb-theme-dark nav.ng-pagination-nav .pagination li a.page-link-next,
+.nb-theme-dark nav.ng-pagination-nav .pagination li a.page-link-prev {
+  font-size: 0.875rem;
+  line-height: 1rem;
+}
+
+.nb-theme-dark nav.ng-pagination-nav .pagination li > span,
+.nb-theme-dark nav.ng-pagination-nav .pagination li a {
+  font-size: 0.875rem;
+  line-height: 1rem;
+  background-color: transparent;
+  color: #36f;
+  padding: 0.75rem 1.25rem;
+  border: none;
+}
+
+.nb-theme-dark nav.ng-pagination-nav .pagination li > span:focus,
+.nb-theme-dark nav.ng-pagination-nav .pagination li a:focus {
+  border-color: #3366ff;
+  color: #3366ff;
+}
+
+.nb-theme-dark nav.ng-pagination-nav .pagination li > span:hover,
+.nb-theme-dark nav.ng-pagination-nav .pagination li a:hover {
+  background-color: transparent;
+  border-color: #3366ff;
+  color: #3366ff;
+  text-decoration: none;
+}
+
+[dir=ltr] .nb-theme-dark nav.ng-pagination-nav .pagination li:first-child > span,
+[dir=ltr] .nb-theme-dark nav.ng-pagination-nav .pagination li:first-child a {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+[dir=ltr] .nb-theme-dark nav.ng-pagination-nav .pagination li:last-child > span,
+[dir=ltr] .nb-theme-dark nav.ng-pagination-nav .pagination li:last-child a,
+[dir=rtl] .nb-theme-dark nav.ng-pagination-nav .pagination li:first-child > span,
+[dir=rtl] .nb-theme-dark nav.ng-pagination-nav .pagination li:first-child a {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+[dir=rtl] .nb-theme-dark nav.ng-pagination-nav .pagination li:last-child > span,
+[dir=rtl] .nb-theme-dark nav.ng-pagination-nav .pagination li:last-child a {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.nb-theme-dark nav.ng-pagination-nav .pagination li.active > span,
+.nb-theme-dark nav.ng-pagination-nav .pagination li.active > span:focus,
+.nb-theme-dark nav.ng-pagination-nav .pagination li.active > span:hover,
+.nb-theme-dark nav.ng-pagination-nav .pagination li.active a,
+.nb-theme-dark nav.ng-pagination-nav .pagination li.active a:focus,
+.nb-theme-dark nav.ng-pagination-nav .pagination li.active a:hover {
+  color: #fff;
+  background-color: #3366ff;
+}

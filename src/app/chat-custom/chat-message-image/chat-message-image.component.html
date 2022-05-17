@@ -1,0 +1,34 @@
+<ng-container *ngIf="readyFiles?.length > 1">
+  <div class="message-content-group">
+    <a *ngFor="let file of readyFiles" [href]="file.url" target="_blank">
+      <nb-icon [icon]="file.icon" *ngIf="!file.urlStyle && file.icon"></nb-icon>
+      <div *ngIf="file.urlStyle" [style.background-image]="file.urlStyle"></div>
+    </a>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="readyFiles?.length === 1">
+  <!--  <div class="row">-->
+  <!--    <label>Name.test</label>-->
+  <!--    <nb-icon icon="download-outline" (click)="download(readyFiles[0].url)"></nb-icon>-->
+  <!--  </div>-->
+  <!--  <div>-->
+
+  <!--  </div>-->
+  <span (click)="openScreen(url)" *ngIf="url" style="background: #3b486d;padding: 10px;border-top-left-radius: 10px;border-top-right-radius: 10px; ">
+      <label style="text-decoration: underline;font-weight: bolder">Xem chi tiết</label>
+    </span>
+  <div class="thumbnail">
+    <img src="{{readyFiles[0]?.url}}" *ngIf="readyFiles[0]?.url" style="max-width: 500px;" (click)="openView(readyFiles[0]?.url)">
+    <div class="caption d-flex text-mess" style="max-width: 500px">
+      <label>{{message}}</label>
+      <label class="sender ml-2" *ngIf="date" style="position: absolute; right: 10px; bottom: -5px; color: white;">
+        <time>{{ date  | date: 'HH:mm' }}</time>
+      </label>
+    </div>
+  </div>
+  <!--  <a [href]="readyFiles[0].url" target="_blank">-->
+  <!--    <nb-icon [icon]="readyFiles[0].icon" *ngIf="!readyFiles[0].urlStyle && readyFiles[0].icon"></nb-icon>-->
+  <!--    <div *ngIf="readyFiles[0].url" [style.background-image]="readyFiles[0].url"></div>-->
+  <!--  </a>-->
+</ng-container>

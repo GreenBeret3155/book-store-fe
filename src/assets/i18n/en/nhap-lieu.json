@@ -1,0 +1,61 @@
+{
+  "nhapLieu": {
+    "label": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "search": "Search",
+      "list": "List",
+      "addNew": "Add new",
+      "update": "Update",
+      "record": "record",
+      "yes": "Yes",
+      "no": "No",
+      "databases": "Database name",
+      "tableName": "Table name",
+      "generateColumn": "Generate Column",
+      "save": "Save",
+      "close": "Close",
+      "delete": "Delete",
+      "import": "Import",
+      "downloadDefaultFile": "Download Default File",
+      "upload": "Upload File",
+      "export": "export File",
+      "edit": "Edit",
+      "cancel": "Cancel"
+    },
+    "success": {
+      "edit": "Edit success",
+      "new": "Add new success",
+      "delete": "Delete success",
+      "import": "Import success!"
+    },
+    "error": {
+      "import": "No file import"
+    },
+    "confirm": {
+      "confirm": "Confirm",
+      "delete": "Do you want to delete data?"
+    },
+    "column": {
+      "index": "No.",
+      "title": "Title",
+      "domainCode": "Domain Code",
+      "timeTypeName": "Time Type Name",
+      "inputLevelName": "Input Level Name",
+      "unit": "Unit",
+      "description": "Description",
+      "statusName": "Status Name",
+      "updateTime": "Update Time",
+      "tableName": "Table Name",
+      "columnName": "Column Name",
+      "require": "Require",
+      "maxLength": "maxLength",
+      "saveTime": "Save Time",
+      "defaultValue": "Default Value",
+      "display": "Display",
+      "orderIndex": "Order Index",
+      "importTime": "Import Time"
+
+    }
+  }
+}

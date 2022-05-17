@@ -1,0 +1,24 @@
+{
+    "common": {
+        "dropdown": {
+            "placeholder" : "Lựa Chọn"
+        },
+        "label": {
+            "active" : "Hoạt động",
+            "inActive" : "Không hoạt động",
+            "0": "Không hoạt động",
+            "1": "Hoạt động",
+            "delete": "Xóa",
+            "edit": "Chỉnh sửa"
+        },
+        "messages":{
+            "notFoundText": "Không có bản ghi nào",
+            "totalMessage": "Bản ghi",
+            "selectedMessage": "Bản ghi được chọn"
+        },
+        "notify":{
+            "error": "Lỗi",
+            "notification": "Thông báo"
+        }
+    }
+}

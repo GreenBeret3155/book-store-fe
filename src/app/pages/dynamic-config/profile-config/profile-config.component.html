@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header class="d-flex ">
+        <label>{{'profile.label.title'| translate}}</label>
+        <div class="ml-auto">
+          <button nbButton status="danger" size="tiny" (click)="deleteMultiple()"
+                  *ngIf="selected && selected.length > 0">
+            <nb-icon icon="trash-2-outline" pack="eva"></nb-icon>
+            {{'reportManagement.label.delete'| translate}}
+          </button>
+          <button nbButton status="primary" size="tiny" class="ml-2" (click)="new()">
+            <nb-icon icon="plus" pack="eva"></nb-icon>
+            {{'profile.label.new'| translate}}
+          </button>
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="col-lg-12 row">
+          <div class="col-lg-6 form-group ">
+            <label class="label">
+              {{'profile.label.keyword'| translate}}
+            </label>
+            <input nbInput fullWidth [(ngModel)]="data" trim="blur" (keyup.enter)="page.pageNumber=0;setPage(page)">
+          </div>
+          <div class="form-group col-lg-2 align-items-end d-flex">
+            <button nbButton (click)="page.pageNumber=0;setPage($event)">{{'profile.label.search'| translate}}
+              <nb-icon icon="search-outline"></nb-icon>
+            </button>
+          </div>
+        </div>
+        <ngx-datatable class=" fullscreen" *ngIf="currentTheme"
+                       [ngClass]="{'dark' : currentTheme !== 'default', 'bootstrap': currentTheme === 'default'}"
+                       [columnMode]="'flex'"
+                       [rows]="profiles"
+                       [columns]="columns"
+                       rowHeight="auto"
+                       [externalPaging]="true"
+                       [count]="page.totalElements"
+                       [offset]="page.pageNumber"
+                       [selected]="selected"
+                       [selectionType]="'checkbox'"
+                       [selectAllRowsOnPage]="false"
+                       (select)='onSelect($event)'
+                       [limit]="page.size"
+                       (page)="setPage($event)"
+                       [headerHeight]="50"
+                       [scrollbarH]="true"
+                       [messages]="{totalMessage:'profile.label.record'| translate}"
+                       [footerHeight]="50"
+        >
+          <ng-container *ngFor="let col of columns">
+            <ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flewGrow">
+              <ng-template let-column="column" ngx-datatable-header-template let-allRowsSelected="allRowsSelected"
+                           let-selectFn="selectFn">
+                <ng-container [ngSwitch]="col.prop">
+                  <ng-container *ngSwitchCase="'checkbox'">
+                    <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
+                  </ng-container>
+                  <ng-container *ngSwitchDefault>
+                    {{ column.name | translate }}
+                  </ng-container>
+                </ng-container>
+              </ng-template>
+              <ng-template let-value="value" let-rowIndex="rowIndex" ngx-datatable-cell-template let-row="row"
+                           let-isSelected="isSelected"
+                           let-onCheckboxChangeFn="onCheckboxChangeFn">
+                <ng-container [ngSwitch]="col.prop">
+                  <ng-container *ngSwitchCase="'checkbox'">
+                    <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'id'">
+                    {{rowIndex + 1 + (page.pageNumber * page.size)}}
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'isDefault'">
+                    {{(value === 1 ? 'profile.label.default' : 'profile.label.normal') | translate}}
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'updateTime'">
+                    {{value | date:'dd/MM/yyyy hh:mm:ss'}}
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'profileCode'">
+                    <span title="{{value}}" class="row-data-show">
+                      {{ value && value.length > 30 ? value.substr(0, 30).concat('...') : value}}
+                    </span>
+                  </ng-container>
+                  <ng-container *ngSwitchDefault>
+                    <span title="{{value}}" class="row-data-show">
+                      {{ value && value.length > 50 ? value.substr(0, 50).concat('...') : value}}
+                    </span>
+                  </ng-container>
+                  <ng-container *ngSwitchCase="'action_btn'" class="text-right">
+                    <div>
+                      <button nbButton status="warning" ghost title="{{'profile.label.edit'| translate}}" (click)="edit(row)">
+                        <nb-icon icon="edit-outline" pack="eva" size="tiny"></nb-icon>
+                      </button>
+                      <button nbButton status="danger" ghost title="{{'profile.label.delete'| translate}}" (click)="delete(row)">
+                        <nb-icon icon="trash-2-outline" pack="eva" size="tiny"></nb-icon>
+                      </button>
+                      <button nbButton status="primary" ghost title="{{'profile.label.clone'| translate}}" (click)="clone(row)">
+                        <nb-icon icon="copy-outline" pack="eva" size="tiny"></nb-icon>
+                      </button>
+                    </div>
+                  </ng-container>
+
+                </ng-container>
+              </ng-template>
+            </ngx-datatable-column>
+          </ng-container>
+        </ngx-datatable>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+

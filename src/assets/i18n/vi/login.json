@@ -1,0 +1,27 @@
+{
+  "login": {
+    "in": "Đăng nhập",
+    "out": "Đăng xuất",
+    "account": "Tài khoản",
+    "password": "Mật khẩu",
+    "failIn": "Đăng nhập không thành công",
+    "recaptchaReactive": "Captcha",
+    "forgotPassword": "Quên mật khẩu"
+  },
+  "changePass": {
+    "currentPassword": "Mật khẩu hiện tại",
+    "password": "Mật khẩu mới",
+    "confirmPassword": "Nhập lại mật khẩu mới",
+    "btnChange": "Đổi mật khẩu",
+    "changePassTitle": "Đổi mật khẩu người dùng",
+    "changePassSuccess": "Đổi mật khẩu thành công"
+  },
+  "requestPassword": {
+    "email": "Địa chỉ email",
+    "emailPlaceHolder": "Vui lòng nhập vào địa chỉ email",
+    "resetBtn": "Gửi yêu cầu",
+    "backToLogin": "Đăng nhập",
+    "requestPasswordTitle": "Yêu cầu lại mật khẩu",
+    "requestPasswordSuccess": "Reset mật khẩu thành công, vui lòng kiểm tra email"
+  }
+}

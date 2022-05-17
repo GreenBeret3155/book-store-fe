@@ -1,0 +1,114 @@
+<nb-card class="h-100 w-100" id="{{areaConfig?.id}}" *ngIf="areaConfig?.id && !areaConfig?.mapScreens?.length">
+  <nb-card-header style="font-weight: normal;padding-bottom: 5px!important;" class="d-flex  "
+                  *ngIf="chartViewerComponent?.chartData?.typeChart !== 'MAP_CHART' && chartViewerComponent?.chartData?.typeChart !== 'ICON_CHART'"
+                  [ngClass]="this.charts[this.currentChartIdx]?.screenIdNextto ? 'objLink' : ''">
+    <span class="area-title {{warning && warning.length > 0 ? 'warning' : ''}}" id="title-{{areaConfig.id}}"
+          (click)="goToScreen()">
+      <span *ngIf="chartViewerComponent?.chartData?.typeChart === 'ALARM_CHART' && isScreenDefault "
+            class="icon-chart-chart-domain {{chartViewerComponent?.chartData?.domainCode}}"></span>
+      {{chartViewerComponent?.chartData?.titleChart}} {{chartViewerComponent?.chartData?.planTimeText}}
+      <nb-icon style="color:red" icon="alert-triangle-outline" *ngIf="warning && warning.length > 0"
+               [nbPopover]="template"
+               [nbPopoverContext]="{ warning: warning }"
+               [nbPopoverTrigger]="'hover'"
+               [nbPopoverClass]="'tooltipPop'"
+               nbPopoverPlacement="top"></nb-icon>
+      <ng-template #template let-data>
+        <div class="tooltipPop">
+          <span *ngFor="let warning of data.warning" class="tooltip-span">{{warning}} <br></span>
+        </div>
+      </ng-template>
+       <nb-icon icon="info-outline" (click)="openChartRelation(this.charts[this.currentChartIdx].linksChart)"
+                style="cursor: pointer"
+                *ngIf="this.charts[this.currentChartIdx]?.linksChart && this.charts[this.currentChartIdx]?.linksChart?.length > 0"></nb-icon>
+    </span>
+    <div #btnFilter class="ml-auto d-flex d-inline-blockp" *ngIf="enableFilter">
+      <nb-action nbButton size="tiny" *ngIf="charts.length > 1" (click)="showChartPrev()"
+                 ghost lass="ml-auto action-chart" type="button">
+        <nb-icon icon="chevron-left-outline" class="icon-menu-tool icon-favories"></nb-icon>
+      </nb-action>
+      <nb-action class="action-chart" nbButton size="tiny" *ngIf="charts.length > 1" (click)="showChartNext()"
+                 ghost class="ml-auto action-chart" type="button">
+        <nb-icon icon="chevron-right-outline" class="icon-menu-tool icon-favories"></nb-icon>
+      </nb-action>
+      <nb-action nbButton size="tiny"
+                 (click)="openDialogInsertFavorite(chartViewerComponent?.chartData)"
+                 title="{{'favorite.label.fight'|translate}}"
+                 ghost class="ml-auto action-chart">
+        <nb-icon class="icon-favories" icon="star-outline"></nb-icon>
+      </nb-action>
+      <nb-action class="action-chart menu-tool" size="tiny" outline nbButton [nbContextMenu]="items" ghost
+                 data-html2canvas-ignore="true"
+                 [nbContextMenuTag]='areaConfig?.id'
+                 [nbContextMenuPlacement]="'bottom'" [nbContextMenuAdjustment]="'counterclockwise'">
+        <nb-icon class="icon-menu-tool" icon="more-vertical-outline"></nb-icon>
+      </nb-action>
+    </div>
+  </nb-card-header>
+  <nb-card-body class="area-body">
+    <ng-container *ngIf="charts?.length > 0 && charts[currentChartIdx]">
+      <ng-container *ngFor="let chart of charts; index as i;">
+        <!-- <ngx-chart-viewer #chartViewerComponent
+                          [id]="charts[i].chartId"
+                          *ngIf="charts[i]?.chartId"
+                          [hidden]="i !== currentChartIdx"
+                          [chartId]="charts[i].chartId"
+                          [linksChart]="charts[i].linksChart"
+                          (onSuccesLoadChart)="loadDataChart($event)"
+                          [isSlideShow]="isSlideShow"
+                          [screenIdNexto]="charts[i].screenIdNextto"
+        ></ngx-chart-viewer> -->
+      </ng-container>
+    </ng-container>
+  </nb-card-body>
+</nb-card>
+<div class="w-100 h-100 overflow-auto" style="padding-left: 0;padding-right: unset">
+  <ng-container *ngIf="areaConfig?.mapScreens?.length > 0">
+    <ng-container *ngFor="let chart of (areaConfig?.mapScreens |slice: currentChartIdx : currentChartIdx + 1); index as i;">
+      <ngx-screen *ngIf="chart" [screenId]="chart.screenId" [menuCollapsed]="true"></ngx-screen>
+    </ng-container>
+  </ng-container>
+</div>
+<div class="slide-nav" *ngIf="areaConfig?.mapScreens?.length > 1">
+  <button nbButton size="giant" ghost (click)="showChartPrev()" class="slide-prev" type="button" [hidden]="currentChartIdx === 0" status="primary">
+    <nb-icon icon="caret-left" pack="fa" status="primary"></nb-icon>
+  </button>
+  <button nbButton size="giant" ghost status="primary" (click)="showChartNext()" class="slide-next" type="button" [hidden]="currentChartIdx === areaConfig?.mapScreens?.length - 1">
+    <nb-icon icon="caret-right" pack="fa" status="primary"></nb-icon>
+  </button>
+</div>
+
+<ng-template #overlay>
+  <nb-card>
+    <nb-card-body>
+      <form [formGroup]="filterChartForm">
+        <div class="form-group">
+          <label for="timeType" class="label">Loại đữ liệu</label>
+          <ng-select [items]="timeTypes" bindLabel="itemName" bindValue="itemValue" id="timeType"
+                     formControlName="timeType" appendTo="body">
+
+          </ng-select>
+        </div>
+        <div class="form-group" [hidden]="!chartViewerComponent?.chartData?.filterParams?.FROMDATE">
+          <label for="fromDate" class="label">Từ thời gian</label>
+          <ngx-hero-picker id="fromDate" formControlName="fromDate" (enter)="filterChart()"
+                           [timeType]="getTimeType(this.filterChartForm.value.timeType)"></ngx-hero-picker>
+          <!--        <ngx-vn-picker id="fromDate" [control]="filterChartForm.get('fromDate')"-->
+          <!--                       [type]="this.filterChartForm.value.timeType" [isStart]="true"></ngx-vn-picker>-->
+        </div>
+        <div class="form-group">
+          <label for="toDate" class="label">Đến thời gian</label>
+          <ngx-hero-picker id="toDate" formControlName="toDate" (enter)="filterChart()"
+                           [timeType]="getTimeType(this.filterChartForm.value.timeType)"></ngx-hero-picker>
+          <!--        <ngx-vn-picker id="toDate" [control]="filterChartForm.get('toDate')"-->
+          <!--                       [type]="this.filterChartForm.value.timeType" [isStart]="false"></ngx-vn-picker>-->
+        </div>
+
+        <div class="form-group">
+          <button type="button" fullWidth class="btn btn-primary w-100" (click)="filterChart()">Xem</button>
+        </div>
+      </form>
+    </nb-card-body>
+
+  </nb-card>
+</ng-template>

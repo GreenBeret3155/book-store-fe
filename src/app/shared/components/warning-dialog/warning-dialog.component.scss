@@ -1,0 +1,53 @@
+.warning-dialog {
+  width: 70vw;
+  //height: 50vh;
+  max-height: 95vh;
+}
+
+.img-thumbnail {
+  background: unset;
+}
+
+ng-select.ng-select .ng-arrow-wrapper {
+  display: none;
+}
+
+.img-screen {
+  max-height: 500px;
+  max-width: 600px;
+  padding: 1px;
+}
+.checkbox-cus {
+  padding-left: 2.5rem !important;
+}
+
+.warning-user {
+  max-height: 450px;
+
+  nb-card {
+    padding-left: 0;
+    padding-right: 0;
+    max-height: 350px !important;
+  }
+}
+
+@media screen and (min-device-width: 720px) and (max-width: 1366px) {
+  .warning-dialog {
+    width: 80vw;
+    max-height: 100vh;
+  }
+  .img-screen {
+    max-height: 300px;
+    max-width: 600px;
+    padding: 1px;
+  }
+  .warning-user {
+    max-height: 350px;
+
+    nb-card {
+      padding-left: 0;
+      padding-right: 0;
+      max-height: 250px !important;
+    }
+  }
+}

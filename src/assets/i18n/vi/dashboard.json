@@ -1,0 +1,95 @@
+{
+  "dashboard": {
+    "confirm": {
+      "delete": "Bạn có chắc chắn muốn xóa màn hình?"
+    },
+    "success": {
+      "clone": "Sao chép thành công!",
+      "delete": "Xóa dashboard thành công"
+    },
+    "column": {
+      "index": "STT",
+      "screenCode": "Mã Dashboard",
+      "screenName": "Tên Dashboard",
+      "screenId": "ID dashboard",
+      "isDefault": "Loại Dashboard",
+      "menuItem": "Thẻ Menu",
+      "actionBtn": "Hành động",
+      "orderIndex": "Thứ tự",
+      "updateUser": "User tác động",
+      "updateTime": "Thời điểm tác động"
+    },
+    "label": {
+      "profile": "Profile",
+      "menu": "Menu",
+      "menuItem": "Thẻ menu",
+      "keyword": "Tên/Mã Dashboard",
+      "search": "Tìm kiếm",
+      "new": "Thêm mới Dashboard",
+      "edit": "Sửa thông tin",
+      "delete": "Xóa thông tin",
+      "showTab": "Hiện tab",
+      "HidTab": "Ẩn tab",
+      "clone": "Sao chép",
+      "default": "Mặc định",
+      "overview": "Tổng quan",
+      "normal": "Xem chi tiết",
+      "record": "bản ghi",
+      "slide": "Slide",
+      "title": "Cấu hình dashboard",
+      "chooseMenu" : "Chọn Menu",
+      "chooseMenuItem" : "Chọn thẻ Menu"
+    },
+    "config" : {
+      "basicInfo": "Thông tin cơ bản",
+      "profile": "Profile",
+      "profilePicker": "Chọn Profile",
+      "dashboardCode": "Mã Dashboard",
+      "dashboardCodePicker": "Nhập mã Dashboard",
+      "dashboardName": "Tên Dashboard",
+      "dashboardNamePicker": "Nhập tên Dashboard",
+      "parentId": "Màn hình cha",
+      "parentIdPicker": "Chọn màn hình cha",
+      "orderIndex": "Thứ tự Dashboard",
+      "dashboardType": "Loại Dashboard",
+      "menu": "Menu",
+      "menuPicker": "Chọn Menu",
+      "menuItem": "Thẻ Menu",
+      "menuItemPicker": "Chọn thẻ Menu",
+      "description": "Mô tả",
+      "save": "Lưu lại",
+      "cancel": "Hủy bỏ",
+      "agree": "Đồng ý",
+      "areaConfig": {
+        "areaConfig": "Cấu hình vùng hiển thị",
+        "addArea": "Thêm vùng",
+        "areaInfo": "Thông tin vùng",
+        "areaName": "Tên vùng",
+        "areaCode": "Mã vùng",
+        "changeTime": "Thời gian chuyển biểu đồ",
+        "areaNameInput": "Nhập tên vùng",
+        "areaCodeInput": "Nhập mã vùng",
+        "changeTimeInput": "Đơn vị giây (s)",
+        "description": "Mô tả",
+        "addChart": "Thêm biểu đồ",
+        "deleteArea": "Xóa vùng"
+      },
+      "chartPicker": {
+        "chartPicker": "Thêm biểu đồ",
+        "configChart" : "Sửa biểu đồ",
+        "screenPicker": "Thêm màn hình",
+        "configScreen": "Sửa màn hình",
+        "screenNext": "Dashboard chuyển đến",
+        "chartType": "Loại biểu đồ",
+        "domain": "Lĩnh vực",
+        "groupKpi": "Nhóm chỉ tiêu",
+        "chartName": "Biểu đồ",
+        "typeToSearchText": "Nhập ký tự bất kì để tìm kiếm"
+      }
+    },
+
+    "notification": "Thông báo",
+    "searchDashboard": "Tìm kiếm biểu đồ",
+    "dashboardCondition": "Tên biểu đồ"
+  }
+}

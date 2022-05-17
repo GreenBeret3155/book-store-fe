@@ -1,0 +1,50 @@
+{
+  "catItem": {
+    "title": "Danh mục chung",
+    "insert_btn": "Thêm mới",
+    "save_btn": "Lưu lại",
+    "updateTitle": "Cập nhật danh mục",
+    "newTitle": "Thêm mới danh mục",
+    "search": "Tìm kiếm",
+    "gridTitle": "Kết quả tìm kiếm",
+    "parent": "Danh mục cha",
+    "itemName": "Tên",
+    "itemCode": "Mã",
+    "itemValue": "Giá trị",
+    "statusName": "Trạng thái",
+    "placeHolder": "Lựa chọn",
+    "notFoundText": "Không tìm thấy kết quả",
+    "clearAllText": "Xoá",
+    "category": "Loại danh mục",
+    "update_complete": "Cập nhật danh mục thành công",
+    "insert_complete": "Thêm mới danh mục thành công",
+    "delete_complete": "Xoá danh mục thành công",
+    "delete_confirm": "Bạn có chắc muốn xoá bản ghi này không?",
+    "status": {
+      "active": "Hoạt động",
+      "inactive": "Không hoạt động",
+      "0": "Không hoạt động",
+      "1": "Hoạt động"
+    },
+    "editable": {
+      "1": "Có",
+      "0": "Không"
+    },
+    "grid": {
+      "stt": "STT",
+      "action": "Tác động",
+      "itemCode": "Mã",
+      "itemName": "Tên",
+      "itemValue": "Giá trị",
+      "position": "Thứ tự",
+      "parent": "Danh mục cha",
+      "description": "Mô tả",
+      "status": "Trạng thái",
+      "editable": "Cho phép sửa",
+      "updateTime": "Thời điểm tác động",
+      "updateUser": "User tác động",
+      "category": "Loại danh mục"
+    },
+    "delete_btn": "Xóa bản ghi"
+  }
+}

@@ -1,0 +1,30 @@
+<div *ngIf="showDate" style="position: absolute; left: 50%">
+  <time>{{ date  | date: 'dd/MM/yyyy' }}</time>
+</div>
+<div class="{{reply ? 'ml-auto' : ''}} d-flex {{showDate ? 'mt-2' : ''}}" >
+  <div class="avatar {{showAvatar ? '' : 'hide'}}" [style.background-image]="avatarStyle" *ngIf="!reply">
+    <ng-container *ngIf="!avatarStyle">
+      <!--    {{ getInitials() }}-->
+    </ng-container>
+  </div>
+  <div>
+<!--    <p class="sender ml-2" *ngIf="sender || date">{{ sender }}-->
+<!--      <time>{{ date  | date: 'HH:mm' }}</time>-->
+<!--    </p>-->
+    <div class="message ml-2 mt-3" style="border: 0.5px solid #161a30; border-radius: 10px;">
+      <ng-container [ngSwitch]="type">
+
+        <nb-chat-message-file *ngSwitchCase="'file'"
+                              [sender]="sender" [date]="date" [message]="message" [files]="files" [url]="url">
+        </nb-chat-message-file>
+        <nb-chat-message-image *ngSwitchCase="'image'"
+                              [sender]="sender" [date]="date" [message]="message" [files]="files" [url]="url">
+        </nb-chat-message-image>
+
+        <nb-chat-message-text *ngSwitchCase="'text'"
+                              [sender]="sender" [date]="date" [message]="message">
+        </nb-chat-message-text>
+      </ng-container>
+    </div>
+  </div>
+</div>

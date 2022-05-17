@@ -1,0 +1,15 @@
+<nb-card class="cus_style" [nbSpinner]="loading">
+  <nb-card-header class="d-flex"> <span title="{{title}}">{{ title.length >100 ? title.substring(0, 100).concat('...') : title }}</span>
+    <button class="ml-auto p-2" nbButton hero status="primary" (click)="cancel()">
+      <nb-icon icon="close-outline"></nb-icon>
+    </button>
+  </nb-card-header>
+  <nb-card-body>
+    <ngx-treeview [config]="treeViewConfig" [items]="dataItems"
+                  (selectedChange)="values = $event"></ngx-treeview>
+  </nb-card-body>
+  <nb-card-footer class="text-right">
+    <button nbButton type="button" status="primary" (click)="submit()" id="dialogCancelBtn">{{ 'role_module.save' | translate }}</button>
+    <button nbButton type="button" nbButton (click)="cancel()" class="ml-2"> {{ 'role_module.cancel' | translate }} </button>
+  </nb-card-footer>
+</nb-card>

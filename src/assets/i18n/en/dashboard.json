@@ -1,0 +1,88 @@
+{
+  "dashboard": {
+    "confirm": {
+      "delete": "Are you sure to delete this screen?"
+    },
+    "success": {
+      "clone": "Clone successful!",
+      "delete": "Delete dashboard successful!"
+    },
+    "column": {
+      "index": "No.",
+      "screenCode": "Dashboard code",
+      "screenId": "ID dashboard",
+      "screenName": "Dashboard name",
+      "isDefault": "Type",
+      "menuItem": "Menu item",
+      "actionBtn": "Action",
+      "orderIndex": "Priority",
+      "updateUser": "User Update",
+      "updateTime": "Update Time"
+    },
+    "label": {
+      "profile": "Profile",
+      "menu": "Menu",
+      "menuItem": "Menu item",
+      "keyword": "Keyword",
+      "search": "Search",
+      "new": "Add new dashboard",
+      "edit": "Edit",
+      "delete": "Delete",
+      "clone": "Clone",
+      "default": "Default",
+      "overview": "Overview",
+      "normal": "Normal",
+      "showTab": "Hiện tab",
+      "record": "record",
+      "title": "Config dashboard",
+      "chooseMenu" : "Choose a menu",
+      "chooseMenuItem" : "Choose a menu item"
+    },
+    "config" : {
+      "basicInfo": "Basic Information",
+      "profile": "Profile",
+      "profilePicker": "Select Profile",
+      "dashboardCode": "Dashboard code",
+      "dashboardCodePicker": "Select Dashboard code",
+      "dashboardName": "Dashboard name",
+      "dashboardNamePicker": "Select Dashboard name",
+      "orderIndex": "Order index",
+      "dashboardType": "Dashboard type",
+      "menu": "Menu",
+      "menuPicker": "Select Menu",
+      "menuItem": "Menu Item",
+      "menuItemPicker": "Select Menu Item",
+      "description": "Description",
+      "save": "Save",
+      "cancel": "Cancel",
+      "agree": "Agree",
+      "areaConfig": {
+        "areaConfig": "Area config",
+        "addArea": "Add area",
+        "areaInfo": "Area information",
+        "areaName": "Area name",
+        "areaCode": "Area code",
+        "changeTime": "Chart change time",
+        "areaNameInput": "Input Area name",
+        "areaCodeInput": "Input Area code",
+        "changeTimeInput": "Input Chart change time",
+        "description": "Description",
+        "addChart": "Add Chart",
+        "deleteArea": "Delete area"
+      },
+      "chartPicker": {
+        "chartPicker": "Add chart",
+        "configChart" : "Config chart",
+        "domain": "Domain",
+        "screenNext": "Dashboard next",
+        "chartType": "Chart type",
+        "groupKpi": "Group KPI",
+        "chartName": "Chart name",
+        "typeToSearchText": "Please enter to search"
+      }
+    },
+    "notification": "Notification",
+    "searchDashboard": "Tìm kiếm biểu đồ",
+    "dashboardCondition": "Tên biểu đồ"
+  }
+}

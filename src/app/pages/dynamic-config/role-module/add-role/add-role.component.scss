@@ -1,0 +1,143 @@
+//@import '../../../../../../src/app/@theme/styles/themes';
+//
+//@include nb-install-component() {
+//  nb-card {
+//    max-width: 600px;
+//    max-height: 500px;
+//  }
+//}
+
+//.form-group {
+//}
+//
+//.cangiua {
+//  display: inline-flex;
+//  align-items: flex-start;
+//  margin-top: 1%;
+//}
+//
+//.invalid-feedback {
+//  display: inline !important;
+//}
+//
+//.margin-left-popup {
+//  margin-left: 15%;
+//}
+//
+//.card-header-title {
+//  background-color: #bdd5f7;
+//  padding-top: 1% !important;
+//  padding-bottom: 1% !important;
+//}
+//
+//.author > button {
+//  max-width: 100% !important;
+//}
+//
+//.author {
+//  max-width: 100% !important;
+//}
+//
+//.custom-border {
+//  border: 1px solid #00000040;
+//  border-radius: 0.25rem !important;
+//}
+//
+//.status-danger {
+//  border-color: #ff3d71 !important;
+//}
+//
+//.dropdown-treeview {
+//  width: 100%;
+//  display: block;
+//  padding: 0 !important;
+//  background-color: #edf1f7;
+//  border-color: #e4e9f2 !important;
+//  height: 39.55px;
+//  border-radius: 0.25rem;
+//}
+//
+//.dropdown-treeview-error {
+//  border: solid 1px #ff3d71 !important;
+//  border-radius: 0.25rem;
+//}
+//
+//.border-nb-select > button {
+//  border: 1px solid #00000040 !important;
+//  border-radius: 0.25rem !important;
+//}
+
+.margin_cus {
+  max-width: 90vw;
+  max-height: 80vh;
+}
+
+.dropdown-treeview {
+  width: 100%;
+  display: block;
+  padding: 0 !important;
+  background-color: #edf1f7;
+  border-color: #e4e9f2 !important;
+  height: 39.55px;
+  border-radius: 0.25rem;
+}
+
+.dropdown-treeview-error {
+  border: solid 1px #ff3d71 !important;
+  border-radius: 0.25rem;
+}
+
+.btn-outline-secondary {
+  color: #6c757db0;
+  border-color: #6c757d1f;
+  border-radius: 0.25rem;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+.btn-outline-secondary:hover {
+  color: #9e9e9e;
+  background-color: #edf1f7 !important;
+  border-color: #e4e9f2 !important;
+}
+
+.dropdown-menu.show {
+  display: block;
+  width: 100%;
+}
+
+.dropdown {
+  height: 100% !important;
+}
+
+.dropdown > button {
+  height: 100% !important;
+}
+
+.nb-select-status-danger > button {
+  border-color: #ff3d71 !important;
+}
+
+.modal-full {
+  width: 80%;
+  max-width: 1152px;
+  height: 60%;
+}
+
+nb-dialog-container {
+  width: 100%;
+}
+
+nb-card {
+  max-height: 100%;
+}
+
+.icon-style {
+  margin: 0% 3%;
+  cursor: pointer;
+}
+
+.author {
+  max-width: 100% !important;
+}
+

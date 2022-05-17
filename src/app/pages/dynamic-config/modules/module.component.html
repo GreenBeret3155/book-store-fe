@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header class="d-flex header">
+        <label> {{ 'module.title' | translate }}</label>
+        <button *ngIf="check( 'roleAction.insert' | translate )" nbButton status="primary" size="tiny" class="ml-auto" (click)="open(null)">
+          <nb-icon icon="plus" pack="eva"></nb-icon>
+          {{ 'module.add_btn' | translate }}
+        </button>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="mb-4">
+          <div class="row">
+            <div class="col-lg-4 form-group">
+              <label class="label">
+                {{ 'module.code' | translate }}
+              </label>
+              <input id="module-code" (keyup.enter)="search()" nbInput fullWidth [(ngModel)]="paramSearch.code">
+            </div>
+            <div class="col-lg-4 form-group">
+              <label class="label">
+                {{ 'module.name' | translate }}
+              </label>
+              <input (keyup.enter)="search()" nbInput fullWidth [(ngModel)]="paramSearch.name">
+            </div>
+            <div class="col-lg-4 form-group">
+              <label class="label">
+                {{ 'module.status' | translate }}
+              </label>
+              <ng-select fullWidth appendTo="body"
+                         placeholder="{{'common.dropdown.placeholder' |translate}}"
+                         [(ngModel)]="paramSearch.status">
+                <ng-option *ngFor="let item of listStatus" [value]="item.value"> {{ item.title | translate }}
+                </ng-option>
+              </ng-select>
+            </div>
+            <div class="col-lg-4 form-group">
+              <label class="label">
+                {{ 'module.parent' | translate }}
+              </label>
+              <ng-select fullWidth appendTo="body"
+                         placeholder="{{'common.dropdown.placeholder' |translate}}"
+                         [(ngModel)]="paramSearch.parentId">
+                <ng-option *ngFor="let item of dataParent" [value]="item.parentId">
+                  <span title="{{item.parentName}}">{{ item.parentName }}</span>
+                </ng-option>
+              </ng-select>
+            </div>
+            <div class="form-group col-lg-12 text-center">
+              <button nbButton (click)="search()"> {{ 'module.search' | translate }}
+                <nb-icon icon="search-outline"></nb-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ngx-datatable ngxResizeWatcher class="material"
+                       [ngClass]="{'dark' : currentTheme !== 'default', 'bootstrap': currentTheme === 'default'}"
+                       [columnMode]="'flex'"
+                       [rows]="rows"
+                       [columns]="columns"
+                       rowHeight="auto"
+                       [footerHeight]="50"
+                       [headerHeight]="50"
+                       [treeFromRelation]="'parentId'"
+                       [treeToRelation]="'id'"
+                       (treeAction)="onTreeAction($event)"
+                       [messages]="{totalMessage: 'menu.label.record' | translate }"
+                       class="fullscreen"
+                       [selected]="selected"
+                       [selectionType]="'checkbox'"
+                       [selectAllRowsOnPage]="false"
+                       (select)='onSelect($event)'
+        >
+          <ng-container *ngFor="let col of columns">
+            <ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flexGrow"
+                                  [isTreeColumn]="col.isTree">
+              <ng-template let-column="column" ngx-datatable-header-template  let-allRowsSelected="allRowsSelected"
+                          let-selectFn="selectFn">
+                <ng-container [ngSwitch]="col.prop">
+                  <ng-container *ngSwitchCase="'checkbox'">
+                    <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                  </ng-container>
+                  <ng-container *ngSwitchDefault>
+                    <span class="col-header-break">{{ column.name | translate }}</span>
+                  </ng-container>
+                </ng-container>
+              </ng-template>
+              <ng-template let-value="value" ngx-datatable-cell-template let-row="row" let-rowIndex='rowIndex'>
+                <ng-container *ngIf="col.prop ==='checkbox'" class="index-col">
+                  <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                </ng-container>
+                <ng-container *ngIf="col.prop ==='index'" class="index-col">
+                  {{ rowIndex + 1 }}
+                </ng-container>
+                <ng-container *ngIf="col.prop === 'code'">
+                  <span class="row-data-show"
+                        title="{{value}}"><span class="style-tree" >{{value}}</span></span>
+                </ng-container>
+                <ng-container *ngIf="col.prop ==='description' || col.prop ==='name' || col.prop ==='pathUrl'" class="text-right">
+                  <span class="row-data-show"
+                        title="{{value}}">{{value.length > 50 ? value.substring(0, 50).concat('...') : value}}</span>
+                </ng-container>
+                <ng-container *ngIf="col.prop ==='status'">
+                  {{ 'common.label.' + value | translate }}
+                </ng-container>
+                <ng-container *ngIf="col.prop === 'map_action' && row.treeStatus == 'disabled'">
+                  <button class="p-1" nbButton ghost status="info" (click)="openMapModule(row)">
+                    <nb-icon icon="link-outline" pack="eva" size="tiny"></nb-icon>
+                  </button>
+                </ng-container>
+                <ng-container *ngIf="col.prop ==='updateTime'">
+                  {{value | date:'dd/MM/yyyy HH:mm:ss'}}
+                </ng-container>
+                <ng-container *ngIf="col.prop ==='action_btn'" class="text-right">
+                  <div>
+                    <button *ngIf="check( 'roleAction.update' | translate )" class="p-1" nbButton status="info" ghost title="{{ 'common.label.edit' | translate }}"
+                            (click)="open(row)">
+                      <nb-icon icon="edit-outline" pack="eva" size="tiny"></nb-icon>
+                    </button>
+                    <button *ngIf="check( 'roleAction.delete' | translate )" class="p-1" nbButton status="danger" ghost title="{{ 'common.label.delete' | translate }}"
+                            (click)="delete(row)">
+                      <nb-icon icon="trash-2-outline" pack="eva" size="tiny"></nb-icon>
+                    </button>
+                  </div>
+                </ng-container>
+              </ng-template>
+            </ngx-datatable-column>
+          </ng-container>
+        </ngx-datatable>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

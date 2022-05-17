@@ -1,0 +1,61 @@
+@-moz-document url-prefix('') {
+  * {
+    scrollbar-color: #151a30 #151a30;
+    scrollbar-width: thin;
+  }
+  .dashboard-area {
+    flex: unset!important;
+  }
+  .menu-custom {
+    nb-card-body {
+     padding: 1rem 1rem 3rem 1rem!important;
+    }
+    p {
+      margin-bottom: 0!important;
+      line-height: 1.2rem!important;
+    }
+  }
+  h6 {
+    line-height: 1.2rem!important;
+  }
+  //.gauge-chart-style {
+  //  height: 6.5rem !important;
+  //  min-width: 6.5rem !important;
+  //}
+  //.value-chart-kpi {
+  //  font-size: 1.7rem !important;
+  //}
+
+  @media screen and (min-device-width: 720px) and (max-width: 1366px) {
+    .value-chart-kpi {
+      font-size: 1.66rem!important;
+    }
+    .value-chart-kpi-mini {
+      font-size: 1.42rem!important;
+    }
+    .padding-top-chart-kpi {
+      padding-top: 0!important;
+    }
+    .kpi-name-style {
+      font-size: 0.73rem !important;
+      color: #f7f9fc !important;
+    }
+    .units {
+      line-height: 1.16rem!important;
+    }
+    .gauge-chart-style-menu {
+      height: 5.28rem!important;
+      min-width: 5.28rem!important;
+    }
+    .value-chart-kpi-menu {
+      font-size: 2.08rem !important;
+    }
+    .kpi-name-style_menu {
+      font-size: 0.75rem!important;
+      color: #709dd1 !important;
+    }
+    .info-extend {
+      line-height: 1.16rem!important;
+    }
+  }
+}

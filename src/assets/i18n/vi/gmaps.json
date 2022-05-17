@@ -1,0 +1,31 @@
+{
+  "gmaps": {
+    "column": {
+      "kpiName": "Chỉ tiêu"
+    },
+    "label": {
+      "menu": "Menu",
+      "menuItem": "Thẻ menu",
+      "keyword": "Tên/Mã thẻ menu",
+      "search": "Tìm kiếm",
+      "new": "Thêm mới thẻ menu",
+      "edit": "Cập nhật thẻ menu",
+      "listCharts": "Danh sách biểu đồ",
+      "addChart": "Thêm biểu đồ",
+      "delete": "Xóa thông tin",
+      "clone": "Sao chép",
+      "default": "Mặc định",
+      "overview": "Tổng quan",
+      "normal": "Bình thường",
+      "record": "bản ghi",
+      "title": "Cấu hình thẻ menu",
+      "domainCode": "Lĩnh vực",
+      "status": "Trạng thái",
+      "active": "Hoạt động",
+      "inactive": "Không hoạt động",
+      "cancel": "Hủy bỏ",
+      "agree": "Đồng ý"
+    },
+    "notification": "Thông báo"
+  }
+}

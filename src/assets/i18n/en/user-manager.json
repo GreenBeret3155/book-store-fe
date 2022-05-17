@@ -1,0 +1,33 @@
+{
+  "user": {
+    "column": {
+      "index": "No.",
+      "account": "Account",
+      "email": "Email",
+      "status": "Status",
+      "phoneNumber": "Phone number",
+      "createDate": "Create date",
+      "active": "Active",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "getAlerted": "Get alerted to the head",
+      "language": "Language",
+      "role": "Role",
+      "domain": "Domain"
+    },
+    "label": {
+      "record": "record",
+      "title": "User management",
+      "add": "Add",
+      "edit": "Edit user",
+      "new": "Add user",
+      "search": "Search",
+      "active": "Active",
+      "inactive": "Inactive",
+      "cancel": "Cancel",
+      "save": "Save"
+    }
+  }
+}

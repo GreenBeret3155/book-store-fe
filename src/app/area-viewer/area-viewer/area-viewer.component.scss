@@ -1,0 +1,106 @@
+@import 'node_modules/bootstrap/scss/mixins/breakpoints';
+@import 'node_modules/@nebular/theme/styles/global/breakpoints';
+@import '../../@theme/styles/themes';
+
+
+:host {
+  height: 100%;
+  width: 100%;
+  display: block;
+
+  ::ng-deep chart {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
+  .action-chart {
+    margin-left: 0.2rem;
+    border: none !important;
+  }
+
+  .action-chart nb-icon {
+    color: #3f4faa !important;
+  }
+
+  .context-menu {
+    ul {
+      li {
+        a {
+          padding: 0px;
+        }
+      }
+    }
+  }
+}
+
+input[type='date']::-webkit-inner-spin-button,
+input[type='date']::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+.area-body {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
+.icon-favories {
+  font-size: 1.3rem;
+  color: #3f4faa;
+}
+
+.icon-menu-tool {
+  font-size: 1.7rem;
+}
+
+.active-area {
+  border: 2px solid #bd362f;
+}
+
+.menu-tool {
+  //width: 1.4rem;
+  margin-right: -1rem;
+  //margin-top: -0.7rem;
+}
+.warning {
+  color: red;
+}
+.tooltipPop {
+  background: red;
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.slide-nav button {
+  z-index: 9;
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  border: none;
+  padding: 0!important;
+  nb-icon {
+    fill: cornflowerblue;
+    color: cornflowerblue;
+    font-size: 4rem;
+    padding: unset;
+  }
+}
+
+.slide-nav button:focus {
+  outline: none;
+}
+
+.slide-nav nb-icon {
+  vertical-align: middle;
+}
+
+.slide-nav .slide-next {
+  right: 0;
+}
+
+.slide-nav .slide-prev {
+  left: 0;
+}

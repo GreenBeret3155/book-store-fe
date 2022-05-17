@@ -1,0 +1,6 @@
+<div class="caption" style="width: 250px; word-break: break-word; background: #2d8ac7; border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;padding: 10px; color: white" *ngIf="message">
+  <label>{{message}}</label>
+      <label class="sender ml-2" *ngIf="date" style="position: absolute; right: 10px; bottom: -5px; color: white;">
+        <time>{{ date  | date: 'HH:mm' }}</time>
+      </label>
+</div>

@@ -1,0 +1,23 @@
+<nb-card>
+  <nb-card-body>
+    <div class="form-group" [ngClass]="{'mx-auto text-center': isImage }">
+      <img id="blah" [src]="imageSrc" *ngIf="isImage"/>
+      <nb-user name="{{file? file[0].name : null}}"
+               [picture]="host + '/assets/images/file.png'"
+               class="userList" *ngIf="!isImage"
+      ></nb-user>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 form-group">
+        <label class="label">Tin nhắn</label>
+        <input type="text" nbInput fullWidth [(ngModel)]="message" (keyup.enter)="sendMess()">
+      </div>
+    </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="float-right">
+      <button nbButton type="button" status="warning" (click)="ref.close()">Hủy</button>
+      <button nbButton type="button" class="ml-2" status="primary" (click)="sendMess()">Gửi</button>
+    </div>
+  </nb-card-footer>
+</nb-card>

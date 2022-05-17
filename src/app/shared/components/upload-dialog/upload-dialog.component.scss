@@ -1,0 +1,14 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  nb-card img {
+    max-width: 22vw;
+    max-height: 28vh;
+  }
+  @media screen and (min-device-width: 720px) and (max-width: 1366px) {
+    nb-card img {
+      max-height: 37vh !important;
+      max-width: 27vw;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "chart-maps": {
+    "confirm": {
+      "delete": "Bạn có chắc chắn muốn xóa link này?"
+    },
+    "success": {
+      "clone": "Sao chép thành công!",
+      "delete": "Xóa link thành công"
+    },
+    "column": {
+      "index": "STT",
+      "urlLink": "URL",
+      "name": "Tên URL",
+      "isDefault": "Loại",
+      "actionBtn": "Hành động",
+      "updateTime": "Thời điểm tác động",
+      "updateUser": "User tác động",
+      "domainName": "Lĩnh vực",
+      "description": "Mô tả",
+      "orderIndex": "Thứ tự",
+      "status": "Trạng thái"
+    },
+    "label": {
+      "urlLink": "URL",
+      "hidenKpi": "Ẩn danh sách chỉ tiêu",
+      "showKpi": "Hiện danh sách chỉ tiêu",
+      "hidenProvince": "Ẩn danh sách Tỉnh/TP",
+      "showProvince": "Hiện danh sách Tỉnh/TP",
+      "hidenFormSearch": "Ẩn tìm kiếm",
+      "clearColor": "Bỏ tìm kiếm theo dải màu",
+      "clearKpi": "Bỏ tìm kiếm theo chỉ tiêu",
+      "clearObject": "Bỏ tìm kiếm theo Tỉnh/TP",
+      "showFormSearch": "Hiện tìm kiếm",
+      "name": "Tên URL",
+      "keyword": "Tên/Mã menu",
+      "search": "Tìm kiếm",
+      "dataType": "Số liệu biểu diễn",
+      "timeType": "Loại dữ liệu",
+      "new": "Truy cập nhanh",
+      "edit": "Sửa truy cập nhanh",
+      "delete": "Xóa thông tin",
+      "clone": "Sao chép",
+      "fromTime": "Từ thời gian",
+      "dateTime": "Thời gian",
+      "toTime": "Đến thời gian",
+      "overview": "Tổng quan",
+      "normal": "Bình thường",
+      "record": "bản ghi",
+      "title": "Danh sách truy cập nhanh",
+      "domainCode": "Lĩnh vực",
+      "active": "Hoạt động",
+      "inactive": "Không hoạt động",
+      "cancel": "Hủy bỏ",
+      "save": "Lưu lại"
+    },
+    "notification": "Thông báo"
+  }
+}

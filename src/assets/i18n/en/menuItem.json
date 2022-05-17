@@ -1,0 +1,49 @@
+{
+  "menuItem": {
+    "confirm": {
+      "delete": "Are you sure to delete this menu item?"
+    },
+    "success": {
+      "clone": "Clone successful!",
+      "delete": "Delete menu item successful!"
+    },
+    "column": {
+      "index": "No.",
+      "menuItemCode": "Menu item code",
+      "menuItemName": "Menu item name",
+      "menu": "Menu",
+      "isDefault": "Type",
+      "actionBtn": "Action",
+      "updateTime": "Last updated time",
+      "updateUser": "Last updated user",
+      "domainName": "Domain",
+      "description": "Description",
+      "orderIndex": "Priority",
+      "status": "Status",
+      "chartCode": "Chart code",
+      "chartName": "Chart name"
+    },
+    "label": {
+      "menu": "Menu",
+      "keyword": "Keyword",
+      "search": "Search",
+      "new": "Add new menu item",
+      "edit": "Edit",
+      "listCharts": "List chart",
+      "delete": "Delete",
+      "clone": "Clone",
+      "default": "Default",
+      "addChart": "Add Chart",
+      "overview": "Overview",
+      "normal": "Normal",
+      "record": "record",
+      "title": "Config menu item",
+      "domainCode": "Domain",
+      "active": "Active",
+      "inactive": "Inactive",
+      "cancel": "Cancel",
+      "agree": "Agree"
+    },
+    "notification": "Notification"
+  }
+}

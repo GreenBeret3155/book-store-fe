@@ -1,0 +1,51 @@
+{
+  "profile": {
+    "confirm": {
+      "delete": "Are you sure to delete this profile ?"
+    },
+    "success": {
+      "clone": "Clone profile successful!",
+      "delete": "Delete profile successful!"
+    },
+    "column": {
+      "index": "No.",
+      "profileCode": "Profile Code",
+      "profileName": "Profile Name",
+      "isDefault": "Is profile default",
+      "description": "Description",
+      "updateUser": "User Update",
+      "updateTime": "Update Time",
+      "actionBtn": "Action"
+    },
+    "label": {
+      "profile": "Profile",
+      "menu": "Menu",
+      "menuItem": "Menu Item",
+      "keyword": "Profile code/name",
+      "search": "Search",
+      "new": "Add new profile",
+      "edit": "Edit",
+      "delete": "Delete",
+      "clone": "Clone",
+      "default": "Yes",
+      "overview": "Overview",
+      "normal": "No",
+      "record": "record",
+      "title": "Config Profile"
+    },
+    "config" : {
+      "updateProfile": "Update Profile",
+      "addNew": "Add new Profile",
+      "profileCode": "Profile Code",
+      "profileName": "Profile Name",
+      "isDefault": "Is Default",
+      "orderIndex": "Order Index",
+      "description": "Description",
+      "save": "Save",
+      "cancel": "Cancel",
+      "disagree": "Disagree",
+      "agree": "Agree"
+    },
+    "notification": "Notification"
+  }
+}

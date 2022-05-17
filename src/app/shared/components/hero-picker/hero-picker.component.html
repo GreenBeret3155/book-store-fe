@@ -1,0 +1,98 @@
+<input nbInput fullWidth
+       showMaskTyped="true" [(ngModel)]="value"
+       (keyup)="changeValue()"
+       (keydown.enter)="checkValidTime()"
+       [disabled]="getEnablePicker()"
+       (blur)="checkTimeEmpty()"
+       (click)="createOverlay()"
+       #inputElement
+       class="form-control"
+       [clearIfNotMatch]="true"
+       [mask]="getMask()"
+/>
+<ng-template #overlay>
+  <nb-card>
+    <nb-card-body [ngSwitch]="activeViewMode">
+      <ng-container *ngIf="timeType==='quarter'">
+        <ng-container *ngSwitchCase="ViewMode.MONTH">
+          <nb-calendar-navigation
+            [date]="visibleDate"
+            (changeMode)="setViewMode(ViewMode.YEAR)">
+          </nb-calendar-navigation>
+          <div class="mt-3">
+            <ng-container *ngFor="let i of [1,2,3,4]">
+              <button class="btn text-white" (click)="setQuarterDate(i)" [ngClass]="{'btn-primary':isActiveQuarter(i)}">Quý {{i}}</button>
+            </ng-container>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="ViewMode.YEAR">
+          <nb-calendar-pageable-navigation
+            [date]="visibleDate"
+            (next)="nextYears()"
+            (prev)="prevYears()"
+            (changeMode)="setViewMode(ViewMode.MONTH)">
+          </nb-calendar-pageable-navigation>
+          <nb-calendar-year-picker
+            [date]="date"
+            [year]="visibleDate"
+            (yearChange)="setValueDate($event); setViewMode(ViewMode.MONTH)">
+          </nb-calendar-year-picker>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="timeType==='year'">
+        <nb-calendar-pageable-navigation
+          [date]="visibleDate"
+          (next)="nextYears()"
+          (prev)="prevYears()"
+          (changeMode)="setViewMode(ViewMode.MONTH)">
+        </nb-calendar-pageable-navigation>
+        <nb-calendar-year-picker
+          [date]="date"
+          [year]="visibleDate"
+          (yearChange)="setValueDate($event); dismissOverlay();">
+        </nb-calendar-year-picker>
+      </ng-container>
+      <ng-container *ngIf="timeType==='month'">
+        <ng-container *ngSwitchCase="ViewMode.MONTH">
+<!--          <nb-calendar-pageable-navigation-->
+<!--            [date]="visibleDate"-->
+<!--            (next)="nextYears()"-->
+<!--            (prev)="prevYears()"-->
+<!--            (changeMode)="setViewMode(ViewMode.YEAR)">-->
+<!--          </nb-calendar-pageable-navigation>-->
+          <nb-calendar-navigation
+            [date]="visibleDate"
+            (changeMode)="setViewMode(ViewMode.YEAR)">
+          </nb-calendar-navigation>
+          <nb-calendar-month-picker
+            [month]="visibleDate"
+            (monthChange)="setValueDate($event); dismissOverlay()">
+          </nb-calendar-month-picker>
+        </ng-container>
+        <ng-container *ngSwitchCase="ViewMode.YEAR">
+          <nb-calendar-pageable-navigation
+            [date]="visibleDate"
+            (next)="nextYears()"
+            size="small"
+            (prev)="prevYears()"
+            (changeMode)="setViewMode(ViewMode.MONTH)">
+          </nb-calendar-pageable-navigation>
+          <nb-calendar-year-picker
+            [date]="date"
+            [year]="visibleDate"
+            (yearChange)="setVisibleDate($event); setViewMode(ViewMode.MONTH)">
+          </nb-calendar-year-picker>
+        </ng-container>
+      </ng-container>
+      <!--      -->
+      <!--      <nb-calendar-navigation [date]="frDate">-->
+
+      <!--      </nb-calendar-navigation>-->
+      <!--      <nb-calendar-month-picker-->
+      <!--        (monthChange)="dismissOverlay()"-->
+      <!--        [(month)]="month"-->
+      <!--      ></nb-calendar-month-picker>-->
+      <!--      <button nbButton status="success" (click)="dismissOverlay()">Dismiss overlay</button>-->
+    </nb-card-body>
+  </nb-card>
+</ng-template>

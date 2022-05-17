@@ -1,0 +1,147 @@
+<ng-container *ngIf="!currentProfile || currentProfile.type !== 2">
+  <div class="header-container">
+    <div class="logo-container">
+      <a (click)="toggleSidebar()" (mouseenter)="openSidebar()" (mouseleave)="closeSidebar()" href="#"
+         class="sidebar-toggle">
+        <nb-icon icon="menu-2-outline"></nb-icon>
+      </a>
+      <div class="text-center disabled-focus" routerLink="/" style="font-size: 20px;
+    line-height: 20px;padding-left: 20px; cursor: pointer; outline: none ;padding-left: 0px!important;">
+      <span style="white-space: nowrap; display: inline-flex" class="align-middle">
+        <span class="logo"></span>
+<!--        <span class="logo-title">HỆ THỐNG THEO DÕI VÀ ĐÁNH GIÁ CÁC CHỈ SỐ PHÁT TRIỂN NGÀNH TT&TT</span>-->
+        <span class="logo-title">HỆ THỐNG THEO DÕI VÀ ĐÁNH GIÁ CÁC CHỈ SỐ BỘ CÔNG THƯƠNG</span>
+      </span>
+        <!--      <br>-->
+        <!--      <span>NGÀNH THÔNG TIN VÀ TRUYỀN THÔNG</span>-->
+      </div>
+      <!--    <a class="logo" href="javascript:void(0)" routerLink="/">Bộ Thông tin và Truyền thông</a>-->
+    </div>
+  </div>
+  <div class="header-container">
+    <!--  <div [formGroup]="profileForm" class="padding-right-1rem" style="max-width: 140px">-->
+    <!--    <ng-select formControlName="profileId" [items]="profiles" bindLabel="profileName" bindValue="id"-->
+    <!--               [clearable]="false" title="{{checkTitle(profileForm.get('profileId').value)}}">-->
+    <!--      <ng-template ng-option-tmp let-item="item" maxlength="20">-->
+    <!--        <div title="{{item.profileName}}">{{item.profileName}}</div>-->
+    <!--      </ng-template>-->
+    <!--    </ng-select>-->
+    <!--  </div>-->
+    <!--  <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">-->
+    <!--    <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>-->
+    <!--  </nb-select>-->
+    <nb-actions size="small">
+      <nb-action class="control-item" (click)="openOverView()" style="cursor: pointer"
+                 title="{{'catGraphKpi.label.overview'|translate}}" *ngIf="overviewChart">
+        <!--      <nb-icon icon="filter" pack="fa" icon></nb-icon>-->
+        <button nbButton type="button" size="small">{{'catGraphKpi.label.overview'|translate}}</button>
+      </nb-action>
+
+      <nb-action class="control-item" (click)="openChartMap()" style="cursor: pointer"
+                 title="{{'global.label.openChartMap'|translate}}" *ngIf="showMapButton">
+        <!--                  <a-->
+        <!--                     class="ml-2 open-chart-map-button justify-content-center">-->
+        <!--                    <img src="assets/images/vietnam.svg">-->
+        <!--                  </a>-->
+        <button nbButton type="button" size="small">{{'global.label.openChartMap'|translate}}</button>
+      </nb-action>
+      <nb-action class="control-item" (click)="openDialogSearch()" style="cursor: pointer"
+                 title="{{'global.label.chartSearch'|translate}}">
+        <nb-icon icon="search-outline"></nb-icon>
+        <!--      <nb-icon icon="maximize-outline" ></nb-icon>-->
+        <!--      <img src="assets/images/search-stats.png" style="height: 20px">-->
+        <!--      <nb-icon icon="maximize-outline" ></nb-icon>-->
+        <!--      <img src="assets/images/search-stats.png" style="height: 20px" title="{{'global.label.chartSearch'|translate}}">-->
+      </nb-action>
+      <!--    <nb-action class="control-item" (click)="openDialogInsertFavorite()" style="cursor: pointer" icon="star-outline"-->
+      <!--    title="{{'favorite.label.fight'|translate}}">-->
+      <!--    </nb-action>-->
+      <nb-action size="tiny" class="control-item" (click)="toggleSearchScreen()" style="cursor: pointer"
+                 icon="funnel-outline"
+                 title="Lọc biểu đồ">
+        <!--      <nb-icon icon="filter" pack="fa" icon></nb-icon>-->
+      </nb-action>
+      <nb-action class="control-item" style="cursor: pointer" icon="bell-outline"
+                 badgeText="{{userInfo?.numNotifyUnread}}"
+                 badgePosition="top right"
+                 badgeStatus="danger"
+                 routerLink="/pages/chat-offline"
+                 title="Thông báo">
+        <!--      <nb-icon icon="filter" pack="fa" icon></nb-icon>-->
+      </nb-action>
+      <nb-action class="control-item" icon="monitor-outline" title="Trình chiếu"
+                 routerLink="/pages/slide-show"></nb-action>
+      <!--<nb-action class="control-item">
+        <nb-search type="rotate-layout"></nb-search>
+      </nb-action>-->
+      <!--    <nb-action class="control-item" icon="email-outline"></nb-action>-->
+      <!--    <nb-action class="control-item" icon="bell-outline"></nb-action>-->
+      <!--    <nb-action class="user-action" *nbIsGranted="['view', 'user']">-->
+      <!--      <nb-user [nbContextMenu]="userMenu"-->
+      <!--               [onlyPicture]="false"-->
+      <!--               [name]="user?.login"-->
+      <!--               nbContextMenuTag="account-menu"-->
+      <!--               [picture]="user?.picture">-->
+      <!--      </nb-user>-->
+      <!--    </nb-action>-->
+    </nb-actions>
+    <!--  <div style="position: relative">-->
+    <!--    <nb-user-->
+    <!--      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"-->
+    <!--      [onlyPicture]="false"-->
+    <!--      [name]="user?.login"-->
+    <!--      (click)="openMenu = !openMenu"-->
+    <!--      [picture]="user?.picture">-->
+    <!--    </nb-user>-->
+    <!--    <ul class="menu-items" *ngIf="openMenu" style="position: absolute;right: 0; top: 100px; background: #222b45; color: white">-->
+    <!--      <li class="menu-item">-->
+    <!--        <button class="dropdown-item" type="button">Action</button>-->
+    <!--      </li>-->
+    <!--      <li class="menu-item">-->
+    <!--        <button class="dropdown-item" type="button">Another action</button>-->
+
+    <!--      </li>-->
+    <!--      <li class="menu-item">-->
+    <!--        <button class="dropdown-item" type="button">Something else here</button>-->
+
+    <!--      </li>-->
+    <!--    </ul>-->
+    <!--  </div>-->
+    <div class="dropdown">
+      <nb-user
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        [onlyPicture]="false"
+        [name]="user?.login"
+        (click)="openMenu = !openMenu"
+        [picture]="user?.picture">
+      </nb-user>
+      <div class="dropdown-content">
+        <li [formGroup]="profileForm">
+          <ng-select formControlName="profileId" [items]="profiles" bindLabel="profileName" bindValue="id"
+                     fullWidth
+                     [clearable]="false" title="{{checkTitle(profileForm.get('profileId').value)}}">
+            <ng-template ng-option-tmp let-item="item" maxlength="20">
+              <div title="{{item.profileName}}">{{item.profileName}}</div>
+            </ng-template>
+          </ng-select>
+        </li>
+        <li>
+          <!--        <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary" fullWidth>-->
+          <!--          <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>-->
+          <!--        </nb-select>-->
+          <ng-select [items]="themes" bindLabel="name" bindValue="value"
+                     fullWidth
+                     [(ngModel)]="currentTheme"
+                     (ngModelChange)="changeTheme($event)"
+                     [clearable]="false">
+          </ng-select>
+        </li>
+        <!--      <li (click)="">Profile</li>-->
+              <li (click)="openDialogSearchFavorite()">Đánh dấu trang</li>
+        <li (click)="router.navigate(['auth/change-password'])">Đổi mật khẩu</li>
+        <li (click)="router.navigate(['auth/logout'])">Log out</li>
+      </div>
+    </div>
+  </div>
+</ng-container>
+

@@ -1,0 +1,101 @@
+:host {
+  ::ng-deep {
+    .tab-presentation {
+      position: absolute;
+      float: left;
+      top: 0px;
+      right: 0px;
+      width: 100%;
+      z-index: 1003;
+      padding-left: 0.2rem;
+    }
+
+    ul.menu-tab {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333333;
+    }
+
+    li.menu-tab-li {
+      float: left;
+      cursor: pointer;
+      background: #407294;
+      border: 1px solid white;
+      transform-origin: bottom left;
+      -ms-transform: skewX(20deg);
+      -webkit-transform: skewX(20deg);
+      transform: skewX(20deg);
+      margin-left: 1px;
+    }
+
+    li.menu-tab-li:first-child {
+    }
+
+    li.menu-tab-li:last-child::after {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background: #008dd0;
+      transform-origin: bottom left;
+      -ms-transform: skewX(20deg);
+      -webkit-transform: skewX(20deg);
+      transform: skewX(20deg);
+    }
+
+    li.menu-tab-li::before {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      left: -51px;
+      z-index: -1;
+      background: #ffa008;
+      transform-origin: bottom left;
+      -ms-transform: skewX(20deg);
+      -webkit-transform: skewX(20deg);
+      transform: skewX(20deg);
+    }
+
+    li.menu-tab-li:first-child {
+      border-bottom-left-radius: 5px;
+      border-top-left-radius: 5px;
+    }
+
+    li.menu-tab-li a {
+      text-transform: uppercase;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 0.6rem;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transform: skewX(-20deg);
+
+    }
+
+    li.menu-tab-li:hover {
+      background-color: #111111;
+      -ms-transform: skewX(20deg);
+      -webkit-transform: skewX(20deg);
+      transform: skewX(20deg);
+    }
+
+
+    //li.menu-tab-li a:hover {
+    //  background-color: #111111;
+    //  -ms-transform: skewX(-20deg);
+    //  -webkit-transform: skewX(-20deg);
+    //  transform: skewX(-20deg);
+    //}
+
+    li.tab-menu-active {
+      background-color: #111111;
+    }
+  }
+}

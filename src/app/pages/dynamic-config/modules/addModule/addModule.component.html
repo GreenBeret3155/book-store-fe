@@ -1,0 +1,105 @@
+<nb-card [nbSpinner]="loading" fullWidth class="margin_cus">
+  <nb-card-header class="d-flex">{{ title }}
+    <button class="ml-auto p-2" nbButton hero status="primary" (click)="cancel()">
+      <nb-icon icon="close-outline"></nb-icon>
+    </button>
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="inputModule">
+      <div class="mb-4">
+        <div class="row">
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'module.code' | translate }} <span style="color: red">(*)</span>
+            </label>
+            <input id="module-code-save" type="text" formControlName="code"  nbInput fullWidth trim="blur"
+                   [ngClass]="{'status-danger': this.inputModule.get('code').touched && this.inputModule.get('code').errors}">
+            <div class="invalid-feedback d-block" *ngIf=" this.inputModule.get('code').touched && this.inputModule.get('code').errors">
+              {{ getError('code') }}
+            </div>
+          </div>
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'module.name' | translate }} <span style="color: red">(*)</span>
+            </label>
+            <input type="text" formControlName="name"  nbInput fullWidth trim="blur"
+                   [ngClass]="{'status-danger': this.inputModule.get('name').touched && this.inputModule.get('name').errors}">
+            <div class="invalid-feedback d-block" *ngIf=" this.inputModule.get('name').touched && this.inputModule.get('name').errors">
+              {{ getError('name') }}
+            </div>
+          </div>
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'module.pathUrl' | translate }}
+            </label>
+            <input type="text" formControlName="pathUrl"  nbInput fullWidth trim="blur"
+                   [ngClass]="{'status-danger': this.inputModule.get('pathUrl').touched && this.inputModule.get('pathUrl').errors}">
+            <div class="invalid-feedback d-block" *ngIf=" this.inputModule.get('pathUrl').touched && this.inputModule.get('pathUrl').errors">
+              {{ getError('pathUrl') }}
+            </div>
+          </div>
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'module.icon' | translate }}
+            </label>
+            <input type="text" formControlName="icon"  nbInput fullWidth trim="blur"
+                   [ngClass]="{'status-danger': this.inputModule.get('icon').touched && this.inputModule.get('icon').errors}">
+            <div class="invalid-feedback d-block" *ngIf=" this.inputModule.get('icon').touched && this.inputModule.get('icon').errors">
+              {{ getError('icon') }}
+            </div>
+          </div>
+          
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'module.parent' | translate }}
+            </label>
+            <ngx-dropdown-treeview-select [items]="item"
+                                          [value]="inputModule.get('parentId').value"
+                                          [config]="treeViewConfig"
+                                          class="dropdown-treeview"
+                                          (valueChange)="parentIdChange($event)">
+            </ngx-dropdown-treeview-select>
+          </div>
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'module.position' | translate }}
+            </label>
+            <input nbInput fullWidth formControlName="position" trim="blur"  [maxLength]="10" (keypress)="numericOnly($event)">
+            <div class="invalid-feedback d-block" *ngIf=" this.inputModule.get('position').touched && this.inputModule.get('position').errors">
+              {{ getError('position') }}
+            </div>
+            <ngx-inline-message [message]="'module.position' | translate"
+                                [formName]="inputModule.get('position')">
+            </ngx-inline-message>
+          </div>
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'module.description' | translate }}
+            </label>
+            <textarea rows="3" type="text" formControlName="description" nbInput fullWidth trim="blur"
+                      [ngClass]="{'status-danger': this.inputModule.get('description').touched && this.inputModule.get('description').errors}">
+            </textarea>
+            <div class="invalid-feedback d-block" *ngIf=" this.inputModule.get('description').touched && this.inputModule.get('description').errors">
+              {{ getError('description') }}
+            </div>
+          </div>
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'action.status' | translate }}
+            </label> <br/>
+            <nb-toggle fullWidth formControlName="status"></nb-toggle>
+            <div class="invalid-feedback d-block" *ngIf=" this.inputModule.get('status').touched && this.inputModule.get('status').errors">
+              {{ getError('status') }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+  <nb-card-footer class="text-right">
+    <button nbButton type="button" [disabled]="inputModule.invalid"status="primary" (click)="submit()" 
+      id="dialogCancelBtn">{{ 'module.save' | translate }} <nb-icon icon="save-outline"></nb-icon></button>
+    <button nbButton type="button" nbButton (click)="cancel()" class="ml-2"> {{ 'module.cancel' | translate }} </button>
+  </nb-card-footer>
+  <toaster-container [toasterconfig]="toasterConfig"></toaster-container>
+</nb-card>

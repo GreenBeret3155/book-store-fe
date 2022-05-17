@@ -1,0 +1,65 @@
+{
+  "configChart": {
+    "confirm": {
+      "delete": "Bạn có chắc chắn muốn xóa biểu đồ {{titleChart}}?",
+      "clone": "Bạn có chắc chắn muốn sao chép biểu đồ {{titleChart}}?"
+    },
+    "success": {
+      "clone": "Sao chép thành công!",
+      "delete": "Xóa biểu đồ thành công"
+    },
+    "column": {
+      "index": "STT",
+      "id": "Id biểu đồ",
+      "kpiCode": "Mã biểu đồ",
+      "kpiId": "Id biểu đồ",
+      "titleChart": "Tiêu đề",
+      "typeChart": "Loại",
+      "rate": "Tỉ lệ",
+      "groupKpiCode": "Nhóm chỉ tiêu",
+      "source": "Nguồn",
+      "actionBtn": "Hành động",
+      "updateTime": "Thời điểm tác động",
+      "updateUser": "User tác động",
+      "domainCode": "Lĩnh vực",
+      "description": "Mô tả",
+      "orderIndex": "Thứ tự"
+    },
+    "label": {
+      "keyword": "Tiêu đề/Mã biểu đồ",
+      "search": "Tìm kiếm",
+      "new": "Thêm mới biểu đồ",
+      "edit": "Sửa thông tin",
+      "delete": "Xóa thông tin",
+      "clone": "Sao chép",
+      "default": "Mặc định",
+      "overview": "Tổng quan",
+      "normal": "Bình thường",
+      "record": "bản ghi",
+      "title": "Cấu hình biểu đồ",
+      "domainCode": "Lĩnh vực",
+      "status": "Trạng thái",
+      "active": "Hoạt động",
+      "inactive": "Không hoạt động",
+      "unAssignChart": "Biểu đồ chưa gán",
+      "assignChart": "Biểu đồ cần gán",
+      "choose": "Chọn"
+    },
+    "typeChart": {
+      "LINE": "Biểu đồ đường",
+      "PIE": "Biểu đồ tròn",
+      "AREA": "Biểu đồ miền",
+      "BAR": "Biểu đồ thanh ngang",
+      "COLUMN": "Biểu đồ cột",
+      "GROUP_BAR": "Biểu đồ nhóm cột",
+      "STACK": "Biểu đồ cột chồng",
+      "ALARM_CHART": "Biểu đồ cảnh báo",
+      "OVERVIEW_CHART": "Biểu đồ tổng quan",
+      "BAR_TIMELINE": "Biểu đồ xếp hạng",
+      "COMBINE": "Biểu đồ gộp",
+      "CORRELATE_CHART" : "Biểu đồ tương quan",
+      "RADAR" : "Biểu đồ radar"
+    },
+    "notification": "Thông báo"
+  }
+}

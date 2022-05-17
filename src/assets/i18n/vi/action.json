@@ -1,0 +1,40 @@
+{
+    "action": {
+        "title": "Quản lý Action",
+        "title_add": "Thêm mới Action",
+        "title_edit": "Sửa Action",
+        "content_delete": "Xác nhận xóa Action",
+        "add_action_success": "Thêm Action thành công",
+        "edit_action_success": "Sửa Action thành công",
+        "delete_action_success": "Xóa Action thành công",
+        "error": "Có lỗi xảy ra!",
+        "add_btn": "Thêm mới Action",
+        "code": "Mã Action",
+        "name": "Tên Action",
+        "status": "Trạng thái",
+        "save": "Lưu lại",
+        "cancel": "Hủy bỏ",
+        "description": "Mô tả",
+        "index": "STT",
+        "updateTime": "Ngày chỉnh sửa",
+        "tools": "Thao tác",
+        "search": "Tìm kiếm",
+        "errorForm": {
+            "code": {
+            "required": "Mã Action không được để trống",
+            "maxlength": "Mã Action không được quá 200 ký tự"
+            },
+            "name": {
+            "required": "Tên Action không được để trống",
+            "maxlength": "Tên Action không được quá 300 ký tự"
+            },
+            "status": {
+            "required": "Trạng thái không được để trống"
+            },
+            "description": {
+            "maxlength": "Mô tả không được quá 500 ký tự"
+            }
+        }
+    }
+}
+  

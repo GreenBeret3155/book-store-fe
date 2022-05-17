@@ -1,0 +1,14 @@
+<div class="p-1 pt-2 breadcrumb-wrapper {{currentTheme}}">
+  <ol class="breadcrumb p-0 ">
+    <li *ngFor="let breadcrumb of breadcrumbs" class="{{breadcrumb.customPath ? '' : checkUrl(breadcrumb.url) }}">
+    <span [routerLink]=" breadcrumb.customPath ? breadcrumb.customPath : breadcrumb.url" routerLinkActive="router-link-active">
+      {{ breadcrumb.label }}
+    </span>
+    </li>
+  </ol>
+  <span *ngIf="domainName" class="domain-name">
+<!--   <span *ngIf="domainCode" class="icon-chart-chart-domain icon-domain {{domainCode}}"></span> -->
+    {{domainName}}
+  </span>
+</div>
+

@@ -1,0 +1,24 @@
+{
+  "reportFolderManagement": {
+    "column": {
+      "index": "STT",
+      "categoryCode": "Mã danh mục",
+      "categoryName": "Tên danh mục",
+      "parentId": "Danh mục cha",
+      "actionBtn": "Hành động",
+      "status": "Trạng thái",
+      "description": "Mô tả",
+      "updateTime": "Thời gian tác động",
+      "updateUser": "User tác động"
+    },
+    "label": {
+      "keyword": "Mã/Tên danh mục",
+      "search": "Tìm kiếm",
+      "record": "Bản ghi",
+      "edit": "Sửa",
+      "delete": "Xóa",
+      "title": "Quản lý thư mục báo cáo",
+      "new": "Thêm mới"
+    }
+  }
+}

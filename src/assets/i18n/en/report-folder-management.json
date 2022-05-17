@@ -1,0 +1,21 @@
+{
+  "reportFolderManagement": {
+    "column": {
+      "index": "No.",
+      "categoryCode": "Category Code",
+      "categoryName": "Category Name",
+      "parentId": "Parent Name",
+      "actionBtn": "Action",
+      "updateTime": "Update time",
+      "updateUser": "Update user"
+    },
+    "label": {
+      "categoryCode": "Category Code",
+      "categoryName": "Category Name",
+      "search": "Search",
+      "record": "Record",
+      "edit": "Edit",
+      "delete": "Delete"
+    }
+  }
+}

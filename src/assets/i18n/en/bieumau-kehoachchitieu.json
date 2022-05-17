@@ -1,0 +1,44 @@
+{
+  "bieumau-kehoachchitieu": {
+    "confirm": {
+      "delete": "Are you sure to delete this menu?"
+    },
+    "success": {
+      "clone": "Clone successful!",
+      "delete": "Delete menu successful!"
+    },
+    "column": {
+      "index": "No.",
+      "menuCode": "Menu code",
+      "menuName": "Menu name",
+      "isDefault": "Type",
+      "actionBtn": "Action",
+      "updateTime": "Last updated time",
+      "updateUser": "Last updated user",
+      "domainName": "Domain name",
+      "description": "Description",
+      "orderIndex": "Priority",
+      "status": "Status"
+    },
+    "label": {
+      "menu": "Menu",
+      "keyword": "Keyword",
+      "search": "Search",
+      "new": "Add new menu",
+      "edit": "Edit",
+      "delete": "Delete",
+      "clone": "Clone",
+      "default": "Default",
+      "overview": "Overview",
+      "normal": "Normal",
+      "record": "record",
+      "title": "Config menu",
+      "domainCode": "Domain",
+      "active": "Active",
+      "inactive": "Inactive",
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "notification": "Notification"
+  }
+}

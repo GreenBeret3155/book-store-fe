@@ -1,0 +1,46 @@
+{
+  "favorite": {
+    "confirm": {
+      "delete": "Bạn có chắc chắn muốn xóa link này?"
+    },
+    "success": {
+      "clone": "Sao chép thành công!",
+      "delete": "Xóa link thành công"
+    },
+    "column": {
+      "index": "STT",
+      "urlLink": "URL",
+      "name": "Tên URL",
+      "isDefault": "Loại",
+      "actionBtn": "Hành động",
+      "updateTime": "Thời điểm tác động",
+      "updateUser": "User login",
+      "domainName": "Lĩnh vực",
+      "description": "Mô tả",
+      "orderIndex": "Thứ tự",
+      "status": "Trạng thái"
+    },
+    "label": {
+      "fight": "Đánh dấu trang",
+      "urlLink": "URL",
+      "name": "Tên URL",
+      "keyword": "Tên/Mã menu",
+      "search": "Tìm kiếm",
+      "new": "Truy cập nhanh",
+      "edit": "Sửa truy cập nhanh",
+      "delete": "Xóa thông tin",
+      "clone": "Sao chép",
+      "default": "Mặc định",
+      "overview": "Tổng quan",
+      "normal": "Bình thường",
+      "record": "bản ghi",
+      "title": "Danh sách truy cập nhanh",
+      "domainCode": "Lĩnh vực",
+      "active": "Hoạt động",
+      "inactive": "Không hoạt động",
+      "cancel": "Hủy bỏ",
+      "save": "Lưu lại"
+    },
+    "notification": "Thông báo"
+  }
+}

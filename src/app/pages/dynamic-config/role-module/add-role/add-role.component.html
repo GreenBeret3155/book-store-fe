@@ -1,0 +1,99 @@
+<nb-card fullWidth class="margin_cus">
+  <nb-card-header class="d-flex"><span title="{{title}}">{{ title.length >100 ? title.substring(0, 100).concat('...') : title }}</span>
+    <button class="ml-auto p-2" nbButton hero status="primary" (click)="cancel()">
+      <nb-icon icon="close-outline"></nb-icon>
+    </button>
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="formRole">
+      <div class="mb-4">
+        <div class="row">
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'role_module.code' | translate }} <span style="color: red">(*)</span>
+            </label>
+            <input type="text" formControlName="code" nbInput fullWidth trim="blur"
+                   [ngClass]="{'status-danger': this.formRole.get('code').touched && this.formRole.get('code').errors}">
+            <div class="invalid-feedback d-block"
+                 *ngIf=" this.formRole.get('code').touched && this.formRole.get('code').errors">
+              {{ getError('code') }}
+            </div>
+          </div>
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'role_module.name' | translate }} <span style="color: red">(*)</span>
+            </label>
+            <input formControlName="name" type="text" nbInput fullWidth trim="blur"
+                   [ngClass]="{'status-danger': this.formRole.get('name').touched && this.formRole.get('name').errors}">
+            <div class="invalid-feedback d-block"
+                 *ngIf=" this.formRole.get('name').touched && this.formRole.get('name').errors">
+              {{ getError('name') }}
+            </div>
+          </div>
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'role_module.level' | translate }}
+            </label>
+            <input formControlName="priorityLevel" type="text" nbInput fullWidth trim="blur" [maxLength]="10" (keypress)="numericOnly($event)">
+            <ngx-inline-message [message]="'role_module.level' | translate"
+                                [formName]="formRole.get('priorityLevel')">
+            </ngx-inline-message>
+          </div>
+
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'role_module.default_module' | translate }}<span style="color: red">(*)</span>
+            </label>
+            <ngx-dropdown-treeview-select
+                                          [ngClass]="{'dropdown-treeview-error': this.formRole.get('defaultModule').touched && this.formRole.get('defaultModule').errors}"
+                                          [items]="item"
+                                          [value]="formRole.get('defaultModule').value"
+                                          [config]="treeViewConfig"
+                                          class="dropdown-treeview"
+                                          (click)="touchDropdown()"
+                                          (keydown)="touchDropdown()"
+                                          (valueChange)="parentIdChange($event)">
+            </ngx-dropdown-treeview-select>
+            <div class="invalid-feedback d-block"
+                 *ngIf=" this.formRole.get('defaultModule').touched && this.formRole.get('defaultModule').errors">
+              {{ getError('defaultModule') }}
+            </div>
+          </div>
+
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'role_module.description' | translate }}
+            </label>
+            <textarea rows="3" type="text" formControlName="description" nbInput fullWidth trim="blur"
+                      [ngClass]="{'status-danger': this.formRole.get('description').touched && this.formRole.get('description').errors}">
+            </textarea>
+            <div class="invalid-feedback d-block"
+                 *ngIf=" this.formRole.get('description').touched && this.formRole.get('description').errors">
+              {{ getError('description') }}
+            </div>
+          </div>
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'role_module.status' | translate }} <span style="color: red">(*)</span>
+            </label>
+            <ng-select fullWidth appendTo="body" style="padding: 0; overflow: hidden;" formControlName="status"
+                       placeholder="{{'user.placeHolder' |translate}}"
+                       [ngClass]="{'nb-select-status-danger': this.formRole.get('status').touched && this.formRole.get('status').errors}">
+              <ng-option [value]="1">{{ 'user.status.1' | translate }}</ng-option>
+              <ng-option [value]="0">{{ 'user.status.0' | translate }}</ng-option>
+            </ng-select>
+            <div class="invalid-feedback d-block"
+                 *ngIf=" this.formRole.get('status').touched && this.formRole.get('status').errors">
+              {{ getError('status') }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+  <nb-card-footer class="text-right">
+    <button nbButton [disabled]="this.formRole.invalid" type="button" status="primary" (click)="submit()" id="dialogCancelBtn">{{ 'role_module.save' | translate }}</button>
+    <button nbButton type="button" nbButton (click)="cancel()" class="ml-2"> {{ 'role_module.cancel' | translate }} </button>
+  </nb-card-footer>
+  <toaster-container [toasterconfig]="toasterConfig"></toaster-container>
+</nb-card>

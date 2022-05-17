@@ -1,0 +1,15 @@
+<nb-card>
+  <nb-card-header>
+    <button nbButton size="tiny" status="primary" ghost (click)="downloadImage()">
+      <nb-icon icon="download-outline"></nb-icon>
+    </button>
+    <button nbButton size="tiny" status="warning" ghost class="float-right" (click)="ref.close()">
+      <nb-icon icon="close-outline"></nb-icon>
+    </button>
+  </nb-card-header>
+  <nb-card-body class="d-flex justify-content-center align-content-center">
+<!--    <div class="img">-->
+      <img src="{{url}}" *ngIf="url" style="width: 100%" class="img">
+<!--    </div>-->
+  </nb-card-body>
+</nb-card>

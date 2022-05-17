@@ -1,0 +1,24 @@
+{
+    "common": {
+        "dropdown": {
+            "placeholder" : "Select"
+        },
+        "label": {
+            "active" : "Active",
+            "inActive" : "InActive",
+            "0": "Active",
+            "1": "InActive",
+            "delete": "Delete",
+            "edit": "Edit"
+        },
+        "messages":{
+            "notFoundText": "Not found",
+            "totalMessage": "Record",
+            "selectedMessage": "Selected records"
+        },
+        "notify":{
+            "error": "Error",
+            "notification": "Notification"
+        }
+    }
+}

@@ -1,0 +1,95 @@
+<!--<div class="col-lg-12 d-flex justify-content-center" style="padding: 1rem">-->
+<!--  <h4>{{this.profileInfo.get('id').value?'Chỉnh sửa Profile':'Thêm mới Profile'}}</h4>-->
+<!--</div>-->
+<form [formGroup]="profileInfo">
+  <nb-card>
+    <nb-card-header>{{this.profileInfo.get('id').value ? ('profile.config.updateProfile'|translate) : ('profile.config.addNew'|translate)}}</nb-card-header>
+    <nb-card-body>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="label">{{'profile.config.profileCode'|translate}}<span
+              class="text-danger ml-2">*</span></label>
+            <input nbInput fullWidth class="form-control" formControlName="profileCode"
+                   status="{{(this.profileInfo.get('profileCode').invalid
+                 &&this.profileInfo.get('profileCode').touched) ? 'danger' : null }}" trim="blur">
+            <ngx-inline-message [message]="'profile.config.profileCode'" [formName]="profileInfo.get('profileCode')">
+            </ngx-inline-message>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="label">{{'profile.config.profileName'|translate}}<span
+              class="text-danger ml-2">*</span></label>
+            <input nbInput fullWidth class="form-control" formControlName="profileName"
+                   status="{{(this.profileInfo.get('profileName').invalid
+                 &&this.profileInfo.get('profileName').touched) ? 'danger' : null }}" trim="blur"
+            >
+            <ngx-inline-message [message]="'profile.config.profileName'" [formName]="profileInfo.get('profileName')">
+            </ngx-inline-message>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="label">{{'profile.config.type'|translate}}<span class="text-danger ml-2">*</span></label>
+            <ng-select [clearAllText]="'Xóa'" fullWidth formControlName="type">
+              <ng-option title="item.itemName" *ngFor="let item of profileTypes"
+                         value="{{item.itemValue}}">
+                <span title="{{item.itemName}}" class="cut-text">{{item.itemName  | translate}}</span>
+              </ng-option>
+            </ng-select>
+            <ngx-inline-message [message]="'profile.config.type'" [formName]="profileInfo.get('type')">
+            </ngx-inline-message>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="label">{{'profile.config.description'|translate}}</label>
+            <textarea rows="5" nbInput fullWidth class="form-control" formControlName="description"
+                      status="{{(this.profileInfo.get('description').invalid
+                 &&this.profileInfo.get('description').touched) ? 'danger' : null }}" trim="blur"
+            ></textarea>
+            <ngx-inline-message [message]="'profile.config.description'" [formName]="profileInfo.get('description')">
+            </ngx-inline-message>
+          </div>
+        </div>
+        <div class="col-lg-6 row">
+          <div class="col-lg-12">
+            <div class="form-group">
+              <label class="label">{{'profile.config.isDefault'|translate}}<span
+                class="text-danger ml-2">*</span></label>
+              <ng-select fullWidth formControlName="isDefault">
+                <ng-option [value]="1">{{'profile.config.agree'|translate}}</ng-option>
+                <ng-option [value]="0">{{'profile.config.disagree'|translate}}</ng-option>
+              </ng-select>
+              <ngx-inline-message [message]="'profile.config.isDefault'" [formName]="profileInfo.get('isDefault')">
+              </ngx-inline-message>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="form-group">
+              <label class="label">{{'profile.config.orderIndex'|translate}}</label>
+              <input type="text" nbInput fullWidth class="form-control" formControlName="orderIndex"
+                     status="{{(this.profileInfo.get('orderIndex').invalid
+                 &&this.profileInfo.get('orderIndex').touched) ? 'danger' : null }}"
+              >
+              <ngx-inline-message [message]="'profile.config.orderIndex'" [formName]="profileInfo.get('orderIndex')">
+              </ngx-inline-message>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nb-card-body>
+    <nb-card-footer>
+      <div class=" row col-lg-12">
+        <div class="col-lg-1 form-group">
+          <button status="primary" nbButton (click)="saveProfile()"
+                  [disabled]="profileInfo.invalid">{{'profile.config.save'|translate}}</button>
+        </div>
+        <div class="col-lg-1 form-group ml-2">
+          <button status="warning" nbButton (click)="cancel()">{{'profile.config.cancel'|translate}}</button>
+        </div>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</form>

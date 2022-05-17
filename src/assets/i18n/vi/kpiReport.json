@@ -1,0 +1,48 @@
+{
+  "kpiReport" : {
+    "column": {
+      "index": "STT",
+      "dateTime": "Thời gian",
+      "kpiId": "ID chỉ tiêu",
+      "kpiName": "Tên chỉ tiêu",
+      "inputLevelsSelect": "Loại đối tượng",
+      "objCode": "Đối tượng",
+      "valAcc": "Số liệu luỹ kế trong năm",
+      "val": "Số liệu theo thời gian",
+      "valTotal": "Số liệu luỹ kế đến hiện tại",
+      "unit": "Đơn vị",
+      "valPlanYear": "Kế hoạch năm"
+    },
+    "label": {
+      "correlateChart": "Biểu đồ tương quan",
+      "title": "Tra cứu số liệu",
+      "kpi": "Tìm kiếm theo lĩnh vực",
+      "outputSearch": "Dạng hiển thị kết quả tìm kiếm",
+      "outputSearchSelect": "Chọn dạng hiển thị kết quả tìm kiếm",
+      "outputSearchNotFound": "Không có kết quả tìm kiếm",
+      "valueType": "Dạng số liệu",
+      "valueTypeSelect": "Chọn số liệu biểu diễn",
+      "valueTypeNotFound": "Không có số liệu biểu diễn",
+      "timeType": "Chu kỳ dữ liệu",
+      "timeTypeSelect": "Chọn chu kỳ dữ liệu",
+      "timeTypeNotFound": "Không có chu kỳ dữ liệu",
+      "fromDate": "Từ thời gian",
+      "toDate": "Đến thời gian",
+      "fromValue": "Giá trị từ(>=)",
+      "toValue": "Giá trị đến(<=)",
+      "inputLevels": "Loại đối tượng",
+      "inputLevelsSelect": "Chọn loại đối tượng",
+      "inputLevelsNotFound": "Không có loại đối tượng",
+      "object": "Tìm kiếm đối tượng",
+      "export": "Xuất báo cáo",
+      "display": "Lọc kết quả",
+      "search": "Tìm kiếm",
+      "drawChart": "Vẽ biểu đồ",
+      "record": "bản ghi",
+      "close": "Đóng",
+      "notFoundChart": "Không có dữ liệu biểu đồ",
+      "enterToSearch": "Gõ để tìm kiếm",
+      "conditionFilter": "Tìm kiếm theo từ khoá"
+    }
+  }
+}

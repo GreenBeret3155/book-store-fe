@@ -1,0 +1,208 @@
+<div  class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header class="d-flex header">
+        <div class="col-6">
+          <label> {{ 'role_module.title' | translate }}</label>
+        </div>
+        <div class="col-6 text-right">
+          <button nbButton status="danger" size="tiny" class="ml-auto" (click)="multiDelete()"
+                  *ngIf="selected && selected.length > 0 && check( 'roleAction.delete' | translate ) " style="margin-right: 1vh;">
+            <nb-icon icon="trash-2-outline" pack="eva"></nb-icon>
+            {{ 'role_module.delete' | translate }}
+          </button>
+          <button *ngIf="check( 'roleAction.insert' | translate )" nbButton status="primary" size="tiny" class="ml-auto" (click)="editRole(null)">
+            <nb-icon icon="plus" pack="eva"></nb-icon>
+            {{ 'role_module.add_btn' | translate }}
+          </button>
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="mb-4">
+          <div class="row">
+            <div class="col-lg-4 form-group">
+              <label class="label">
+                {{ 'role_module.code' | translate }}
+              </label>
+              <input (keyup.enter)="search(0)" nbInput fullWidth [(ngModel)]="input.code">
+            </div>
+            <div class="col-lg-4 form-group">
+              <label class="label">
+                {{ 'role_module.name' | translate }}
+              </label>
+              <input (keyup.enter)="search(0)" nbInput fullWidth [(ngModel)]="input.name">
+            </div>
+            <div class="col-lg-4 form-group">
+              <label class="label">
+                {{ 'role_module.status' | translate }}
+              </label>
+              <ng-select fullWidth appendTo="body"
+                                     placeholder="{{'user.placeHolder' |translate}}"
+                                     notFoundText="{{'user.notFoundText' |translate}}"
+                                     clearAllText="{{'user.clearAllText' |translate}}"
+                                     [(ngModel)]="input.status">
+              <ng-option *ngFor="let item of listStatus" [value]="item.code"> {{ item.name | translate }}
+              </ng-option>
+            </ng-select>
+            </div>
+            <div class="form-group col-lg-12 text-center">
+              <button nbButton (click)="search(0)"> {{ 'role_module.search' | translate }}
+                <nb-icon icon="search-outline"></nb-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+        <ngx-datatable class="fullscreen"
+                       [ngClass]="{'dark' : currentTheme !== 'default', 'bootstrap': currentTheme === 'default'}"
+                       [columnMode]="'flex'"
+                       [rows]="rows"
+                       [columns]="columns"
+                       rowHeight="auto"
+                       [externalPaging]="true"
+                       [count]="page.count"
+                       [offset]="page.offset"
+                       [limit]="page.limit"
+                       (page)="pageCallback($event)"
+                       [headerHeight]="50"
+                       [messages]="{totalMessage: 'user.label.record' | translate}"
+                       [footerHeight]="50"
+                       [selected]="selected"
+                       [selectionType]="'checkbox'"
+                       [selectAllRowsOnPage]="false"
+                       (select)='onSelect($event)'
+        >
+          <ng-container *ngFor="let col of columns">
+            <ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flexGrow">
+              <ng-template let-column="column" ngx-datatable-header-template let-allRowsSelected="allRowsSelected"
+                           let-selectFn="selectFn">
+                {{ column.name | translate}}
+                <ng-container [ngSwitch]="col.prop">
+                  <ng-container *ngSwitchCase="'checkbox'">
+                    <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                  </ng-container>
+                </ng-container>
+              </ng-template>
+              <ng-template let-value="value" ngx-datatable-cell-template let-row="row" let-rowIndex='rowIndex' let-isSelected="isSelected"
+                           let-onCheckboxChangeFn="onCheckboxChangeFn">
+                <ng-container [ngSwitch]="col.prop">
+                  <ng-container *ngSwitchCase="'checkbox'">
+                    <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                  </ng-container>
+                  <ng-container *ngIf="col.prop ==='index'" class="index-col">
+                    {{ page.offset * page.limit + rowIndex + 1 }}
+                  </ng-container>
+                  <ng-container
+                    *ngIf="col.prop !=='action_btn' && col.prop !=='updateTime' && col.prop !=='description' && col.prop !=='status'
+                   && col.prop !== 'code' && col.prop !== 'name' && col.prop !== 'defaultModuleName' ">
+                    <span class="row-data-show" title="{{value}}">{{ value }}</span>
+                  </ng-container>
+                  <ng-container *ngIf="col.prop ==='description' || col.prop === 'code' || col.prop === 'name' || col.prop === 'defaultModuleName' " class="text-right">
+                  <span class="row-data-show"
+                        title="{{value}}">{{value.length > 50 ? value.substring(0, 50).concat('...') : value}}</span>
+                  </ng-container>
+                  <ng-container *ngIf="col.prop ==='status'">
+                    {{ 'user.status.' + value | translate }}
+                  </ng-container>
+                  <ng-container *ngIf="col.prop ==='updateTime'">
+                    {{value | date:'dd/MM/yyyy HH:mm:ss'}}
+                  </ng-container>
+                  <ng-container *ngIf="col.prop === 'editModule'">
+                    <button class="p-1" nbButton ghost status="info" (click)="openMapComponent(row)">
+                      <nb-icon icon="link-outline" pack="eva" size="tiny"></nb-icon>
+                    </button>
+                  </ng-container>
+                  <ng-container *ngIf="col.prop ==='action_btn'" class="text-right">
+                    <div>
+                      <button *ngIf="check( 'roleAction.update' | translate )"  class="p-1" nbButton status="info" ghost title="{{ 'role_module.edit' | translate }}" (click)="editRole(row)">
+                        <nb-icon icon="edit-outline" pack="eva" size="tiny"></nb-icon>
+                      </button>
+                      <button *ngIf="check( 'roleAction.delete' | translate )" class="p-1" nbButton status="danger" ghost title="{{ 'role_module.delete' | translate }}" (click)="deleteRole(row)">
+                        <nb-icon icon="trash-2-outline" pack="eva" size="tiny"></nb-icon>
+                      </button>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </ng-template>
+            </ngx-datatable-column>
+          </ng-container>
+        </ngx-datatable>
+
+        <!--<ngx-datatable class="fullscreen"-->
+                       <!--[ngClass]="{'dark' : currentTheme !== 'default', 'bootstrap': currentTheme === 'default'}"-->
+                       <!--[columnMode]="'flex'"-->
+                       <!--[rows]="rows"-->
+                       <!--[columns]="columns"-->
+                       <!--rowHeight="auto"-->
+                       <!--[externalPaging]="true"-->
+                       <!--[count]="page.count"-->
+                       <!--[offset]="page.offset"-->
+                       <!--[limit]="page.limit"-->
+                       <!--[footerHeight]="50"-->
+                       <!--[headerHeight]="50"-->
+                       <!--[selected]="selected"-->
+                       <!--[selectionType]="'checkbox'"-->
+                       <!--[selectAllRowsOnPage]="false"-->
+                       <!--(select)='onSelect($event)'-->
+                       <!--(page)="pageCallback($event)"-->
+                       <!--[messages]="{ emptyMessage: 'user.notFoundText' | translate, totalMessage: 'user.label.record' | translate }">-->
+          <!--<ng-container *ngFor="let col of columns">-->
+            <!--<ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flexGrow">-->
+              <!--<ng-template let-column="column" ngx-datatable-header-template let-allRowsSelected="allRowsSelected"-->
+                           <!--let-selectFn="selectFn">-->
+                <!--{{ column.name | translate }}-->
+                <!--<ng-container [ngSwitch]="col.prop">-->
+                  <!--<ng-container *ngSwitchCase="'checkbox'">-->
+                    <!--<input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />-->
+                  <!--</ng-container>-->
+                <!--</ng-container>-->
+              <!--</ng-template>-->
+
+              <!--<ng-template let-value="value" ngx-datatable-cell-template let-row="row" let-rowIndex='rowIndex' let-isSelected="isSelected"-->
+                           <!--let-onCheckboxChangeFn="onCheckboxChangeFn">-->
+                <!--<ng-container *ngSwitchCase="'checkbox'">-->
+                  <!--<input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />-->
+                <!--</ng-container>-->
+                <!--<ng-container *ngIf="col.prop ==='index'" class="index-col">-->
+                  <!--{{ page.offset * page.limit + rowIndex + 1 }}-->
+                <!--</ng-container>-->
+
+                <!--<ng-container-->
+                  <!--*ngIf="col.prop !=='action_btn' && col.prop !=='updateTime' && col.prop !=='description' && col.prop !=='status'-->
+                   <!--&& col.prop !== 'code' && col.prop !== 'name'">-->
+                  <!--<span class="row-data-show" title="{{value}}">{{ value }}</span>-->
+                <!--</ng-container>-->
+                <!--<ng-container *ngIf="col.prop ==='description' || col.prop === 'code' || col.prop === 'name' " class="text-right">-->
+                  <!--<span class="row-data-show"-->
+                        <!--title="{{value}}">{{value.length > 50 ? value.substring(0, 50).concat('...') : value}}</span>-->
+                <!--</ng-container>-->
+                <!--<ng-container *ngIf="col.prop ==='status'">-->
+                  <!--{{ 'user.status.' + value | translate }}-->
+                <!--</ng-container>-->
+                <!--<ng-container *ngIf="col.prop ==='updateTime'">-->
+                  <!--{{value | date:'dd/MM/yyyy HH:mm:ss'}}-->
+                <!--</ng-container>-->
+                <!--<ng-container *ngIf="col.prop === 'editModule'">-->
+                  <!--<button class="p-1" nbButton ghost status="info" (click)="openMapComponent(row)">-->
+                    <!--<nb-icon icon="link-outline" pack="eva" size="tiny"></nb-icon>-->
+                  <!--</button>-->
+                <!--</ng-container>-->
+                <!--<ng-container *ngIf="col.prop ==='action_btn'" class="text-right">-->
+                  <!--<div>-->
+                    <!--<button  class="p-1" nbButton status="info" ghost title="{{ 'role_module.edit' | translate }}" (click)="editRole(row)">-->
+                      <!--<nb-icon icon="edit-outline" pack="eva" size="tiny"></nb-icon>-->
+                    <!--</button>-->
+                    <!--<button class="p-1" nbButton status="danger" ghost title="{{ 'role_module.delete' | translate }}" (click)="deleteRole(row)">-->
+                      <!--<nb-icon icon="trash-2-outline" pack="eva" size="tiny"></nb-icon>-->
+                    <!--</button>-->
+                  <!--</div>-->
+                <!--</ng-container>-->
+              <!--</ng-template>-->
+            <!--</ngx-datatable-column>-->
+          <!--</ng-container>-->
+        <!--</ngx-datatable>-->
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

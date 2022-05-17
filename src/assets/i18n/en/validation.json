@@ -1,0 +1,16 @@
+{
+  "validation": {
+    "required": "{{field}} not be empty.",
+    "maxLength": "{{field}} not over {{value}} characters",
+    "minLength": "{{field}} at least {{value}} characters",
+    "pattern": "{{field}} invalid format",
+    "onlyNaturalNumber": "{{field}} must be natural number",
+    "onlyNumber": "{{field}} must be number",
+    "onlyDoubleNumber": "{{field}} must be number",
+    "onlyCharacter": "{{field}} only input alphabet, number and character _",
+    "mustMatch": "{{field}} not match",
+    "existCheck": "{{field}} is exist",
+    "email": "Invalid email format",
+    "mustSameUnit": "{{field}} must same unit"
+  }
+}

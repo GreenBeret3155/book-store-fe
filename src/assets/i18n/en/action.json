@@ -1,0 +1,40 @@
+{
+    "action": {
+        "title": "Action Management",
+        "title_add": "New Action",
+        "title_edit": "Update Action",
+        "content_delete": "Action Delete Confirm",
+        "add_action_success": "Add new Action success",
+        "edit_action_success": "Edit Action success",
+        "delete_action_success": "Delete Action success",
+        "error": "Error!",
+        "add_btn": "New Action",
+        "code": "Action code",
+        "name": "Action name",
+        "status": "Status",
+        "save": "Save",
+        "cancel": "Cancel",
+        "description": "Description",
+        "index": "STT",
+        "updateTime": "Updated",
+        "tools": "Tools",
+        "search": "Search",
+        "errorForm": {
+            "code": {
+                "required": "Action code is required",
+                "maxlength": "Action code must equal-less than 200 character"
+            },
+            "name": {
+                "required": "Action name is required",
+                "maxlength": "Action name must equal-less than 300 character"
+            },
+            "status": {
+                "required": "Status is required"
+            },
+            "description": {
+                "maxlength": "Description must equal-less than 500 character"
+            }
+        }
+    }
+}
+  

@@ -1,0 +1,41 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+.icon {
+  height: 10px;
+  width: 10px;
+}
+.disabled {opacity: 0.5; }
+
+.datatable-tree-button {
+  background: none !important;
+  border: none !important;
+}
+
+span.row-data-show{
+  white-space: pre-wrap;
+}
+
+.datatable-icon-up {
+  color: #0084ff;
+}
+.datatable-icon-down {
+  color: #0084ff;
+}
+
+button:disabled .datatable-icon-up{
+  color: #7a7a7a;
+}
+
+button:disabled .datatable-icon-down{
+  color: #7a7a7a;
+}
+.style-tree{
+  white-space: pre !important; 
+  position: absolute !important;
+  width: 10% !important; 
+  overflow: hidden !important;                     
+  text-overflow: ellipsis !important;
+}
+  
+
+

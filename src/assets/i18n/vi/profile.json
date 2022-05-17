@@ -1,0 +1,53 @@
+{
+  "profile": {
+    "confirm": {
+      "delete": "Bạn có chắc chắn muốn xóa profile ?"
+    },
+    "success": {
+      "clone": "Sao chép thành công!",
+      "delete": "Xóa profile thành công"
+    },
+    "column": {
+      "index": "STT",
+      "profileCode": "Mã profile",
+      "profileName": "Tên profile",
+      "isDefault": "Là profile mặc định",
+      "description": "Mô tả",
+      "updateUser": "User tác động",
+      "updateTime": "Thời điểm tác động",
+      "actionBtn": "Hành động"
+    },
+    "label": {
+      "profile": "Profile",
+      "menu": "Menu",
+      "menuItem": "Thẻ menu",
+      "keyword": "Tên/Mã profile",
+      "search": "Tìm kiếm",
+
+      "new": "Thêm mới profile",
+      "edit": "Sửa thông tin",
+      "delete": "Xóa thông tin",
+      "clone": "Sao chép",
+      "default": "Có",
+      "overview": "Tổng quan",
+      "normal": "Không",
+      "record": "bản ghi",
+      "title": "Cấu hình Profile"
+    },
+    "config" : {
+      "updateProfile": "Cập nhật Profile",
+      "addNew": "Thêm mới Profile",
+      "type": "Loại profile",
+      "profileCode": "Mã Profile",
+      "profileName": "Tên Profile",
+      "isDefault": "Là Profile mặc định",
+      "orderIndex": "Thứ tự",
+      "description": "Mô tả",
+      "save": "Lưu lại",
+      "cancel": "Hủy bỏ",
+      "disagree": "Không đồng ý",
+      "agree": "Đồng ý"
+    },
+    "notification": "Thông báo"
+  }
+}

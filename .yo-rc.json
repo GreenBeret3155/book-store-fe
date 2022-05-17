@@ -1,0 +1,31 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "nativeLanguage": "vi"
+    },
+    "jhipsterVersion": "6.7.1",
+    "applicationType": "monolith",
+    "baseName": "4t_web",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "materia",
+    "clientThemeVariant": "primary",
+    "authenticationType": "Jwt",
+    "cacheProvider": "no",
+    "databaseType": "Mysql",
+    "devDatabaseType": "Mysql",
+    "prodDatabaseType": "Mysql",
+    "creationTimestamp": 1582184130995,
+    "testFrameworks": ["protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "vi",
+    "languages": ["vi"],
+    "blueprints": [],
+    "skipServer": true
+  }
+}

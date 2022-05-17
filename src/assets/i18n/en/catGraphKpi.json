@@ -1,0 +1,62 @@
+{
+  "catGraphKpi": {
+    "confirm": {
+      "delete": "Are you sure to delete this KPI?"
+    },
+    "success": {
+      "clone": "Clone successful!",
+      "delete": "Delete KPI successful!"
+    },
+    "column": {
+      "index": "No.",
+      "kpiCode": "KPI Code",
+      "kpiId": "KPI Id",
+      "kpiDisplay": "Display name",
+      "unitKpi": "Unit",
+      "rate": "Rate",
+      "groupKpiCode": "Group KPI",
+      "source": "Source",
+      "actionBtn": "Action",
+      "updateTime": "Last updated time",
+      "updateUser": "Last updated user",
+      "domainCode": "Domain",
+      "description": "Description",
+      "orderIndex": "Priority",
+      "synonym": "Hashtag"
+    },
+    "label": {
+      "keyword": "Keyword",
+      "search": "Search",
+      "new": "Add new KPI",
+      "edit": "Edit",
+      "delete": "Delete",
+      "clone": "Clone",
+      "default": "Default",
+      "overview": "Overview",
+      "normal": "Normal",
+      "record": "record",
+      "title": "Config KPI",
+      "domainCode": "Lĩnh vực",
+      "kpiType": "KPI Type",
+      "alarmThresholdType": "Alarm Threshold Type",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "formulaLevel": "Formula level",
+      "formulaAcc": "Formula Acc",
+      "formulaQuar": "Formula quar",
+      "formulaYear": "Formula year",
+      "source": "Source information",
+      "rate": "Rate",
+      "alarmPlanType": "Alarm plan type",
+      "save": "Save",
+      "cancel": "Cancel",
+      "synonymNotFoundText": "Enter to add hashtag",
+      "position": "Position in map",
+      "positionChart": "Position in chart",
+      "showOnMap": "Show on map",
+      "isAlarm": "Have alarm"
+    },
+    "notification": "Notification"
+  }
+}

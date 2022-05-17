@@ -1,0 +1,20 @@
+<div class="d-flex" [formGroup]="formGroup" style="min-width: 250px;">
+  <div *ngIf="type==2" style="flex: 1">
+    <ng-select formControlName="month" placeholder="Tháng" [items]="months" bindLabel="label" bindValue="value"
+               appendTo="body">
+    </ng-select>
+    -
+  </div>
+  <div *ngIf="type==3" style="flex: 1">
+    <ng-select formControlName="quarter" placeholder="Quý" [items]="quarters" bindLabel="label" bindValue="value"
+               appendTo="body">
+    </ng-select>
+    -
+  </div>
+  <div *ngIf="['4','2','3'].indexOf(type)>-1" style="flex: 1">
+    <ng-select formControlName="year" placeholder="Năm" [items]="years" bindLabel="label" bindValue="value"
+               appendTo="body">
+    </ng-select>
+  </div>
+</div>
+

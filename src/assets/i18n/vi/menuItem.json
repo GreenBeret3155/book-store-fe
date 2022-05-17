@@ -1,0 +1,54 @@
+{
+  "menuItem": {
+    "confirm": {
+      "delete": "Bạn có chắc chắn muốn xóa thẻ menu này?"
+    },
+    "success": {
+      "clone": "Sao chép thành công!",
+      "delete": "Xóa thẻ menu thành công"
+    },
+    "column": {
+      "index": "STT",
+      "menuItemCode": "Mã thẻ menu",
+      "menuItemName": "Tên thẻ menu",
+      "menu": "Menu",
+      "isDefault": "Loại",
+      "actionBtn": "Hành động",
+      "updateTime": "Thời điểm tác động",
+      "updateUser": "User tác động",
+      "domainName": "Lĩnh vực",
+      "description": "Mô tả",
+      "orderIndex": "Thứ tự",
+      "status": "Trạng thái",
+      "chartCode": "Mã biểu đồ",
+      "chartName": "Tên biểu đồ"
+    },
+    "label": {
+      "menu": "Menu",
+      "menuItem": "Thẻ menu",
+      "keyword": "Tên/Mã thẻ menu",
+      "search": "Tìm kiếm",
+      "new": "Thêm mới thẻ menu",
+      "edit": "Cập nhật thẻ menu",
+      "listCharts": "Danh sách biểu đồ",
+      "addChart": "Thêm biểu đồ",
+      "delete": "Xóa thông tin",
+      "clone": "Sao chép",
+      "default": "Mặc định",
+      "overview": "Tổng quan",
+      "normal": "Bình thường",
+      "record": "bản ghi",
+      "title": "Cấu hình thẻ menu",
+      "domainCode": "Lĩnh vực",
+      "status": "Trạng thái",
+      "active": "Hoạt động",
+      "inactive": "Không hoạt động",
+      "cancel": "Hủy bỏ",
+      "chose": "Chọn",
+      "agree": "Đồng ý",
+      "assign": "Gán",
+      "remove": "Gỡ"
+    },
+    "notification": "Thông báo"
+  }
+}

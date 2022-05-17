@@ -1,0 +1,22 @@
+@import '../../../../@theme/styles/themes';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+
+@include nb-install-component() {
+  nb-card {
+    min-width: 75vw;
+    min-height: 50vh;
+    max-height: 80vh;
+  }
+}
+
+.map-module-dialog {
+  max-width: 90vw;
+}
+
+:host ::ng-deep .datatable-checkbox{
+  input[type='checkbox']{
+    &:focus:before{
+      border-color: #008b2a !important;
+    }
+  }
+} 

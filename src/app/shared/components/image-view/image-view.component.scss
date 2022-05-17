@@ -1,0 +1,27 @@
+@import 'src/app/@theme/styles/themes';
+
+@include nb-install-component() {
+  nb-card {
+    width: 100vw !important;
+    height: 100vh !important;
+    position: relative;
+    .img {
+      position: absolute;
+      width: unset !important;
+      max-height: 50vh !important;
+      //height: unset !important;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  @media screen and (min-device-width: 720px) and (max-width: 1366px) {
+    nb-card {
+      //.img {
+      //  max-width: 55vw !important;
+      //  max-height: 80vh !important;
+      //}
+    }
+  }
+}

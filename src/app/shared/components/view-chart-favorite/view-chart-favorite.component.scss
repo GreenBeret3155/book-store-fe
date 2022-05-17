@@ -1,0 +1,8 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  nb-card.main-card {
+    width: 99vw !important;
+    height: 99vh !important;
+  }
+}

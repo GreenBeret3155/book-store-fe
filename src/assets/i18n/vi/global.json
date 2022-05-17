@@ -1,0 +1,21 @@
+{
+  "global": {
+    "select": {
+      "placeholder": "Lựa chọn",
+      "clearAllText": "Xoá",
+      "notFoundText": "Không tìm thấy kết quả"
+    },
+    "gridTitle": "Kết quả tìm kiếm",
+    "label": {
+      "select": "Lựa chọn",
+      "fromTime": "Từ thời gian",
+      "toTime": "Từ thời gian",
+      "search": "Tìm kiếm",
+      "chartSearch": "Tìm kiếm biểu đồ",
+      "groupChart": "Nhóm biểu đồ",
+      "openChartMap": "Địa phương",
+      "requireToDate": "Yêu cầu nhập thời gian",
+      "report": "Báo cáo"
+    }
+  }
+}

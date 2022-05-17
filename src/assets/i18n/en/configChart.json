@@ -1,0 +1,51 @@
+{
+  "configChart": {
+    "confirm": {
+      "delete": "Are you sure to delete chart '{{titleChart}}'?",
+      "clone": "Are you sure to copy '{{titleChart}}'?"
+    },
+    "success": {
+      "clone": "Clone successful!",
+      "delete": "Delete chart successful!"
+    },
+    "column": {
+      "id": "ChartId",
+      "index": "No.",
+      "titleChart": "Title",
+      "typeChart": "Type",
+      "actionBtn": "Hoạt động",
+      "updateTime": "Thời điểm tác động",
+      "updateUser": "User tác động",
+      "description": "Mô tả"
+    },
+    "label": {
+      "keyword": "Keyword",
+      "search": "Search",
+      "new": "Add new group",
+      "edit": "Edit",
+      "delete": "Delete",
+      "clone": "Clone",
+      "record": "record",
+      "title": "Config chart",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "typeChart": {
+      "LINE": "Line chart",
+      "PIE": "Pie chart",
+      "AREA": "Area chart",
+      "BAR": "Bar chart",
+      "COLUMN": "Column chart",
+      "GROUP_BAR": "Grouped column chart",
+      "STACK": "Stacked column chart",
+      "ALARM_CHART": "Alarm chart",
+      "OVERVIEW_CHART": "Overview chart",
+      "BAR_TIMELINE": "Rank chart",
+      "COMBINE": "Combine chart",
+      "CORRELATE_CHART" : "Correlate chart",
+      "RADAR" : "Radar chart"
+    },
+    "notification": "Notification"
+  }
+}

@@ -1,0 +1,16 @@
+<nb-card>
+  <nb-card-header>Chọn người dùng chuyển tiếp</nb-card-header>
+  <nb-card-body>
+    <div class="form-group col-lg-12">
+      <label class="label">Người dùng chuyển tiếp</label>
+      <ng-select clearAllText="Xóa" placeholder="Lựa chọn" [items]="users" bindLabel="username" [(ngModel)]="usersSelected" [multiple]="true" appendTo="body">
+      </ng-select>
+    </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="d-flex justify-content-center">
+      <button nbButton status="warning" (click)="ref.close()">Hủy</button>
+      <button nbButton status="primary" (click)="ref.close(usersSelected)" class="ml-3" [disabled]="usersSelected.length === 0">Gửi</button>
+    </div>
+  </nb-card-footer>
+</nb-card>

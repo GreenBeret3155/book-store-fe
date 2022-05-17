@@ -1,0 +1,10 @@
+<div *ngIf="screenData.profileType === 2" class="tab-presentation" >
+  <ul class="menu-tab">
+    <ng-container *ngFor="let tab of lstTabs">
+      <li class="menu-tab-li" [ngClass]="(screenData && screenData.id === tab.id) ? 'tab-menu-active' : ''">
+        <a (click)="changeScreen(tab)">{{tab.screenName}}</a>
+      </li>
+    </ng-container>
+  </ul>
+
+</div>

@@ -1,0 +1,126 @@
+<div [nbSpinner]="loading" class="row">
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>
+        <div class="row">
+          <div class="col-6">
+            <label>{{ 'action.title' | translate }}</label>
+          </div>
+          <div class="col-6 text-right">
+            <button nbButton status="danger" size="tiny" class="ml-auto" (click)="multiDelete()" 
+              *ngIf="selected && selected.length > 0 && check( 'roleAction.delete' | translate )" style="margin-right: 1vh;">
+                <nb-icon icon="trash-2-outline" pack="eva"></nb-icon>
+                {{ 'common.label.delete' | translate }}
+            </button>
+            <button *ngIf="check( 'roleAction.insert' | translate )" nbButton status="primary" size="tiny"
+                  class="ml-auto" (click)="open(null)">
+              <nb-icon icon="plus" pack="eva"></nb-icon>
+              {{ 'action.add_btn' | translate }}
+            </button>
+          </div>
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="mb-4">
+          <div class="row">
+            <div class="col-lg-4 form-group">
+              <label class="label">
+                {{ 'action.code' | translate }}
+              </label>
+              <input id="action-code" (keyup.enter)="search(0)" nbInput fullWidth [(ngModel)]="paramSearch.code">
+            </div>
+            <div class="col-lg-4 form-group">
+              <label class="label">
+                {{ 'action.name' | translate }}
+              </label>
+              <input (keyup.enter)="search(0)" nbInput fullWidth [(ngModel)]="paramSearch.name">
+            </div>
+            <div class="col-lg-4 form-group">
+              <label class="label">
+                {{ 'action.status' | translate }}
+              </label>
+              <ng-select fullWidth appendTo="body"
+                          placeholder="{{'common.dropdown.placeholder' |translate}}"
+                          [(ngModel)]="paramSearch.status">
+                <ng-option *ngFor="let item of lstStatus" [value]="item.value"> {{ item.title | translate }}
+                </ng-option>
+              </ng-select>
+            </div>
+            <div class="col-12 text-center">
+              <button nbButton type="submit" (click)="search(0)">{{ 'action.search' | translate }}
+                <nb-icon icon="search-outline"></nb-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ngx-datatable class="fullscreen"
+                       [ngClass]="{'dark' : currentTheme !== 'default', 'bootstrap': currentTheme === 'default'}"
+                       [columnMode]="'flex'"
+                       [rows]="rows"
+                       [columns]="columns"
+                       rowHeight="auto"
+                       [externalPaging]="true"
+                       [count]="page.count"
+                       [offset]="page.offset"
+                       [limit]="page.limit"
+                       (page)="pageCallback($event)"
+                       [selected]="selected"
+                       [selectionType]="'checkbox'"
+                       [selectAllRowsOnPage]="false"
+                       (select)='onSelect($event)'
+                       [headerHeight]="50"
+                       [messages]="{totalMessage: 'menu.label.record' | translate }"
+                       [footerHeight]="50"
+        >
+          <ng-container *ngFor="let col of columns">
+            <ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flexGrow">
+              <ng-template let-column="column" ngx-datatable-header-template  let-allRowsSelected="allRowsSelected"
+                          let-selectFn="selectFn">
+                <ng-container [ngSwitch]="col.prop">
+                  <ng-container *ngSwitchCase="'checkbox'">
+                    <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                  </ng-container>
+                  <ng-container *ngSwitchDefault>
+                    <span class="col-header-break">{{ column.name | translate }}</span>
+                  </ng-container>
+                </ng-container>
+              </ng-template>
+              <ng-template let-value="value" ngx-datatable-cell-template let-row="row"  let-rowIndex='rowIndex' let-isSelected="isSelected"
+                          let-onCheckboxChangeFn="onCheckboxChangeFn">
+                <ng-container *ngIf="col.prop ==='checkbox'" class="index-col">
+                  <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                </ng-container>
+                <ng-container *ngIf="col.prop ==='index'" class="index-col">
+                  {{ page.offset * page.limit + rowIndex + 1 }}
+                </ng-container>
+                <ng-container *ngIf="col.prop ==='description' || col.prop ==='name'|| col.prop ==='code' "
+                              class="text-right">
+                  <span class="row-data-show"
+                        title="{{value}}">{{value.length > 50 ? value.substring(0, 50).concat('...') : value}}</span>
+                </ng-container>
+                <ng-container *ngIf="col.prop ==='status'">
+                  {{ 'common.label.' + value | translate }}
+                </ng-container>
+                <ng-container *ngIf="col.prop ==='updateTime'">
+                  {{value | date:'dd/MM/yyyy h:mm:ss'}}
+                </ng-container>
+                <ng-container *ngIf="col.prop ==='action_btn'" class="text-right">
+                  <div>
+                    <button *ngIf="check( 'roleAction.update' | translate )" nbButton size="tiny" status="warning" title="{{ 'common.label.edit' | translate }}" ghost
+                      (click)="open(row)">
+                      <nb-icon icon="edit-outline" pack="eva" size="tiny"></nb-icon>
+                    </button>
+                    <button *ngIf="check( 'roleAction.delete' | translate )" nbButton size="tiny" status="danger" title="{{ 'common.label.delete' | translate }}" ghost
+                        (click)="delete(row)">
+                      <nb-icon icon="trash-2-outline" pack="eva" size="tiny"></nb-icon>
+                    </button>
+                  </div>
+                </ng-container>
+              </ng-template>
+            </ngx-datatable-column>
+          </ng-container>
+        </ngx-datatable>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

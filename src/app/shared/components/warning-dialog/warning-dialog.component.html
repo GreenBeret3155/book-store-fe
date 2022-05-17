@@ -1,0 +1,75 @@
+<nb-card class="warning-dialog">
+  <nb-card-header>Gửi cảnh báo điều hành</nb-card-header>
+  <nb-card-body class="row" style="padding: 1.5rem!important;overflow-y: hidden;">
+    <div class="col-lg-12 form-group" [formGroup]="warningForm">
+      <label class="label">Nội dung chỉ đạo</label>
+      <textarea fullWidth nbInput formControlName="content"></textarea>
+    </div>
+    <div class="col-lg-7 form-group" [formGroup]="warningForm">
+      <label class="label">Hình ảnh biểu đồ</label>
+      <div>
+        <img [src]="previewSignsrc" class="img-thumbnail img-screen" *ngIf="previewSignsrc"
+             >
+      </div>
+    </div>
+    <div class="col-lg-5 form-group">
+      <div class="col-lg-12 form-group warning-user" >
+        <label class="label">Người dùng nhận cảnh báo</label>
+        <!--        <ng-select [items]="users" formControlName="listuserIdRecieved" multiple="true" bindValue="userId" bindLabel="username"></ng-select>-->
+        <!--        <ngx-inline-message [formName]="warningForm.get('listuserIdRecieved')" [message]="'Người dùng nhận cảnh báo'"></ngx-inline-message>-->
+        <nb-card class="position-relative">
+          <nb-card-header>
+            <input type="text" nbInput fullWidth placeholder="Tìm kiếm" [(ngModel)]="keyword" (keyup.enter)="searchUser(keyword)" >
+            <button nbButton status="primary" class="position-absolute" ghost style=" right: 22px" (click)="searchUser(keyword)">
+              <nb-icon icon="search-outline" pack="eva" size="small"></nb-icon>
+            </button>
+
+          </nb-card-header>
+          <nb-list>
+            <nb-list-item *ngFor="let user of users" style="position: relative" >
+              <nb-user name="{{(user?.userId !== currentUser?.id) ? user?.username : 'Saved messages'}}"
+                       badgeStatus="danger"
+                       (click)="checkboxComponent.checked = !checkboxComponent.checked; addUser(user, checkboxComponent.checked)"
+                       [picture]="user?.avatar"
+                       badgePosition="bottom right"></nb-user>
+              <nb-checkbox #checkboxComponent [(ngModel)]="user.selectedUser" (checkedChange)="addUser(user, $event)" style="position: absolute;right: 10px; bottom: 10px"
+                           ></nb-checkbox>
+            </nb-list-item>k
+          </nb-list>
+          <ng-select class="userSelect"  [items]="selectedUser" [(ngModel)]="selectedUser"
+                     (remove)=" deleteUserSelect($event)" [clearable]="false" appendTo="body"
+                     [multiple]="true" bindLabel="username">
+
+            <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+              <div class="ng-value" *ngFor="let item of items | slice:0:3">
+                <span class="ng-value-label"> {{item.username}}</span>
+                <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+              </div>
+              <div class="ng-value" *ngIf="items?.length > 3">
+                <span class="ng-value-label"> +{{items?.length - 3}} người khác...</span>
+              </div>
+            </ng-template>
+          </ng-select>
+
+        </nb-card>
+
+
+      </div>
+      <!--        <div class="col-lg-12 form-group">-->
+      <!--          <label class="label">Người dùng nhận cảnh ba</label>-->
+      <!--      </div>-->
+<!--        <nb-checkbox (valueChange)="checkSendEmail($event)" >Gửi kèm email</nb-checkbox>-->
+      <div class="custom-control custom-checkbox checkbox-cus" >
+        <input type="checkbox" class="custom-control-input" [(ngModel)]="isSendEmail" id="customCheck1">
+        <label class="custom-control-label" for="customCheck1">Gửi kèm email</label>
+      </div>
+    </div>
+    <!--    <div class="col-lg-6 form-group">-->
+
+    <!--    </div>-->
+  </nb-card-body>
+  <nb-card-footer class="d-flex justify-content-center">
+      <button nbButton type="button" status="primary" (click)="send()" [disabled]="selectedUser?.length === 0">Gửi</button>
+      <button nbButton type="button" status="warning" class="ml-2" (click)="ref.close()">Hủy</button>
+  </nb-card-footer>
+</nb-card>

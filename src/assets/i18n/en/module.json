@@ -1,0 +1,67 @@
+{
+  "module": {
+      "title": "Quản lý Module",
+      "title_add": "Thêm mới module",
+      "title_edit": "Sửa thông tin module",
+      "title_map_module": "Gán Action với Module: ",
+      "content_add_success": "Thêm thông tin thành công",
+      "content_edit_success": "Sửa thông tin thành công",
+      "content_map_action_success": "Sửa thành công",
+      "add_btn": "Thêm mới module",
+      "index": "STT",
+      "code": "Mã Module",
+      "url": "Đường dẫn",
+      "name": "Tên Module",
+      "status": "Trạng thái",
+      "pathUrl": "Đường dẫn",
+      "icon": "Icon",
+      "parent": "Module cha",
+      "search": "Tìm kiếm",
+      "update_time": "Ngày cập nhật",
+      "map_action": "Map Action",
+      "tools": "Thao tác",
+      "save": "Lưu lại",
+      "cancel": "Hủy bỏ",
+      "description": "Mô tả",
+      "position": "Số thứ tự",
+      "message_delete": "Bạn có chắc muốn xóa module ",
+      "delete_success": "Xóa module thành công",
+      "unknown_error": "Lỗi không xác định",
+      "map_module": {
+        "input_code": "Mã Action",
+        "index": "STT",
+        "code": "Mã Action",
+        "name": "Tên Action",
+        "update_time": "Ngày cập nhật",
+        "status": "Trạng thái"
+      },
+      "error": {
+        "code": {
+          "required": "Mã Module không được để trống",
+          "maxlength": "Mã Module không được quá 200 ký tự"
+        },
+        "name": {
+          "required": "Tên Module không được để trống",
+          "maxlength": "Tên Module không được quá 250 ký tự"
+        },
+        "status": {
+          "required": "Trạng thái không được để trống"
+        },
+        "description": {
+          "maxlength": "Mô tả không được quá 500 ký tự"
+        },
+        "pathUrl": {
+          "maxlength": "Đường dẫn không được quá 500 ký tự"
+        },
+        "icon": {
+          "maxlength": "Icon không được quá 255 ký tự"
+        },
+        "position": {
+          "min": "Số thứ tự tối thiểu 0",
+          "max": "Số thứ tự tối đa 2147483647",
+          "pattern": "Số thứ tự không đúng định dạng",
+          "onlyNaturalNumber": "Số thứ tự phải là số nguyên dương"
+        }
+      }
+  }
+}

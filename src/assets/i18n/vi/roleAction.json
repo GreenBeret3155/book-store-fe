@@ -1,0 +1,9 @@
+{
+  "roleAction": {
+    "insert": "INSERT",
+    "update": "UPDATE",
+    "search": "SEARCH",
+    "delete": "DELETE",
+    "nhapLieu": "NHAP_LIEU"
+  }
+}

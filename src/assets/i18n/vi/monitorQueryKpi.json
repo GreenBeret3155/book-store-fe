@@ -1,0 +1,24 @@
+{
+  "monitorQueryKpi": {
+    "title": "Giám sát tiến trình",
+    "searchTitle": "Giám sát tiến trình",
+    "keyword": "Từ khoá",
+    "search": "Tìm kiếm",
+    "restartFlag": "Thiết lập cờ chạy lại",
+    "restartTitle": "Chạy lại dữ liệu",
+    "restart": "Chạy lại",
+    "close": "Đóng",
+    "runTimeFrom": "Chạy lại dữ liệu từ",
+    "restartSuccess": "Thiết lập chạy lại thành công!",
+    "flagRunQuery": "Thiết lập cờ chạy lại",
+    "tableName": "Biểu mẫu cập nhật số liệu",
+    "kpiId": "Chỉ tiêu cập nhật số liệu",
+    "saveFlagSuccess": "Thiết lập cờ chạy lại thành công!",
+    "gridTitle": "Danh sách tiến trình",
+    "status": "Trạng thái",
+    "active": "Đang chạy",
+    "unActive": "Không chạy",
+    "quesDelete": "Bạn có chắc muốn xóa tiến trình?",
+    "notification": "Thông báo"
+  }
+}

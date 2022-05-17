@@ -1,0 +1,75 @@
+<nb-card [nbSpinner]="loading" fullWidth>
+  <nb-card-header class="d-flex">{{ title }}
+    <button class="ml-auto p-2" nbButton hero status="primary" (click)="cancel()">
+      <nb-icon icon="close-outline"></nb-icon>
+    </button>
+  </nb-card-header>
+  <nb-card-body>
+    <form [formGroup]="inputAction">
+      <div class="mb-4">
+        <div class="row">
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'action.code' | translate }} <span style="color: red">(*)</span>
+            </label>
+            <input type="text" formControlName="code" nbInput fullWidth trim="blur" id="action-code-add-windows"
+                   [ngClass]="{'status-danger': this.inputAction.get('code').touched && this.inputAction.get('code').errors}">
+            <div class="invalid-feedback d-block" style="color: red" *ngIf=" this.inputAction.get('code').touched && this.inputAction.get('code').errors">
+              {{ getError('code') }}
+            </div>
+          </div>
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'action.name' | translate }} <span style="color: red">(*)</span>
+            </label>
+            <input class="custom-border" type="text" id="name" formControlName="name" nbInput
+                   fullWidth trim="blur"
+                   [ngClass]="{'status-danger': this.inputAction.get('name').touched && this.inputAction.get('name').errors}">
+            <div class="invalid-feedback d-block" style="color: red"
+                 *ngIf=" this.inputAction.get('name').touched && this.inputAction.get('name').errors">
+              {{ getError('name') }}
+            </div>
+          </div>
+          
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'action.description' | translate }}
+            </label>
+            <textarea type="text" formControlName="description" trim="blur"
+                      [ngClass]="{'status-danger': this.inputAction.get('description').touched && this.inputAction.get('description').errors}"
+                      nbInput fullWidth></textarea>
+                      
+            <div class="invalid-feedback d-block" style="color: red"
+                 *ngIf=" this.inputAction.get('description').touched && this.inputAction.get('description').errors">
+              {{ getError('description') }}
+            </div>
+          </div>
+
+          <div class="col-lg-6 form-group">
+            <label class="label">
+              {{ 'action.status' | translate }}
+            </label> <br/>
+            <nb-toggle fullWidth formControlName="status"></nb-toggle>
+            <!-- <nb-select  fullWidth style="padding: 0; overflow: hidden;"
+                       formControlName="status" [selected]="1"
+                       [ngClass]="{'nb-select-status-danger': this.inputAction.get('status').touched
+                       && this.inputAction.get('status').errors}">
+              <nb-option [value]="1">{{ 'action.label.active' | translate}}</nb-option>
+              <nb-option [value]="0">{{ 'action.label.inActive' | translate }}</nb-option>
+            </nb-select> -->
+            <div class="invalid-feedback d-block"
+                 *ngIf=" this.inputAction.get('status').touched && this.inputAction.get('status').errors">
+              {{ getError('status') }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </nb-card-body>
+  <nb-card-footer class="text-right">
+    <button nbButton type="button" status="primary" (click)="submit()" id="dialogCancelBtn" 
+      [disabled]="inputAction.invalid">{{ 'action.save' | translate }} <nb-icon icon="save-outline"></nb-icon></button>
+    <button nbButton type="button" nbButton (click)="cancel()" class="ml-2"> {{ 'action.cancel' | translate }} </button>
+  </nb-card-footer>
+  <toaster-container [toasterconfig]="toasterConfig"></toaster-container>
+</nb-card>

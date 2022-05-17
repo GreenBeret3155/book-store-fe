@@ -1,0 +1,68 @@
+<div [hidden]="!openSearchBar" style="    position: sticky;    top: 118px;    z-index: 2;">
+  <!--  <nb-icon class="showHidenIcon" [icon]="showFilter ? 'arrow-down' : 'arrow-up'" (click)="hideFilterPanel()"></nb-icon>-->
+  <div id="filterPanel" *ngIf="showFilter" class="row " [formGroup]="filterForm">
+    <div class="col-md-3" *ngIf="groupCharts?.length > 0">
+      <nb-card>
+        <nb-card-body>
+          <ng-select [clearAllText]="'Xóa'" appendTo="body"
+                     placeholder="{{'global.label.groupChart'|translate}}"
+                     [items]="groupCharts" bindValue="id" bindLabel="groupName"
+                     formControlName="groupChart" title="{{checkTitle(filterForm.get('groupChart').value)}}">
+            <ng-template ng-option-tmp let-item="item" maxlength="20">
+              <div title="{{item.groupName}}">{{item.groupName}}</div>
+            </ng-template>
+          </ng-select>
+        </nb-card-body>
+      </nb-card>
+    </div>
+    <div class="{{groupCharts?.length > 0 ?'col-md-9' : 'col-md-12'}}">
+      <nb-card>
+        <nb-card-body class="row m-0">
+          <div class="col-md-8 row">
+            <input nbInput
+                   placeholder="{{'global.label.fromTime'|translate}}"
+                   [nbDatepicker]="fromDate" formControlName="fromDate" class="col-md-4">
+            <nb-datepicker #fromDate format="dd/MM/yyyy"></nb-datepicker>
+            <input nbInput
+                   placeholder="{{'global.label.toTime'|translate}}" class="col-md-4 ml-1"
+                   [nbDatepicker]="toDate" formControlName="toDate">
+            <nb-datepicker #toDate format="dd/MM/yyyy"></nb-datepicker>
+          </div>
+
+          <div class="col-md-4 d-flex justify-content-end">
+            <button nbButton (click)="search()" title="{{'global.label.search'|translate}}">
+              <nb-icon icon="search-outline"></nb-icon>
+            </button>
+            <!--            <button nbButton *ngIf="overview" (click)="openOverView()"-->
+            <!--                    class="ml-2 text-right overviewButton">{{'catGraphKpi.label.overview'|translate}}-->
+            <!--            </button>-->
+            <!--            <a (click)="openChartMap()" *ngIf="showMapButton"-->
+            <!--               class="ml-2 open-chart-map-button justify-content-center">-->
+            <!--              <img title="{{'global.label.openChartMap'|translate}}" src="assets/images/vietnam.svg">-->
+            <!--            </a>-->
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+</div>
+<toaster-container [toasterconfig]="toasterConfig"></toaster-container>
+<nb-card class="theme-dark" [ngClass]="{'max-size-src':fullScreen}">
+  <ng-container *ngIf="areas && areas?.length>0">
+    <ngx-menu-tabs id="tab-panel" [lstTabs]="lstTabs" [screenData]="screenData" *ngIf="showTabs">
+    </ngx-menu-tabs>
+    <span class="close-form-search" (click)="showAndHideTabs()"
+          title="{{(showTabs ? 'global.label.hideTab':'global.label.showTab') | translate }}">
+    <nb-icon
+      icon="{{showTabs? 'diagonal-arrow-right-up-outline' : 'diagonal-arrow-left-down-outline' }}"></nb-icon>
+    <input type="hidden" id="close-form-status" value="{{showTabs}}"/>
+  </span>
+    <div style="width: 100%">
+      <gridster [options]="options" id="container-screen" *ngIf="areas">
+        <gridster-item [item]="item" *ngFor="let item of areas;let i = index;">
+          <ngx-area-viewer [areaConfig]="item.areaData" [isScreenDefault]="screenData.isDefault"></ngx-area-viewer>
+        </gridster-item>
+      </gridster>
+    </div>
+  </ng-container>
+</nb-card>

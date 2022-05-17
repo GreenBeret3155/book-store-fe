@@ -1,0 +1,19 @@
+{
+  "monitorQueryKpi": {
+    "title": "Monitor query Kpi",
+    "searchTitle": "Monitor query Kpi",
+    "keyword": "Keyword",
+    "search": "Search",
+    "restartFlag": "Set restart flag",
+    "restartTitle": "Restart collect data",
+    "restart": "Restart",
+    "close": "Close",
+    "runTimeFrom": "Run time from",
+    "restartSuccess": "Set restart flag success!",
+    "flagRunQuery": "Set restart flag",
+    "tableName": "Table name",
+    "kpiId": "Kpi",
+    "saveFlagSuccess": "Save restart flag success!",
+    "gridTitle": "List process"
+  }
+}

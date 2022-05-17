@@ -1,0 +1,29 @@
+@import 'src/app/@theme/styles/themes';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@include nb-install-component() {
+  .buttons-row {
+    margin: -0.5rem;
+  }
+
+  button[nbButton] {
+    margin: 0.5rem;
+  }
+
+  .action-icon {
+    @include nb-ltr(margin-right, 0.5rem);
+    @include nb-rtl(margin-left, 0.5rem);
+  }
+
+  .actions-card {
+    height: 8rem;
+  }
+  
+}
+
+.ng-dropdown-panel-items{
+  z-index: -1;
+}
+
+span.row-data-show{
+  white-space: pre-wrap;
+}
