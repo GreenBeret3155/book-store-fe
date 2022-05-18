@@ -18,15 +18,38 @@ import {RequestPasswordCompleteComponent} from './auth-routing/request-password-
 import {AuthGuardAuthsService} from './@core/mock/auth-guard-auths.service';
 
 const routes: Routes = [
+  // {
+  //   canActivate: [AuthGuardService],
+  //   path: 'pages',
+  //   data: {
+  //     // authorities: ['ROLE_ADMIN', 'ROLE_USER'],
+  //     breadcrumb: {label: 'Trang chủ'}
+  //   },
+  //     // canActivate: [UserRouteAccessService],
+  //   loadChildren: () => import('../app/pages/pages.module')
+  //     .then(m => m.PagesModule),
+  // },
+  
   {
-    canActivate: [AuthGuardService],
+    canActivate: [],
+    path: 'main-pages',
+    data: {
+      // authorities: ['ROLE_ADMIN', 'ROLE_USER'],
+      breadcrumb: {label: 'Trang chủ'}
+    },
+      // canActivate: [UserRouteAccessService],
+    loadChildren: () => import('../app/main-pages/main-pages.module')
+      .then(m => m.MainPagesModule),
+  },
+  {
+    canActivate: [],
     path: 'pages',
     data: {
       // authorities: ['ROLE_ADMIN', 'ROLE_USER'],
       breadcrumb: {label: 'Trang chủ'}
     },
       // canActivate: [UserRouteAccessService],
-    loadChildren: () => import('app/pages/pages.module')
+    loadChildren: () => import('../app/pages/pages.module')
       .then(m => m.PagesModule),
   },
   {
@@ -72,8 +95,8 @@ const routes: Routes = [
       },
     ],
   },
-  {path: '', redirectTo: 'pages', pathMatch: 'full'},
-  {path: '**', redirectTo: 'pages'},
+  {path: '', redirectTo: 'main-pages', pathMatch: 'full'},
+  {path: '**', redirectTo: 'main-pages'},
 ];
 
 const config: ExtraOptions = {
