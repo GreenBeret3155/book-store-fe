@@ -1,16 +1,40 @@
 <ng-container>
 	<div class="header-container">
-		<div class="logo-container">
-			<div class="text-center disabled-focus" routerLink="/" style="font-size: 20px;
+		<div class="logo-search-box">
+			<div class="logo-container">
+				<div class="text-center disabled-focus" routerLink="/" style="font-size: 20px;
       line-height: 20px;padding-left: 20px; cursor: pointer; outline: none ;padding-left: 0px!important;">
-				<span style="white-space: nowrap; display: inline-flex" class="align-middle">
-					<span class="logo"></span>
-					<span class="logo-title">HỆ THỐNG THEO DÕI VÀ ĐÁNH GIÁ CÁC CHỈ SỐ BỘ CÔNG THƯƠNG</span>
+					<span style="white-space: nowrap; display: inline-flex" class="align-middle">
+						<span class="logo"></span>
+						<span class="logo-title">BOOK STORE</span>
+					</span>
+				</div>
+			</div>
+			<form onsubmit="event.preventDefault()" class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search">
+				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+
+		<div class="user-cart-box">
+			<div class="user-detail-box">
+				<img class="profile-icon" style="height: 50px;" src="assets/images/anonymous.png">
+				<span class="user-detail">
+					<span>Tài khoản</span>
+					<span>Hoàng Mạnh Hùng</span>
 				</span>
+			</div>
+			<div class="cart-detail">
+				<img class="profile-icon" style="height: 50px;" src="assets/images/cart.png">
+				<span id="number-above-cart">2</span>
+				<span>Giỏ hàng</span>
 			</div>
 		</div>
 	</div>
-	<!-- <div class="header-container">
+
+</ng-container>
+
+<!-- <div class="header-container">
 		<nb-actions size="small">
 			<nb-action class="control-item" (click)="openOverView()" style="cursor: pointer"
 				title="{{'catGraphKpi.label.overview'|translate}}" *ngIf="overviewChart">
@@ -59,8 +83,3 @@
 			</div>
 		</div>
 	</div> -->
-	<form onsubmit="event.preventDefault()" class="form-inline my-2 my-lg-0"> <input class="form-control mr-sm-2"
-			type="text" placeholder="Search"> <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-	</form>
-	<img class="profile-icon" style="background: black ;" src="assets/images/anonymous.png">
-</ng-container>

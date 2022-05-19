@@ -27,51 +27,6 @@
     padding: 0 !important;
   }
 
-  .header-container {
-    display: flex;
-    align-items: center;
-    width: auto;
-
-    .sidebar-toggle {
-      @include nb-ltr(padding-right, 1.25rem);
-      @include nb-rtl(padding-left, 1.25rem);
-      text-decoration: none;
-      color: nb-theme(text-hint-color);
-
-      nb-icon {
-        font-size: 1.75rem;
-      }
-    }
-
-    ::ng-deep .control-item nb-icon {
-      color: #3f4faa;
-    }
-
-    .logo {
-      //padding: 0 1.25rem;
-      font-size: 1.75rem;
-      width: 2rem;
-      height: 2rem;
-      float: left;
-      //@include nb-ltr(border-left, 1px solid nb-theme(divider-color));
-      //@include nb-rtl(border-right, 1px solid nb-theme(divider-color));
-      white-space: nowrap;
-      text-decoration: none;
-      //background-image: url("~assets/images/logo/logo.png");
-      background-image: url("~assets/images/logo/logo-bct.png");
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      margin-right: 1rem;
-    }
-
-    .logo-title {
-      float: right;
-      padding-top: 0.4rem;
-      padding-left: 0.2rem;
-      font-size: 1.3rem;
-    }
-  }
-
   @include media-breakpoint-down(sm) {
     .control-item {
       display: none;
@@ -211,17 +166,105 @@
   }
 }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
+
+.header-container {
+  display: flex;
+  width: 100%;
+  padding: 16px 0px 10px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  -webkit-box-align: center;
+  align-items: center;
+  color: rgb(255, 255, 255);
 }
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
+.logo-search-box{
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
 }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+.logo {
+  //padding: 0 1.25rem;
+  font-size: 1.75rem;
+  width: 2rem;
+  height: 2rem;
+  float: left;
+  //@include nb-ltr(border-left, 1px solid nb-theme(divider-color));
+  //@include nb-rtl(border-right, 1px solid nb-theme(divider-color));
+  white-space: nowrap;
+  text-decoration: none;
+  //background-image: url("~assets/images/logo/logo.png");
+  background-image: url("~assets/images/logo/logo-bct.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin-right: 1rem;
+}
+
+.logo-title {
+  float: right;
+  padding-top: 0.4rem;
+  padding-left: 0.2rem;
+  font-size: 1.3rem;
+}
+
+.user-cart-box {
+  display: flex;
+  width: 30%;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  justify-content: space-around;
+
+}
+
+.header-user-box {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+}
+
+.user-detail-box {
+  cursor: pointer;
+  margin: 0px 0px 0px 16px;
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  font-size: 12px;
+  position: relative;
+  letter-spacing: 0.7px;
+  width: 162px;
+}
+
+.user-detail {
+  font-weight: 400;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-inline{
+  display: flex;
+}
+
+.cart-detail{
+  position: relative;
+}
+
+#number-above-cart {
+  color: rgb(36, 36, 36);
+  background: rgb(253, 216, 53);
+  height: 20px;
+  left: 20px;
+  top: -2px;
+  border-radius: 40px;
+  display: inline-block;
+  text-align: center;
+  line-height: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  position: absolute;
+  padding: 0px 7px;
 }

@@ -1,3 +1,7 @@
 ::ng-deep #nb-global-spinner{
     display: none;
 }
+
+::ng-deep nb-layout-header{
+    background: rgb(26, 148, 255) !important;
+}
