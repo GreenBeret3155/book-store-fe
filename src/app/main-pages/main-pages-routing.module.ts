@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from '../pages/miscellaneous/not-found/not-found.component';
 import { DownloadPageComponent } from '../shared/components/download-page/download-page.component';
 import { MainPagesComponent } from './main-pages.component';
+import { ProductSearchPageComponent } from './product-search-page/product-search-page.component';
 
 
 const routes: Routes = [{
@@ -29,8 +30,12 @@ const routes: Routes = [{
       component: DownloadPageComponent,
     },
     {
+      path: 'products',
+      component: ProductSearchPageComponent,
+    },
+    {
       path: '',
-      redirectTo: 'user-management',
+      redirectTo: 'products',
       pathMatch: 'full',
     },
     {

@@ -13,6 +13,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { MiscellaneousModule } from '../pages/miscellaneous/miscellaneous.module';
 import { NbSecurityModule } from '@nebular/security';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { ProductItemComponent } from './components/product-item/product-item.component';
+import { ProductSearchPageComponent } from './product-search-page/product-search-page.component';
+import { SearchSectionComponent } from './components/search-section/search-section.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -27,19 +30,17 @@ const NB_MODULES = [
   NbSelectModule,
   NbIconModule,
   NbEvaIconsModule,
+  NbInputModule,
+  NbCardModule
 ];
 
 @NgModule({
-  declarations: [MainPagesComponent],
+  declarations: [MainPagesComponent, ProductItemComponent, ProductSearchPageComponent, SearchSectionComponent],
   imports: [
     ...NB_MODULES,
     CommonModule,
     MainPagesRoutingModule,
     ThemeModule,
-    NbInputModule,
-    NbCardModule,
-    NbIconModule,
-    NbMenuModule,
     FormsModule,
     NgxDatatableModule,
     ReactiveFormsModule,

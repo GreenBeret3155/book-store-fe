@@ -1,0 +1,40 @@
+#chat-float-dialog {
+  cursor: pointer;
+  position: fixed;
+  z-index: 999;
+  bottom: 0px;
+  right: 16px;
+  padding: 10px 16px;
+  border-radius: 8px 8px 0px 0px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(40, 40, 43, 0.1) 0px -8px 16px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  color: rgb(11, 116, 229);
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.product-items-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-self: stretch;
+  background-color: rgb(255, 255, 255);
+}
+
+nb-card-body {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+ngx-search-section {
+  width: 25%;
+}
+ngx-product-item {
+  width: 25%;
+}

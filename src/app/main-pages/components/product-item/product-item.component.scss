@@ -1,0 +1,87 @@
+div {
+  display: block;
+}
+
+.fkDgwT {
+  display: flex;
+  padding: 12px 16px;
+  color: rgb(36, 36, 36);
+  text-decoration: none;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.product-item {
+  text-decoration: none;
+  display: flex;
+  position: relative;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.product-item:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.thumbnail {
+  flex-shrink: 0;
+  width: 200px;
+  height: 200px;
+  margin: 0px 12px 12px;
+  text-align: center;
+  position: relative;
+}
+
+.hdozRK {
+  display: block;
+  position: absolute;
+  z-index: 2;
+}
+
+.name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.name > h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0px 0px 4px;
+  line-height: 20px;
+  word-break: break-word;
+}
+
+.uDeVr {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  font-size: 12px;
+  line-height: 16px;
+  margin-bottom: 2px;
+}
+
+.price-discount {
+  text-align: left;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  color: rgb(56, 56, 61);
+  margin: 0px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.fkDgwT .badge-benefits {
+  margin-top: 8px;
+}
+
+.fkDgwT .badge-additional-info {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
