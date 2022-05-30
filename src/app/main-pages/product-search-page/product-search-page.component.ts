@@ -1,6 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Page } from '../../@core/model/page.model';
+import { ProductModel } from '../../shared/model/product.model';
 import { ProductService } from '../../shared/services/product.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { ProductService } from '../../shared/services/product.service';
 })
 export class ProductSearchPageComponent implements OnInit {
 
-  products: any;
+  products: Array<ProductModel> = [new ProductModel()];
   page = new Page();
   constructor(private productService : ProductService ) {
     this.page.pageNumber = 0;

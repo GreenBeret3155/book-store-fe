@@ -1,0 +1,88 @@
+<nb-card>
+  <nb-card-body>
+    <div>
+      <div class="container">
+        <div class="img">
+          <img src="assets/images/login-img/bg.svg">
+        </div>
+        <div class="login-content">
+          <form [formGroup]="loginForm" aria-labelledby="title">
+            <img src="assets/images/login-img/avatar.svg">
+            <h2 class="title">Welcome</h2>
+            <div class="input-div one form-control-group"  [class.focus]="isFocusingUsername">
+              <div class="i">
+                <nb-icon icon="person-outline"></nb-icon>
+              </div>
+              <div class="div">
+                <h5>Username</h5>
+                <input id="account" trim="blur" formControlName="account" (focus)="onFocus('un')" (blur)="onBlur('un')">
+                <ng-container *ngIf="loginForm.get('account').invalid && loginForm.get('account').touched">
+                  <ngx-inline-message [formName]="loginForm.get('account')" [message]="'login.account'">
+                  </ngx-inline-message>
+                </ng-container>
+              </div>
+            </div>
+            <div class="input-div pass form-control-group" [class.focus]="isFocusingPassword">
+              <div class="i">
+                <nb-icon icon="lock-outline"></nb-icon>
+              </div>
+              <div class="div">
+                <h5>Password</h5>
+                <input name="password" type="password" id="password" trim="blur" formControlName="password" (focus)="onFocus('pw')" (blur)="onBlur('pw')">
+                <ng-container *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched ">
+                  <ngx-inline-message [formName]="loginForm.get('password')" [message]="'login.password'">
+                  </ngx-inline-message>
+                </ng-container>
+              </div>
+            </div>
+            <a href="#">Forgot Password?</a>
+            <input type="submit" class="btn" value="Login" (click)="signIn()">
+          </form>
+        </div>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+
+<!-- <div>
+  <img class="wave" src="assets/images/login-img/wave.png">
+  <div class="container">
+    <div class="img">
+      <img src="img/bg.svg">
+    </div>
+    <div class="login-content">
+      <form [formGroup]="loginForm" aria-labelledby="title">
+        <img src="img/avatar.svg">
+        <h2 class="title">Welcome</h2>
+        <div class="input-div one form-control-group">
+          <div class="i">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="div">
+            <h5>Username</h5>
+            <input id="account" trim="blur" formControlName="account">
+            <ng-container *ngIf="loginForm.get('account').invalid && loginForm.get('account').touched">
+              <ngx-inline-message [formName]="loginForm.get('account')" [message]="'login.account'">
+              </ngx-inline-message>
+            </ng-container>
+          </div>
+        </div>
+        <div class="input-div pass form-control-group">
+          <div class="i">
+            <i class="fas fa-lock"></i>
+          </div>
+          <div class="div">
+            <h5>Password</h5>
+            <input name="password" type="password" id="password" trim="blur" formControlName="password">
+            <ng-container *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched ">
+              <ngx-inline-message [formName]="loginForm.get('password')" [message]="'login.password'">
+              </ngx-inline-message>
+            </ng-container>
+          </div>
+        </div>
+        <a href="#">Forgot Password?</a>
+        <input type="submit" class="btn" value="Login">
+      </form>
+    </div>
+  </div>
+</div> -->

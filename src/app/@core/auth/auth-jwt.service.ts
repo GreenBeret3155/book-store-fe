@@ -53,7 +53,7 @@ export class AuthServerProvider {
   }
 
   private authenticateSuccess(response: any, rememberMe: boolean): void {
-    const jwt = response.jwtToken.id_token;
+    const jwt = response.id_token;
     const lstObjects = response.listObjects;
     const pathDefault = response.path;
     if (rememberMe) {

@@ -19,6 +19,7 @@ import {
   NbChatModule,
   NbDatepickerModule,
   NbDialogModule,
+  NbIconModule,
   NbInputModule,
   NbSidebarModule,
   NbToastrModule,
@@ -48,6 +49,9 @@ import {ImageViewComponent} from './shared/components/image-view/image-view.comp
 import {ViewChartFavoriteComponent} from './shared/components/view-chart-favorite/view-chart-favorite.component';
 import {RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings} from "ng-recaptcha";
 import {environment} from "../environments/environment";
+import { ChatDialogComponent } from './main-pages/components/chat-dialog/chat-dialog.component';
+import { MainPagesModule } from './main-pages/main-pages.module';
+import { LoginDialogComponent } from './auth-routing/login-dialog/login-dialog.component';
 
 
 registerLocaleData(vi, 'vi-VI', viEt);
@@ -57,13 +61,14 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, LogoutComponent, ChangePasswordComponent, RequestPasswordComponent, RequestPasswordCompleteComponent],
+  declarations: [AppComponent, LoginComponent, LogoutComponent, ChangePasswordComponent, RequestPasswordComponent, RequestPasswordCompleteComponent, LoginDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
     NbCardModule,
+    NbIconModule,
     HotkeyModule.forRoot(),
     ThemeModule.forRoot(),
     NbSidebarModule.forRoot(),
@@ -96,7 +101,7 @@ export function createTranslateLoader(http: HttpClient) {
       defaultLanguage: 'vi'
     })
   ],
-  entryComponents: [WarningDialogComponent, UserForwardComponent, UploadDialogComponent, ImageViewComponent, ViewChartFavoriteComponent],
+  entryComponents: [WarningDialogComponent, UserForwardComponent, UploadDialogComponent, ImageViewComponent, ViewChartFavoriteComponent, LoginDialogComponent],
   bootstrap: [AppComponent],
   providers: [{provide: LOCALE_ID, useValue: 'vi-VI'}, DecimalPipe,
     {

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MainPagesRoutingModule } from './main-pages-routing.module';
 import { MainPagesComponent } from './main-pages.component';
 import { ThemeModule } from '../@theme/theme.module';
-import { NbActionsModule, NbButtonModule, NbCardModule, NbContextMenuModule, NbIconModule, NbInputModule, NbLayoutModule, NbMenuModule, NbSearchModule, NbSelectModule, NbSidebarModule, NbUserModule } from '@nebular/theme';
+import { NbActionsModule, NbButtonModule, NbCardModule, NbChatComponent, NbChatFormComponent, NbChatMessageComponent, NbChatMessageFileComponent, NbChatModule, NbChatOptions, NbContextMenuModule, NbDialogModule, NbIconModule, NbInputModule, NbLayoutModule, NbMenuModule, NbSearchModule, NbSelectModule, NbSidebarModule, NbUserModule } from '@nebular/theme';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { TranslateModule } from '@ngx-translate/core';
@@ -16,6 +16,8 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductSearchPageComponent } from './product-search-page/product-search-page.component';
 import { SearchSectionComponent } from './components/search-section/search-section.component';
+import { ChatDialogComponent } from './components/chat-dialog/chat-dialog.component';
+import { ChatDialogWrapperComponent } from './components/chat-dialog-wrapper/chat-dialog-wrapper.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -31,11 +33,20 @@ const NB_MODULES = [
   NbIconModule,
   NbEvaIconsModule,
   NbInputModule,
-  NbCardModule
+  NbCardModule,
+  NbDialogModule.forChild(),
+  NbChatModule,
 ];
 
 @NgModule({
-  declarations: [MainPagesComponent, ProductItemComponent, ProductSearchPageComponent, SearchSectionComponent],
+  declarations: [
+    MainPagesComponent, 
+    ProductItemComponent, 
+    ProductSearchPageComponent, 
+    SearchSectionComponent, 
+    ChatDialogComponent,
+    ChatDialogWrapperComponent
+  ],
   imports: [
     ...NB_MODULES,
     CommonModule,
@@ -48,6 +59,8 @@ const NB_MODULES = [
     SharedModule,
     NgSelectModule,
     MiscellaneousModule
-  ]
+  ],
+  exports:[],
+  entryComponents:[]
 })
 export class MainPagesModule { }

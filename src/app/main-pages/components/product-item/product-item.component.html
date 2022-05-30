@@ -1,5 +1,4 @@
 <a class="product-item"
-  href="//tka.tiki.vn/pixel/pixel?data=djAwMRpq3SpERcnx5a9LyZfYNmXBYgsGUCpn3kMPgnK3GUVgOKZmrQpbKI46jk-_4hMx3pzVmYbbPtBrpJIk3kkCqnDiUyeA33JsHd2bDe8ZcbjSDE-fo3O-LfcjhLxg-qmYMICJZIyFnqmnFiDA83NMhJ-tf1WW7QeA6NrYxmmCH3FAitfXBSF0PlSMe4YS1LqAy0foWwiHNPCrryNK_7zcjBle6Qq8d8HLEF7U6-FvpagLo9Uwrsc5Nrc8v9mPyVRdHMV65lY1ZqZsKvSP2RNEg1zi2nIZTgQ1Km0oG-z0xpMw-EaJMqZPm5i2iP8BMZTu93G7zqMtApD9YLfrn3wXAx6MW1Uy_DGAFGkhwaTthutO16MiE4yK_Vg5aWhSV_TAMEBy6lKm2JFXNDPq7COEyvBYx-7ski1fNcOpKFuXyhzb5D4YQzws9uij4WEbsP7a_IFPGZNXUCwtk-aaeIooVi_AKFZ_4xVN3OXq2tm4vnQzHyMw9MsptdYY_giQXcvFCvHrDEUxQoI4241EnE-1ca005nJqqoeNQ-u2QwdOEhf-twOGe3uKqJSdPkTjgDAupcBsWDYFR-o6Vb0adGsoDw_gdU0O_bWwpNnJlTl8JikobUPEnhFiKC2K0sYC5lTiQ2ft09RlwMAEQVMDF8Jtt7tQqIGEV19jYwmUx3tXJwtUmsiTZNUVEAjEMQQgydFXNg-VZ7wZ4aYuGPFEIbu77_lb_SAOSJ4siv5SWtLsnvzbvVWZMaCD9s8MBtjunAAq1KbCsjl3UYQHBeUWNkg2PL0jXd7GpPwX_ATCRxMzZA8Tx-Y94LKtKfyNxf9nOceWpz2t9lKdKwr8ww-N6z8BvQmk6OhITLrxXoNaEd8Xvg_26GUh6sQwqtToSFT99u3XJZHVvfhJxl8wc8XwQ4_WkxPQBX3f5B7qjyTw2QhPqhGLfmHInrkkZZ0G4ee1j3f263-JYADEoqi43pWF0BiFlpCUVe_7ZvE_ZoVRwguGszpOuEPF1v-4sFHe2dGlyKDiZkLflsmKEdsbvhVEWYt5nzKo3l44eTBakqqycpWFyjCIF6HSX-K8urG1NPW5i62L2kqRVXOqfOijx3yEyUCJbQk50KNRIaniAs4pto1fBXMNIlNisFj4DmAD8iqQaT5265mPFaIL1cAuaeNZ-ji2GX_K36tTc01iQzLNrGjxxKGHVS_Y2VLF_cOWm0MPijlUh3-4kCxlTyyH0H9G1ssiDP9aNGsPWrMkqPCWam4ZX63uoX22Z3rYb7GhIG1nGdtB95msD9rWvvf3PC5nkXUhdIfWpLuvcUhtwiW5K8lzhx307d8xu0Id0BHD8qngc9dpm-Gd_cWQTvO9bq2Optd7BO0VfhYkNHFwqD8urI90Jyfu-qsDxiyBBkPTUUma8jWAS3YXZETh-8f7K9SBUf4pcCADdsOJLw&amp;CLICK&amp;reqid=RjctrORiLy&amp;pos=5&amp;redirect=https%3A%2F%2Ftiki.vn%2Fmat-ket-noi-lost-connections-tac-gia-johann-hari-p141472420.html%3Fspid%3D172667781"
   data-view-index="4" data-view-id="product_list_item"
   data-view-content="{&quot;click_data&quot;:{&quot;id&quot;:141472420,&quot;spid&quot;:172667781,&quot;position&quot;:4,&quot;trace_id&quot;:&quot;b44cGN2sUs0NFpXf&quot;}}"
   rel="nofollow">
@@ -7,21 +6,18 @@
     <div class="product-content-box">
       <div class="thumbnail">
         <picture class="webpimg-container">
-          <source type="image/webp"
-            srcset="https://salt.tikicdn.com/cache/200x200/ts/product/62/e4/be/bbf89dc3c6319109ef461d3b875f7840.png.webp">
-          <img src="https://salt.tikicdn.com/cache/200x200/ts/product/62/e4/be/bbf89dc3c6319109ef461d3b875f7840.png"
-            alt="Gió thổi mùa trăng năm ấy" class="WebpImg__StyledImg-sc-h3ozu8-0 fWjUGo">
+          <img [src]="item?.thumbnailUrl" [alt]="item?.name" class="thumbnail-image">
         </picture>
       </div>
       <div class="info">
         <div class="name">
-          <h3>Gió thổi mùa trăng năm ấy</h3>
+          <h3>{{item?.name}}</h3>
         </div>
         <div class="styles__StyledRatingQtySold-sc-732h27-0 uDeVr" style="margin-top: 2px; margin-bottom: 2px;">
-          <div class="styles__StyledQtySold-sc-732h27-2 fCfYNm">Đã bán 143</div>
+          <div class="styles__StyledQtySold-sc-732h27-2 fCfYNm">Đã bán {{item?.allTimeQuantitySold}}</div>
         </div>
         <div class="price-discount">
-          <div class="price-discount__price">179.000 ₫</div>
+          <div class="price-discount__price">{{item?.price | currency: "VND"}}</div>
         </div>
         <div class="badge-benefits"></div>
         <div class="badge-additional-info"></div>
