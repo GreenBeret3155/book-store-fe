@@ -11,7 +11,8 @@
 export const environment = {
   production: false,
   apiUrl:  window["env"]["apiUrl"] || "default",
-  apiReportUrl: window["env"]["apiReportUrl"] || "default",
+  apiReportUrl: window["env"]["apiWs"] || "default",
+  apiWs: window["env"]["apiWs"] || "default",
   captcha_siteKey: '6LfVwjQbAAAAABuPQTMX7_ZRhlu9wRKz3RV8jVgK',
   login_captcha: false
 };

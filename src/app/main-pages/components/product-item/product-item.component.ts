@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../app.state';
 import { ProductModel } from '../../../shared/model/product.model';
+import * as ProductActions from '../../../@core/actions/product.actions'
 
 @Component({
   selector: 'ngx-product-item',
@@ -9,9 +12,14 @@ import { ProductModel } from '../../../shared/model/product.model';
 export class ProductItemComponent implements OnInit {
 
   @Input() item: ProductModel;
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
   }
 
+  addProductToCart() {    
+    if(this.item){
+      this.store.dispatch(new ProductActions.AddProduct(this.item) )
+    }
+  }
 }

@@ -26,18 +26,24 @@ export class ProductSearchPageComponent implements OnInit {
     this.setPage({offset: 0});
   }
 
+  onGotoPage(page){
+    page -= 1;
+    this.setPage({offset: page})
+  }
+
   setPage(pageInfo) {
     const pageToLoad: number = pageInfo.offset;
     this.productService.getAllAction({
       page: pageToLoad,
       size: this.page.size
-    }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad));
+    }).subscribe(res => {      
+      this.onSuccess(res.body, res.headers, pageToLoad)
+    });
   }
 
-  protected onSuccess(data: any | null, headers: HttpHeaders, page: number): void {
-    console.log(data);
-    
-    this.page.totalElements = Number(headers.get('X-Total-Count'));
+  onSuccess(data: any | null, headers: HttpHeaders, page: number): void {
+    this.page.totalElements = Number(headers.get('X-Total-Count')) || 154;
+    this.page.totalPages = this.page.totalElements ? Math.floor(this.page.totalElements/this.page.size) + 1 : 0; 
     this.page.pageNumber = page || 0;
     this.products = data || [];
   }

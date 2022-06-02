@@ -18,6 +18,7 @@ import { ProductSearchPageComponent } from './product-search-page/product-search
 import { SearchSectionComponent } from './components/search-section/search-section.component';
 import { ChatDialogComponent } from './components/chat-dialog/chat-dialog.component';
 import { ChatDialogWrapperComponent } from './components/chat-dialog-wrapper/chat-dialog-wrapper.component';
+import { PaginationModule } from '../shared/components/pagination/pagination.module';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -58,7 +59,8 @@ const NB_MODULES = [
     TranslateModule,
     SharedModule,
     NgSelectModule,
-    MiscellaneousModule
+    MiscellaneousModule,
+    PaginationModule
   ],
   exports:[],
   entryComponents:[]

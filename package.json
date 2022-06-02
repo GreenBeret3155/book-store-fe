@@ -50,7 +50,7 @@
     "@nebular/security": "4.4.0",
     "@nebular/theme": "4.4.0",
     "@ng-select/ng-select": "^3.7.3",
-    "@ngrx/store": "^13.2.0",
+    "@ngrx/store": "^8.6.0",
     "@nguniversal/express-engine": "^9.1.0",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",

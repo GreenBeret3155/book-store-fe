@@ -52,6 +52,9 @@ import {environment} from "../environments/environment";
 import { ChatDialogComponent } from './main-pages/components/chat-dialog/chat-dialog.component';
 import { MainPagesModule } from './main-pages/main-pages.module';
 import { LoginDialogComponent } from './auth-routing/login-dialog/login-dialog.component';
+import { StoreModule } from '@ngrx/store';
+import { productReducer } from './@core/reducers/product.reducer';
+import { userReducer } from './@core/reducers/user.reducer';
 
 
 registerLocaleData(vi, 'vi-VI', viEt);
@@ -92,6 +95,10 @@ export function createTranslateLoader(http: HttpClient) {
     ReactiveFormsModule,
     NbAlertModule,
     NgxTrimDirectiveModule,
+    StoreModule.forRoot({
+      products: productReducer,
+      user: userReducer,
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

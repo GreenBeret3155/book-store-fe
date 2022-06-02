@@ -31,15 +31,14 @@ export class PaginationComponent implements OnChanges {
   ) {
   }
 
-  onGoToPage(page) {
+  onGoToPage(page) {    
     if (page < 1) page = 1;
     if (page > this.totalPages) page = this.totalPages;
     this.page = page;
     this.goToPage.emit(page);
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-
+  ngOnChanges(changes: SimpleChanges): void {    
     if ((changes.totalPages && changes.totalPages.currentValue)
       || (changes.page && changes.page.currentValue)) {
       const page = (changes.page && this.page !== changes.page.currentValue ? changes.page.currentValue : this.page) || 1;

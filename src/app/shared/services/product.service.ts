@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import { createRequestOption } from '../util/request-util';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

@@ -1,11 +1,16 @@
 <nb-card>
   <nb-card-body>
-    <ngx-search-section></ngx-search-section>
-    <div class="product-items-box">
-      <ng-container *ngFor= "let product of products">
-        <ngx-product-item [item]="product" ></ngx-product-item>
-      </ng-container>
+    <div class="content-wrapper">
+      <ngx-search-section></ngx-search-section>
+      <div class="product-items-box">
+        <ng-container *ngFor="let product of products">
+          <ngx-product-item [item]="product"></ngx-product-item>
+        </ng-container>
+      </div>
     </div>
-    
+    <div class="pagination-wrapper">
+      <ngx-pagination [totalPages]="page.totalPages" [page] = "page.pageNumber + 1" (goToPage)="onGotoPage($event)" ></ngx-pagination>
+    </div>
+
   </nb-card-body>
 </nb-card>

@@ -6,6 +6,7 @@ import {DeviceDetectorService} from 'ngx-device-detector';
 import {NbDialogRef, NbThemeService} from '@nebular/theme';
 import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 import {environment} from '../../../environments/environment';
+import { UserModel } from '../../shared/model/user.model';
 
 @Component({
   selector: 'ngx-login-dialog',
@@ -65,9 +66,9 @@ export class LoginDialogComponent implements OnInit {
         recaptchaReactive: this.loginForm.get('recaptchaReactive')!.value
       })
       .subscribe(
-        () => {
+        (result) => {
           this.authenticationError = false;
-          this.dismiss();
+          this.dismiss(result);
         },
         (error) => {
           if (error) {
@@ -110,8 +111,8 @@ export class LoginDialogComponent implements OnInit {
     this.router.navigate(['auth/request-password']);
   }
 
-  dismiss() {
-    this.ref.close({result: 'close'});
+  dismiss(result: UserModel) {
+    this.ref.close({result: 'close', userInfo: result});
   }
 
   onFocus(element: string): void{
