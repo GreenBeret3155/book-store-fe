@@ -11,7 +11,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (!request || !request.url || (request.url.startsWith('http') && !(environment.apiUrl && request.url.startsWith(environment.apiUrl))
-      && !(environment.apiReportUrl && request.url.startsWith(environment.apiReportUrl)))) {
+      && !(environment.apiReportUrl && request.url.startsWith(environment.apiReportUrl)) && !(environment.apiWs && request.url.startsWith(environment.apiWs)))) {
       return next.handle(request);
     }
 

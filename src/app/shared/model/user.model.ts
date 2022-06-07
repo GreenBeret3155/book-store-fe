@@ -9,6 +9,7 @@ export interface IUserModel {
   firstName?: string,
   imageUrl?: string,
   lastName?: string,
+  avatar?: string,
 }
 
 export class UserModel implements IUserModel {
@@ -19,6 +20,7 @@ export class UserModel implements IUserModel {
     public email?: string,
     public firstName?: string,
     public imageUrl?: string,
-    public lastName?: string,) {
+    public lastName?: string,
+    public avatar?: string) {
   }
 }
