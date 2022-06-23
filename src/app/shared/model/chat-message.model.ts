@@ -1,6 +1,7 @@
 import { UserModel } from "./user.model";
 
 export interface IChatMessageModel {
+  id?: number,
   text?: string,
   date?: Date,
   reply?: boolean,
@@ -9,7 +10,8 @@ export interface IChatMessageModel {
 }
 
 export class ChatMessageModel implements IChatMessageModel {
-  constructor(public text?: string,
+  constructor(public id?: number,
+    public text?: string,
     public date?: Date,
     public reply?: boolean,
     public type?: string | number,
@@ -18,6 +20,7 @@ export class ChatMessageModel implements IChatMessageModel {
 }
 
 export interface IChatMessageReceiveModel {
+  id?: number,
   chatRoomId?: number,
   senderId?: number,
   contentType?: number,
@@ -26,7 +29,8 @@ export interface IChatMessageReceiveModel {
 }
 
 export class ChatMessageReceiveModel implements IChatMessageReceiveModel {
-  constructor(public chatRoomId?: number,
+  constructor(public id?: number,
+    public chatRoomId?: number,
     public senderId?: number,
     public contentType?: number,
     public content?: string,

@@ -1,0 +1,76 @@
+<div class="styles__StyledMainComponent-sc-1mncg38-0 dvFPWG">
+  <div class="Container-sc-itwfbd-0 hfMLFx">
+    <div class="main-title">
+      <h4>Giỏ Hàng</h4>
+    </div>
+    <div class="styles__Content-sc-1mncg38-1 kXPYZZ">
+      <div class="styles__Left-sc-1mncg38-2 negmo">
+        <div class="styles__StyledContainerComponent-sc-9ar1hx-0 bvhHZE">
+          <div class="jKLiJX">
+            <label class="hNjxWW">
+              <input type="checkbox">
+              <span class="checkbox-fake"></span>
+              <span class="label">Tất cả ({{products.length}} sản phẩm)</span>
+            </label>
+            <span>Đơn giá</span>
+            <span>Số lượng</span>
+            <span>Thành tiền</span>
+            <span class="remove-all">
+              <nb-icon icon="trash-2-outline"></nb-icon>
+            </span>
+          </div>
+          <div>
+            <div class="infinite-scroll-component " style="height: auto; overflow: auto;">
+              <div class="styles__StyledSeller-sc-1x870ln-0 kJwXxa">
+                <div class="styles__StyledIntended-sc-1x870ln-1 ihAmbT">
+                  <div class="sellers__group">
+                  </div>
+                  <div *ngFor="let product of products">
+                    <ngx-cart-item [item]="product"></ngx-cart-item>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="styles__Right-sc-1mncg38-3 eEhtFa">
+        <div class="right-inner" style="top: -240px;">
+          <div>
+            <div class="flcp_container" style="border-radius: 4px;">
+              <div class="Section__Container-sc-r6ysni-0 styles__StyledAddressBlock-sc-vgfrvy-0 bVA-DDf cTGPxG">
+                <div class="block-header">
+                  <h3 class="block-header__title">Giao tới</h3><a class="block-header__nav"
+                    href="/checkout/shipping?isIntendedCart=1">Thay đổi</a>
+                </div>
+                <div class="customer_info">
+                  <p class="customer_info__name">Hoàng Mạnh Hùng</p><i></i>
+                  <p class="customer_info__phone">0859936808</p>
+                </div>
+                <div class="address">18 ngõ 32 Đỗ Đức Dục, Phường Mễ Trì, Quận Nam Từ Liêm, Hà Nội</div>
+              </div>
+            </div>
+          </div>
+          <div class="styles__StyledPriceSummary-sc-12mfsgy-0 iRKLRb">
+            <ul class="prices__items">
+              <li class="prices__item">
+                <div class="prices__text">Tạm tính</div>
+                <div class="prices__value">0đ</div>
+              </li>
+              <li class="prices__item">
+                <div class="prices__text">Giảm giá</div>
+                <div class="prices__value">0đ</div>
+              </li>
+            </ul>
+            <div class="prices__total"><span class="prices__text">Tổng tiền</span>
+              <div class="prices__content">
+                <div class="prices__value prices__value--empty">Vui lòng chọn sản phẩm</div><span
+                  class="prices__value--noted">(Đã bao gồm VAT nếu có)</span>
+              </div>
+            </div>
+          </div><button class="styles__StyledButton-sc-hokrdw-0 bsEPkA">Mua Hàng (0)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

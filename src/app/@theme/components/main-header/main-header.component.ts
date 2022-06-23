@@ -7,6 +7,7 @@ import { LoginDialogComponent } from '../../../auth-routing/login-dialog/login-d
 import { ProductModel } from '../../../shared/model/product.model';
 import {AddUser} from '../../../@core/actions/user.actions' 
 import { AccountService } from '../../../@core/auth/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ngx-main-header',
@@ -17,7 +18,8 @@ export class MainHeaderComponent implements OnInit {
 
   products: ProductModel[] = [];
   productStore :Observable<ProductModel[]>;
-  constructor(
+  totalQuantity:number = 0;
+  constructor(private router: Router,
     private dialogService: NbDialogService,
     private store: Store<AppState>,
     private accountService : AccountService
@@ -33,6 +35,10 @@ export class MainHeaderComponent implements OnInit {
     });
     this.productStore.subscribe((e) => {
       this.products = e;
+      this.totalQuantity = 0;
+      console.log(this.products);
+      
+      this.products.forEach(e => this.totalQuantity += e.quantity ? e.quantity : 0)
     })
   }
 
@@ -44,6 +50,10 @@ export class MainHeaderComponent implements OnInit {
         this.store.dispatch(new AddUser(userInfo))
       }
     });
+  }
+
+  navigateToCart(){
+    this.router.navigate(["/main-pages/cart"])
   }
 
   

@@ -25,9 +25,9 @@
 					<!-- <span>Hoàng Mạnh Hùng</span> -->
 				</span>
 			</div>
-			<div class="cart-detail">
+			<div class="cart-detail" (click)="navigateToCart()">
 				<img class="profile-icon" style="height: 50px;" src="assets/images/cart.png">
-				<span id="number-above-cart">{{products.length}}</span>
+				<span id="number-above-cart">{{totalQuantity}}</span>
 				<span>Giỏ hàng</span>
 			</div>
 		</div>

@@ -17,12 +17,13 @@ export class ChatDialogComponent implements OnInit {
   @Input() chatRoom: ChatRoomModel;
   @Input() userInfo: UserModel;
   messages : ChatMessageModel[] = [];
+  chatTitle: string = "Shop Bot";
   constructor(private localStorage: LocalStorageService, 
     private sessionStorage: SessionStorageService,
     private chatService: ChatService) { }
 
   ngOnInit() {
-    this.connect();
+    this.getConversationAndConnectWs()
   }
 
   title = 'grokonez';
@@ -65,9 +66,21 @@ export class ChatDialogComponent implements OnInit {
     console.log('Disconnected!');
   }
 
-  // showGreeting(message) {
-  //   this.greetings.push(message);
-  // }
+
+  getConversationAndConnectWs(){
+    this.chatService.getConversation({
+      page: 0,
+      size: 20
+    }).subscribe((response) => {
+      let conversation: ChatMessageReceiveModel[] = [];
+      let tranformed: ChatMessageModel[] = [];
+      conversation = response.body;
+      tranformed = this.chatService.handleReceiveMessages(conversation, this.userInfo);
+      this.chatService.sortChatMessageModel(tranformed);
+      this.messages = [...tranformed, ...this.messages];
+      this.connect();
+    })
+  }
   sendMessage(event: any) {
     // console.log(event);
     // const files = !event.files ? [] : event.files.map((file) => {

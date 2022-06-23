@@ -1,0 +1,33 @@
+<div>
+  <div class="styles__StyledNormalProduct-sc-1ulujnv-0 eZNlgw">
+    <div class="row">
+      <div class="ccol-1">
+        <div class="product__images false">
+          <div class="product__checkbox">
+            <label class="hNjxWW">
+              <input type="checkbox"><span class="checkbox-fake"></span>
+            </label>
+          </div>
+          <a class="product__img" href="/product-p10866303.html?spid=20479476">
+            <picture class="webpimg-container">
+              <img [src]="item?.thumbnailUrl" [alt]="item?.name" class="WebpImg__StyledImg-sc-h3ozu8-0 fWjUGo" style="width: 100px; z-index: 0;">
+            </picture>
+          </a>
+          <div class="product__content">
+            <a class="product__name" target="_blank" href="/product-p10866303.html?spid=20479476">{{item?.name}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="ccol-2"><span class="product__real-prices">{{item?.price | currency: "VND"}}</span>
+        <del class="product__discount-prices">{{item?.originalPrice | currency: "VND"}}</del>
+      </div>
+      <div class="ccol-3">
+        <div class="product-qty">
+          <ngx-quantity [originalQuantity]="item?.quantity" (emitQuantity)="onQuantityChange($event)"></ngx-quantity>
+        </div>
+      </div>
+      <div class="ccol-4"><span class="product__final-prices">{{totalCost | currency: "VND"}}</span></div>
+      <div class="ccol-5"><span class="product__delete"><nb-icon icon="trash-2-outline"></nb-icon></span></div>
+    </div>
+  </div>
+</div>

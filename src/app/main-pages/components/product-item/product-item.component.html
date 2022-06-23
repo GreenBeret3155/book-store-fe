@@ -1,6 +1,6 @@
 <div class="product-item">
   <span class="fkDgwT">
-    <div class="product-content-box">
+    <a class="product-content-box" [routerLink]="['/main-pages/products', item.id]">
       <div class="thumbnail">
         <picture class="webpimg-container">
           <img [src]="item?.thumbnailUrl" [alt]="item?.name" class="thumbnail-image">
@@ -14,10 +14,14 @@
           <div class="styles__StyledQtySold-sc-732h27-2 fCfYNm">Đã bán {{item?.allTimeQuantitySold}}</div>
         </div>
         <div class="price-discount">
-          <div class="price-discount__price">{{item?.price | currency: "VND"}}</div>
+          <div class="product-price">
+            <div class="product-price__current-price">{{item?.price | currency: "VND"}}</div>
+            <div class="product-price__list-price">{{item?.originalPrice | currency: "VND"}}</div>
+            <div class="product-price__discount-rate">-{{item?.discountRate}}%</div>
+          </div>
           <div class="cd-add-to-cart" (click)="addProductToCart()">Add To Cart<nb-icon icon="shopping-cart-outline"></nb-icon></div>
         </div>
       </div>
-    </div>
+    </a>
   </span>
 </div>

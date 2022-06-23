@@ -1,0 +1,47 @@
+.group-input {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.disable {
+  pointer-events: none !important;
+}
+
+.group-input button {
+  cursor: pointer;
+  width: 30px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(236, 236, 236);
+}
+
+.group-input button, .group-input input {
+  height: 30px;
+  color: rgb(36, 36, 36);
+  font-size: 14px;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+
+.group-input button:first-child {
+  border-right: none;
+  border-radius: 4px 0px 0px 4px;
+  padding: 4px;
+}
+
+.group-input input {
+  width: 40px;
+  border: 1px solid rgb(236, 236, 236);
+}
+
+.group-input button:last-child {
+  border-left: none;
+  border-radius: 0px 4px 4px 0px;
+  padding: 4px;
+}

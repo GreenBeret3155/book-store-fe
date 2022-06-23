@@ -19,6 +19,10 @@ import { SearchSectionComponent } from './components/search-section/search-secti
 import { ChatDialogComponent } from './components/chat-dialog/chat-dialog.component';
 import { ChatDialogWrapperComponent } from './components/chat-dialog-wrapper/chat-dialog-wrapper.component';
 import { PaginationModule } from '../shared/components/pagination/pagination.module';
+import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
+import { QuantityComponent } from './components/quantity/quantity.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
+import { CartItemComponent } from './components/cart-item/cart-item.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -46,7 +50,11 @@ const NB_MODULES = [
     ProductSearchPageComponent, 
     SearchSectionComponent, 
     ChatDialogComponent,
-    ChatDialogWrapperComponent
+    ChatDialogWrapperComponent,
+    ProductDetailPageComponent,
+    QuantityComponent,
+    CartPageComponent,
+    CartItemComponent,
   ],
   imports: [
     ...NB_MODULES,

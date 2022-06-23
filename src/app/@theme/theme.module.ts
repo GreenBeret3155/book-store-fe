@@ -46,6 +46,7 @@ import {NbContextMenuModule} from '../contex-menu-custom/context-menu.module';
 import {TranslateModule} from '@ngx-translate/core';
 import {HasAnyAuthorityDirective} from './directives/has-any-authority.directive';
 import { MainHeaderComponent } from './components/main-header/main-header.component';
+import { MainFooterComponent } from './components/main-footer/main-footer.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -70,7 +71,8 @@ const COMPONENTS = [
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
   HasAnyAuthorityDirective,
-  MainHeaderComponent
+  MainHeaderComponent,
+  MainFooterComponent
 ];
 const PIPES = [
   CapitalizePipe,
@@ -81,9 +83,9 @@ const PIPES = [
 ];
 
 @NgModule({
-    imports: [CommonModule, ...NB_MODULES, NgSelectModule, ReactiveFormsModule, RouterModule, NbCardModule, TranslateModule, FormsModule],
+  imports: [CommonModule, ...NB_MODULES, NgSelectModule, ReactiveFormsModule, RouterModule, NbCardModule, TranslateModule, FormsModule],
   exports: [CommonModule, ...PIPES, ...COMPONENTS],
-  declarations: [...COMPONENTS, ...PIPES, BreadCrumbComponent, MainHeaderComponent],
+  declarations: [...COMPONENTS, ...PIPES, BreadCrumbComponent],
 })
 export class ThemeModule {
   static forRoot(): ModuleWithProviders {

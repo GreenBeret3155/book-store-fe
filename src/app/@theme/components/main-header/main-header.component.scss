@@ -251,6 +251,9 @@
 
 .cart-detail{
   position: relative;
+  &:hover{
+    cursor: pointer;
+  }
 }
 
 #number-above-cart {

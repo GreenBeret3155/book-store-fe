@@ -20,6 +20,8 @@ export interface IProductModel {
   shortDescription?: string,
   sourceId?: number,
   thumbnailUrl?: string,
+  quantity?:number,
+  isSelected?:boolean
   }
   
   export class ProductModel implements IProductModel {
@@ -40,7 +42,9 @@ export interface IProductModel {
                 public ratingAverage?: number,
                 public shortDescription?: string,
                 public sourceId?: number,
-                public thumbnailUrl?: string) {
+                public thumbnailUrl?: string,
+                public quantity?:number,
+                public isSelected?:boolean) {
     }
   }
   

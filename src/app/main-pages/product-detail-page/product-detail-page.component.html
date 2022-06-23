@@ -1,0 +1,73 @@
+<div class="styles__Wrapper-sc-8ftkqd-0 eypWKn">
+  <div class="style__ProductImagesStyle-sc-1fmads3-0 fymfgs">
+    <div class="group-images">
+      <div class="thumbnail" data-view-id="pdp_main_view_gallery">
+        <div class="ImageLens__Wrapper-sc-10jbnlj-0 bobuMh">
+          <div class="container">
+            <div style="position: relative;">
+              <picture class="webpimg-container">
+                <source type="image/webp">
+                <img
+                  [src]="item?.thumbnailUrl"
+                  [alt]="item?.name"
+                  class="fWjUGo" style="width: 600px; z-index: 0;">
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="styles__StyledSeperate-sc-8ftkqd-1 kfTKQv"></div>
+  <div class="styles__StyledProductContent-sc-1f8f774-0 ewqXRk">
+    <div class="header">
+      <div class="brand"><span class="brand-and-author ">
+          <h6>Tác giả:&nbsp;<a href="#">Trần Thanh Phong</a></h6>
+        </span>
+      </div>
+      <h1 class="title">{{item?.name}}</h1>
+    </div>
+    <p>{{item?.shortDescription}}</p>
+    <div class="body">
+      <div class="left">
+        <div class="price-and-icon">
+          <div class="product-price">
+            <div class="product-price__current-price">{{item?.price | currency: "VND"}}</div>
+            <div class="product-price__list-price">{{item?.originalPrice | currency: "VND"}}</div>
+            <div class="product-price__discount-rate">-{{item?.discountRate}}%</div>
+          </div>
+          <div class="qty-and-message">
+            <div>
+              <p class="label">Số Lượng</p>
+              <ngx-quantity (emitQuantity)="onQuantityChange($event)"></ngx-quantity>
+            </div>
+          </div>
+          <div class="qty-and-message">
+            <div>
+              <p class="label">Tổng</p>
+              <div class="product-price__current-price">{{totalCost | currency: "VND"}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="cLYFvN add-to-cart">
+          <div class="group-button">
+            <button type="button" class="btn btn-add-to-cart" (click)="addProductToCart()">Thêm vào giỏ hàng</button>
+          </div>
+          <div class="group-button">
+            <button type="button" class="btn btn-buy-now" (click)="addBuyNowProductToCart()">Mua ngay</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="style__Wrapper-sc-12gwspu-0 cIWQHl">
+  <div class="left">
+    <div class="group">
+      <h2 class="BlockTitle__Wrapper-sc-qpz3fo-0 eHltcn">Mô Tả Sản Phẩm</h2>
+      <div id="content">
+      </div>
+    </div>
+  </div>
+</div>

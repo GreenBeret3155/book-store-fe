@@ -1,0 +1,9 @@
+<div class="group-input">
+  <button (click)="onMinus()">
+    <nb-icon icon="minus-outline"></nb-icon>
+  </button>
+  <input type="number" class="input" [(ngModel)]="quantity" (blur)="onBlurInputQuantity()">
+  <button (click)="onPlus()">
+    <nb-icon icon="plus-outline"></nb-icon>
+  </button>
+</div>

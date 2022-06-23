@@ -1,5 +1,5 @@
 <div class="row">
-  <nb-card class="col-lg-3 chat userChatList" style=";padding-left: 0px;padding-right: 0px">
+  <nb-card class="col-lg-3 chat userChatList" style="padding-left: 0px;padding-right: 0px">
     <nb-card-header class="position-relative" [formGroup]="searchForm">
       <input type="text" nbInput fullWidth placeholder="Tìm kiếm" formControlName="userKeyword"
              (keyup.enter)="getUsers(searchForm.value.userKeyword, true)">
