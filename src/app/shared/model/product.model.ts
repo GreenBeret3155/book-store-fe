@@ -21,7 +21,8 @@ export interface IProductModel {
   sourceId?: number,
   thumbnailUrl?: string,
   quantity?:number,
-  isSelected?:boolean
+  isSelected?:boolean,
+  cartId?:number
   }
   
   export class ProductModel implements IProductModel {
@@ -44,7 +45,8 @@ export interface IProductModel {
                 public sourceId?: number,
                 public thumbnailUrl?: string,
                 public quantity?:number,
-                public isSelected?:boolean) {
+                public isSelected?:boolean,
+                public cartId?: number) {
     }
   }
   

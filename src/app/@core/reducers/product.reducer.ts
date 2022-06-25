@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store'
 import { AuthorModel } from '../../shared/model/author.model';
 import { CategoryModel } from '../../shared/model/category.model';
 import { ProductModel } from '../../shared/model/product.model'
+import { CartService } from '../../shared/services/main/cart.service';
 import * as ProductActions from '../actions/product.actions'
 
 // Section 1
@@ -54,6 +55,8 @@ export function productReducer(state: ProductModel[] = [], action: ProductAction
 
     // Section 3
     switch(action.type) {
+        case ProductActions.INIT_PRODUCT:
+          return action.payload;
         case ProductActions.ADD_PRODUCT:          
           return reducerProduct(state, action.payload);
         case ProductActions.REPLACE_PRODUCT:

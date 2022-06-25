@@ -1,11 +1,11 @@
 <div class="product-item">
   <span class="fkDgwT">
-    <a class="product-content-box" [routerLink]="['/main-pages/products', item.id]">
-      <div class="thumbnail">
+    <div class="product-content-box" >
+      <a class="thumbnail" [routerLink]="['/main-pages/products', item.id]">
         <picture class="webpimg-container">
           <img [src]="item?.thumbnailUrl" [alt]="item?.name" class="thumbnail-image">
         </picture>
-      </div>
+      </a>
       <div class="info">
         <div class="name">
           <h3>{{item?.name}}</h3>
@@ -22,6 +22,6 @@
           <div class="cd-add-to-cart" (click)="addProductToCart()">Add To Cart<nb-icon icon="shopping-cart-outline"></nb-icon></div>
         </div>
       </div>
-    </a>
+    </div>
   </span>
 </div>

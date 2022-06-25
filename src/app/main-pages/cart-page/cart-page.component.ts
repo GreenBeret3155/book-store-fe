@@ -21,7 +21,6 @@ export class CartPageComponent implements OnInit {
   ngOnInit() {
     this.productStore.subscribe(e => {
       this.products = e;
-      console.log(this.products);
     });
   }
 
