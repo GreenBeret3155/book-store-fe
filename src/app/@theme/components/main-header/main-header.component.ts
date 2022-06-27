@@ -39,14 +39,11 @@ export class MainHeaderComponent implements OnInit {
     });
     this.cartService.getAllCartItems().subscribe(res => {
       const listCartItems : ProductModel[] = res.body;
-      console.log(listCartItems);
       this.store.dispatch(new InitProduct(listCartItems))
     })
     this.productStore.subscribe((e) => {
       this.products = e;
       this.totalQuantity = 0;
-      console.log(this.products);
-
       this.products.forEach(e => this.totalQuantity += e.quantity ? e.quantity : 0)
     })
 

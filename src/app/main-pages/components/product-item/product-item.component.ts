@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.state';
 import { ProductModel } from '../../../shared/model/product.model';
 import * as ProductActions from '../../../@core/actions/product.actions'
+import * as _ from 'lodash';
 
 @Component({
   selector: 'ngx-product-item',
@@ -19,7 +20,7 @@ export class ProductItemComponent implements OnInit {
 
   addProductToCart() {    
     if(this.item){
-      this.store.dispatch(new ProductActions.AddProduct(this.item) )
+      this.store.dispatch(new ProductActions.AddProduct(_.clone(this.item)) )
     }
   }
 }

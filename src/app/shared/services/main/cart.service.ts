@@ -25,8 +25,8 @@ export class CartService {
     });
   }
 
-  public insert(data: any): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/action/insert`, data, {
+  public clearCart(): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/cart/clear`, {
       observe: 'response'
     });
   }

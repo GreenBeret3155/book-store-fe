@@ -8,6 +8,7 @@ export const INIT_PRODUCT       = '[PRODUCT] Init'
 export const ADD_PRODUCT       = '[PRODUCT] Add'
 export const REPLACE_PRODUCT    = '[PRODUCT] Replace'
 export const UNSELECT_PRODUCT    = '[PRODUCT] Unselect'
+export const CLEAR_PRODUCT    = '[PRODUCT] Clear'
 
 // Section 3
 
@@ -34,5 +35,11 @@ export class UnselectAllProduct implements Action {
     constructor() {}
 }
 
+export class ClearAllProducts implements Action {
+    readonly type = CLEAR_PRODUCT
+
+    constructor(public payload?: any) {}
+}
+
 // Section 4
-export type Actions = InitProduct | AddProduct | ReplaceProduct | UnselectAllProduct;
+export type Actions = InitProduct | AddProduct | ReplaceProduct | UnselectAllProduct | ClearAllProducts;

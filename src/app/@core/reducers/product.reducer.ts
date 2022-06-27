@@ -69,6 +69,8 @@ export function productReducer(state: ProductModel[] = [], action: ProductAction
           return [...state, action.payload]
         case ProductActions.UNSELECT_PRODUCT:          
           return state.map(e => { e.isSelected = false; return e; });
+        case ProductActions.CLEAR_PRODUCT:
+          return [];
         default:
           return state;
     }

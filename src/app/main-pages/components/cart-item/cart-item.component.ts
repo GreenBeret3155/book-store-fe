@@ -20,7 +20,6 @@ export class CartItemComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChange){
-    console.log(changes);
   }
 
   onQuantityChange($event : number){

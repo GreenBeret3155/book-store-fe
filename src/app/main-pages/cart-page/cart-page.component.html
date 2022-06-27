@@ -8,14 +8,14 @@
         <div class="styles__StyledContainerComponent-sc-9ar1hx-0 bvhHZE">
           <div class="jKLiJX">
             <label class="hNjxWW">
-              <input type="checkbox">
+              <input type="checkbox" [(ngModel)]="checkedAllFlag" (change)="changeSelectedAllItems(checkedAllFlag)">
               <span class="checkbox-fake"></span>
               <span class="label">Tất cả ({{products.length}} sản phẩm)</span>
             </label>
             <span>Đơn giá</span>
             <span>Số lượng</span>
             <span>Thành tiền</span>
-            <span class="remove-all">
+            <span class="remove-all" (click) = "onClearCart()">
               <nb-icon icon="trash-2-outline"></nb-icon>
             </span>
           </div>
@@ -26,7 +26,7 @@
                   <div class="sellers__group">
                   </div>
                   <div *ngFor="let product of products">
-                    <ngx-cart-item [item]="product"></ngx-cart-item>
+                    <ngx-cart-item [item]="product" #cartItem></ngx-cart-item>
                   </div>
                 </div>
               </div>
