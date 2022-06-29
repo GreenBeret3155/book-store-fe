@@ -17,6 +17,9 @@ export class CartPageComponent implements OnInit, AfterViewInit {
   products: ProductModel[] = [];
   productStore: Observable<ProductModel[]>;
   checkedAllFlag: boolean = false;
+  totalPrice : number = 0;
+  totalOriginalPrice : number = 0;
+  totalDiscount : number = 0;
 
   constructor(private store: Store<AppState>,
     private cartService: CartService) {
@@ -30,6 +33,7 @@ export class CartPageComponent implements OnInit, AfterViewInit {
     // })
     this.productStore.subscribe(e => {
       this.products = e;
+      this.calculatePrice();
     });
   }
 
@@ -44,10 +48,26 @@ export class CartPageComponent implements OnInit, AfterViewInit {
   }
 
   onClearCart(){
-    this.cartService.clearCart().subscribe(() => {
-      this.store.dispatch(new ClearAllProducts());
+    this.cartService.clearCart().subscribe(async () => {
+      await this.store.dispatch(new ClearAllProducts());
+      this.cartService.refreshCart();
     },() => {
       console.log("Error!!!");
     })
+  }
+
+  calculatePrice(): void{
+    let tp = 0;
+    let top = 0;
+
+    this.products.forEach(e =>{
+      if(e.isSelected){
+        tp += e.price * (e.quantity ? e.quantity : 0)
+        top += e.originalPrice * (e.quantity ? e.quantity : 0)
+      }
+    })
+    this.totalPrice = tp;
+    this.totalOriginalPrice = top;
+    this.totalDiscount = tp - top;
   }
 }

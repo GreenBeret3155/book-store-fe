@@ -1,7 +1,17 @@
 <nb-chat [title]="chatTitle" size="large" >
+  <a *nbCustomMessage="'link'; let data" [href]="data.href" target="_blank">
+    {{ data.text }}
+  </a>
+
+  <div *nbCustomMessage="'button'; let buttonText">
+    <p class="text-control button-custom-message-text">Wow! Button in a message!</p>
+    <button nbButton status="control" (click)="chatComponent.scrollListBottom()">
+      {{ buttonText }}
+    </button>
+  </div>
   <nb-chat-message *ngFor="let msg of messages" [type]="msg.type" [message]="msg.text" [reply]="msg.reply"
     [sender]="msg.user.name" [date]="msg.date" [files]="msg.files" [quote]="msg.quote" [latitude]="msg.latitude"
-    [longitude]="msg.longitude" [avatar]="msg.user.avatar">
+    [longitude]="msg.longitude" [avatar]="msg.user.avatar" [customMessageData]="msg.customMessageData">
   </nb-chat-message>
 
   <nb-chat-form (send)="sendMessage($event)" [dropFiles]="true">

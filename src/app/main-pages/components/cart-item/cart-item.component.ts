@@ -1,4 +1,8 @@
 import { Component, Input, OnInit, SimpleChange } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as _ from 'lodash';
+import { AddProduct, ReplaceProduct } from '../../../@core/actions/product.actions';
+import { AppState } from '../../../app.state';
 import { ProductModel } from '../../../shared/model/product.model';
 
 @Component({
@@ -12,19 +16,29 @@ export class CartItemComponent implements OnInit {
   itemQuantity : number = 1;
   totalCost: number = 0;
 
-  constructor() { }
+  constructor(private store: Store<AppState>,) { }
 
   ngOnInit() {
-    this.itemQuantity = this.item.quantity;
-    this.totalCost = this.itemQuantity * this.item.price;
+    this.totalCost = this.item.quantity * this.item.price;
   }
 
   ngOnChanges(changes: SimpleChange){
   }
 
   onQuantityChange($event : number){
-    this.itemQuantity = $event;
-    this.totalCost = this.itemQuantity * this.item.price;
+    this.item.quantity = $event;
+    this.saveProductToCart(this.item);
+    this.totalCost = this.item.quantity * this.item.price;
   }
 
+  onCheckboxChange($event){
+    this.item.isSelected = $event;
+    this.saveProductToCart(this.item);
+  }
+
+  saveProductToCart(item: any) {    
+    if(this.item){      
+      this.store.dispatch(new ReplaceProduct(item));
+    }
+  }
 }

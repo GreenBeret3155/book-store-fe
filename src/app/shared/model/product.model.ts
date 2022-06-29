@@ -21,7 +21,7 @@ export interface IProductModel {
   sourceId?: number,
   thumbnailUrl?: string,
   quantity?:number,
-  isSelected?:boolean,
+  isSelected?:any,
   cartId?:number
   }
   
@@ -45,7 +45,7 @@ export interface IProductModel {
                 public sourceId?: number,
                 public thumbnailUrl?: string,
                 public quantity?:number,
-                public isSelected?:boolean,
+                public isSelected?:any,
                 public cartId?: number) {
     }
   }

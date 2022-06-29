@@ -16,7 +16,7 @@ import { ChatService } from '../../../shared/services/chat.service';
 export class ChatDialogComponent implements OnInit {
   @Input() chatRoom: ChatRoomModel;
   @Input() userInfo: UserModel;
-  messages : ChatMessageModel[] = [];
+  messages : any[] = [];
   chatTitle: string = "Shop Bot";
   constructor(private localStorage: LocalStorageService, 
     private sessionStorage: SessionStorageService,
@@ -68,39 +68,21 @@ export class ChatDialogComponent implements OnInit {
 
 
   getConversationAndConnectWs(){
-    this.chatService.getConversation({
-      page: 0,
-      size: 20
-    }).subscribe((response) => {
-      let conversation: ChatMessageReceiveModel[] = [];
-      let tranformed: ChatMessageModel[] = [];
-      conversation = response.body;
-      tranformed = this.chatService.handleReceiveMessages(conversation, this.userInfo);
-      this.chatService.sortChatMessageModel(tranformed);
-      this.messages = [...tranformed, ...this.messages];
-      this.connect();
-    })
+    // this.chatService.getConversation({
+    //   page: 0,
+    //   size: 20
+    // }).subscribe((response) => {
+    //   let conversation: ChatMessageReceiveModel[] = [];
+    //   let tranformed: ChatMessageModel[] = [];
+    //   conversation = response.body;
+    //   tranformed = this.chatService.handleReceiveMessages(conversation, this.userInfo);
+    //   this.chatService.sortChatMessageModel(tranformed);
+    //   this.messages = [...tranformed, ...this.messages];
+    //   this.connect();
+    // })
+    this.loadMessages();
   }
   sendMessage(event: any) {
-    // console.log(event);
-    // const files = !event.files ? [] : event.files.map((file) => {
-    //   return {
-    //     url: file.src,
-    //     type: file.type,
-    //     icon: 'file-text-outline',
-    //   };
-    // });
-
-    // this.messages.push({
-    //   text: event.message,
-    //   date: new Date(),
-    //   reply: true,
-    //   type: files.length ? 'file' : 'text',
-    //   user: {
-    //     lastName: 'Jonh Doe',
-    //     avatar: 'https://i.gifer.com/no.gif',
-    //   },
-    // });
     this.sendMessageToTopic(event)
   }
 
@@ -124,5 +106,77 @@ export class ChatDialogComponent implements OnInit {
     const newMessage: ChatMessageModel = this.chatService.handleReceiveMessage(currentMessage, this.userInfo);
     console.log("2", newMessage);
     this.messages.push(newMessage);
+  }
+
+  readonly tableData = {
+    columns: [ 'First Name', 'Last Name', 'Age' ],
+    rows: [
+      { firstName: 'Robert', lastName: 'Baratheon', age: 46 },
+      { firstName: 'Jaime', lastName: 'Lannister', age: 31 },
+    ],
+  };
+
+  private loadMessages(): void {
+    this.messages = [
+      {
+        type: 'link',
+        text: 'Now you able to use links!',
+        customMessageData: {
+          href: 'https://akveo.github.io/nebular/',
+          text: 'Go to Nebular',
+        },
+        reply: false,
+        date: new Date(),
+        user: {
+          name: 'Frodo Baggins',
+          avatar: 'https://i.gifer.com/no.gif',
+        },
+      },
+      {
+        type: 'link',
+        customMessageData: {
+          href: 'https://akveo.github.io/ngx-admin/',
+          text: 'Go to ngx-admin',
+        },
+        reply: true,
+        date: new Date(),
+        user: {
+          name: 'Meriadoc Brandybuck',
+          avatar: 'https://i.gifer.com/no.gif',
+        },
+      },
+      {
+        type: 'button',
+        customMessageData: 'Click to scroll down',
+        reply: false,
+        date: new Date(),
+        user: {
+          name: 'Gimli Gloin',
+          avatar: '',
+        },
+      },
+      {
+        type: 'table',
+        text: `Now let's try to add a table`,
+        customMessageData: this.tableData,
+        reply: false,
+        date: new Date(),
+        user: {
+          name: 'Fredegar Bolger',
+          avatar: 'https://i.gifer.com/no.gif',
+        },
+      },
+      {
+        type: 'table',
+        text: `And one more table but now in the reply`,
+        customMessageData: this.tableData,
+        reply: true,
+        date: new Date(),
+        user: {
+          name: 'Fredegar Bolger',
+          avatar: 'https://i.gifer.com/no.gif',
+        },
+      },
+    ]
   }
 }

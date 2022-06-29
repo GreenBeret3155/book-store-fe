@@ -34,13 +34,10 @@ export class MainHeaderComponent implements OnInit {
   ngOnInit() {
     this.accountService.identity().subscribe(res => {
       if (res) {
-        this.store.dispatch(new AddUser(res))
+        this.store.dispatch(new AddUser(res));
       };
     });
-    this.cartService.getAllCartItems().subscribe(res => {
-      const listCartItems : ProductModel[] = res.body;
-      this.store.dispatch(new InitProduct(listCartItems))
-    })
+    this.cartService.refreshCart();
     this.productStore.subscribe((e) => {
       this.products = e;
       this.totalQuantity = 0;
@@ -49,10 +46,20 @@ export class MainHeaderComponent implements OnInit {
 
     this.productStore
       .pipe(debounceTime(2000))
-      .subscribe(e => {        
-        this.cartService.saveCart(e).subscribe(() => {
-          console.log("save success");
-        });
+      .subscribe(e => {
+        if(e && Array.isArray(e) && e.length !== 0){
+          // isSelected true => 1
+          e = e.map(element => {
+            element.isSelected = element.isSelected ? 1 : 0;
+            return element;
+          })
+
+          console.log(e);
+          
+          this.cartService.saveCart(e).subscribe(() => {
+            console.log("save success");
+          });
+        }        
       });
   }
 

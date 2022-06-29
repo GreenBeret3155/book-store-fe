@@ -3,12 +3,24 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../../../environments/environment";
 import {createRequestOption} from "../../util/request-util";
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../app.state';
+import { ProductModel } from '../../model/product.model';
+import { InitProduct } from '../../../@core/actions/product.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    private store: Store<AppState>,) {
+  }
+
+  public refreshCart(){
+    this.getAllCartItems().subscribe(res => {
+      const listCartItems : ProductModel[] = res.body;
+      this.store.dispatch(new InitProduct(listCartItems))
+    })
   }
 
   public saveCart(data, req?) {
