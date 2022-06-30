@@ -43,6 +43,17 @@ const routes: Routes = [
   },
   {
     canActivate: [],
+    path: 'admin-pages',
+    data: {
+      // authorities: ['ROLE_ADMIN', 'ROLE_USER'],
+      breadcrumb: {label: 'Trang chủ'}
+    },
+      // canActivate: [UserRouteAccessService],
+    loadChildren: () => import('./admin-pages/admin-pages.module')
+      .then(m => m.AdminPagesModule),
+  },
+  {
+    canActivate: [],
     path: 'pages',
     data: {
       // authorities: ['ROLE_ADMIN', 'ROLE_USER'],
@@ -95,8 +106,8 @@ const routes: Routes = [
       },
     ],
   },
-  {path: '', redirectTo: 'main-pages', pathMatch: 'full'},
-  {path: '**', redirectTo: 'main-pages'},
+  {path: '', redirectTo: 'admin-pages', pathMatch: 'full'},
+  {path: '**', redirectTo: 'admin-pages'},
 ];
 
 const config: ExtraOptions = {

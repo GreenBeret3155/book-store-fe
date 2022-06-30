@@ -1,3 +1,4 @@
+import { ModuleItemModel } from "./module-item.model";
 
 
 export interface IUserModel {
@@ -10,6 +11,7 @@ export interface IUserModel {
   imageUrl?: string,
   lastName?: string,
   avatar?: string,
+  modules?: ModuleItemModel[]
 }
 
 export class UserModel implements IUserModel {
@@ -21,6 +23,7 @@ export class UserModel implements IUserModel {
     public firstName?: string,
     public imageUrl?: string,
     public lastName?: string,
-    public avatar?: string) {
+    public avatar?: string,
+    public modules?: ModuleItemModel[]) {
   }
 }

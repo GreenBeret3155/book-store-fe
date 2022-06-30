@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { CartService } from '../../../shared/services/main/cart.service';
 import { InitProduct } from '../../../@core/actions/product.actions';
+import { InitModule } from '../../../@core/actions/module-item.action';
 
 @Component({
   selector: 'ngx-main-header',
@@ -35,6 +36,7 @@ export class MainHeaderComponent implements OnInit {
     this.accountService.identity().subscribe(res => {
       if (res) {
         this.store.dispatch(new AddUser(res));
+        this.store.dispatch(new InitModule(res.modules))
       };
     });
     this.cartService.refreshCart();

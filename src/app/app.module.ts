@@ -21,6 +21,7 @@ import {
   NbDialogModule,
   NbIconModule,
   NbInputModule,
+  NbMenuModule,
   NbSidebarModule,
   NbToastrModule,
   NbWindowModule,
@@ -33,7 +34,6 @@ import {DecimalPipe, registerLocaleData} from '@angular/common';
 import {LogoutComponent} from './auth-routing/logout/logout.component';
 import {SharedModule} from './shared/shared.module';
 import {NgxTrimDirectiveModule} from 'ngx-trim-directive';
-import {NbMenuModule} from './menu-custom/menu.module';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 // import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
@@ -55,6 +55,7 @@ import { LoginDialogComponent } from './auth-routing/login-dialog/login-dialog.c
 import { StoreModule } from '@ngrx/store';
 import { productReducer } from './@core/reducers/product.reducer';
 import { userReducer } from './@core/reducers/user.reducer';
+import { moduleItemReducer } from './@core/reducers/module-item.reducer';
 
 
 registerLocaleData(vi, 'vi-VI', viEt);
@@ -98,6 +99,7 @@ export function createTranslateLoader(http: HttpClient) {
     StoreModule.forRoot({
       products: productReducer,
       user: userReducer,
+      moduleItem: moduleItemReducer,
     }),
     TranslateModule.forRoot({
       loader: {

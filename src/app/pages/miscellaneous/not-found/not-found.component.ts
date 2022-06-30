@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import {NbMenuService} from '../../../menu-custom/menu.service';
 
 @Component({
@@ -8,10 +9,10 @@ import {NbMenuService} from '../../../menu-custom/menu.service';
 })
 export class NotFoundComponent {
 
-  constructor(private menuService: NbMenuService) {
+  constructor(private router: Router) {
   }
 
   goToHome() {
-    this.menuService.navigateHome('/');
+    this.router.navigate(['/']);
   }
 }
