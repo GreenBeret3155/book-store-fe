@@ -57,6 +57,8 @@ export function productReducer(state: ProductModel[] = [], action: ProductAction
     switch(action.type) {
         case ProductActions.INIT_PRODUCT:
           return action.payload;
+          case ProductActions.REFRESH_PRODUCT:
+            return [...state];
         case ProductActions.ADD_PRODUCT:          
           return reducerProduct(state, action.payload);
         case ProductActions.REPLACE_PRODUCT:
@@ -66,7 +68,9 @@ export function productReducer(state: ProductModel[] = [], action: ProductAction
               return [...state]
             }
           }
-          return [...state, action.payload]
+          return [...state, action.payload];
+        case ProductActions.DELETE_PRODUCT:
+          return state.filter(e => e.id != action.payload.id);
         case ProductActions.UNSELECT_PRODUCT:          
           return state.map(e => { e.isSelected = false; return e; });
         case ProductActions.CLEAR_PRODUCT:

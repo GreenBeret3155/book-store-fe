@@ -11,24 +11,37 @@
 					</span>
 				</div>
 			</div>
-			<form onsubmit="event.preventDefault()" class="form-inline my-2 my-lg-0">
+			<!-- <form onsubmit="event.preventDefault()" class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="text" placeholder="Search">
 				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-			</form>
+			</form> -->
 		</div>
 
-		<div class="user-cart-box">
-			<div class="user-detail-box">
-				<img class="profile-icon" style="height: 50px;" src="assets/images/anonymous.png">
-				<span class="user-detail" (click) = "onOpenLoginDialog()">
-					<span>Tài khoản</span>
-					<!-- <span>Hoàng Mạnh Hùng</span> -->
-				</span>
-			</div>
+		<div *ngIf="user" class="user-cart-box">
 			<div class="cart-detail" (click)="navigateToCart()">
 				<img class="profile-icon" style="height: 50px;" src="assets/images/cart.png">
 				<span id="number-above-cart">{{totalQuantity}}</span>
 				<span>Giỏ hàng</span>
+			</div>
+		</div>
+
+		<div *ngIf="!user">
+			<div class="login-logout-box">
+				<span (click)="onOpenLoginDialog()">Đăng nhập</span>/<span (click)="onOpenLoginDialog()">Đăng ký</span>
+			</div>
+		</div>
+
+		<div *ngIf="user" class="dropdown">
+			<div class="user-detail-box">
+				<img class="profile-icon" style="height: 50px;" src="assets/images/anonymous.png">
+				<span class="user-detail">
+					<span>Tài khoản</span>
+					<span *ngIf="user">{{user?.lastName}} <nb-icon icon="arrow-down"></nb-icon></span>
+				</span>
+			</div>
+			<div class="dropdown-content">
+				<li (click)="router.navigate(['auth/change-password'])">Đổi mật khẩu</li>
+				<li (click)="onLogout()">Log out</li>
 			</div>
 		</div>
 	</div>

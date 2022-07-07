@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="ccol-4"><span class="product__final-prices">{{totalCost | currency: "VND"}}</span></div>
-      <div class="ccol-5"><span class="product__delete"><nb-icon icon="trash-2-outline"></nb-icon></span></div>
+      <div class="ccol-5"><span class="product__delete" (click) = "onDeleteItem()"><nb-icon icon="trash-2-outline"></nb-icon></span></div>
     </div>
   </div>
 </div>

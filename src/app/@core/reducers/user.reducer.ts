@@ -10,6 +10,8 @@ export function userReducer(state: UserModel, action: UserActions.Actions) {
   switch(action.type) {
     case UserActions.ADD_USER:
       return action.payload;
+    case UserActions.CLEAR_USER:
+      return null;
     default:
       return state;
   }

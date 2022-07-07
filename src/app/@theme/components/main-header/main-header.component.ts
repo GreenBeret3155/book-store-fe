@@ -5,12 +5,13 @@ import { Observable } from 'rxjs';
 import { AppState } from '../../../app.state';
 import { LoginDialogComponent } from '../../../auth-routing/login-dialog/login-dialog.component';
 import { ProductModel } from '../../../shared/model/product.model';
-import { AddUser } from '../../../@core/actions/user.actions'
+import { AddUser, ClearUser } from '../../../@core/actions/user.actions'
 import { AccountService } from '../../../@core/auth/account.service';
 import { Router } from '@angular/router';
 import { debounceTime } from 'rxjs/operators';
 import { CartService } from '../../../shared/services/main/cart.service';
 import { InitProduct } from '../../../@core/actions/product.actions';
+import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'ngx-main-header',
@@ -22,22 +23,20 @@ export class MainHeaderComponent implements OnInit {
   products: ProductModel[] = [];
   productStore: Observable<ProductModel[]>;
   totalQuantity: number = 0;
+  user: any;
   constructor(private router: Router,
     private dialogService: NbDialogService,
     private store: Store<AppState>,
     private accountService: AccountService,
-    private cartService: CartService
+    private cartService: CartService,
+    private $localStorage: LocalStorageService,
+    private $sessionStorage: SessionStorageService
   ) {
     this.productStore = this.store.select('products');
   }
 
   ngOnInit() {
-    this.accountService.identity().subscribe(res => {
-      if (res) {
-        this.store.dispatch(new AddUser(res));
-      };
-    });
-    this.cartService.refreshCart();
+    this.onInitUser();
     this.productStore.subscribe((e) => {
       this.products = e;
       this.totalQuantity = 0;
@@ -47,7 +46,7 @@ export class MainHeaderComponent implements OnInit {
     this.productStore
       .pipe(debounceTime(2000))
       .subscribe(e => {
-        if(e && Array.isArray(e) && e.length !== 0){
+        if (e && Array.isArray(e) && e.length !== 0) {
           // isSelected true => 1
           e = e.map(element => {
             element.isSelected = element.isSelected ? 1 : 0;
@@ -55,12 +54,27 @@ export class MainHeaderComponent implements OnInit {
           })
 
           console.log(e);
-          
+
           this.cartService.saveCart(e).subscribe(() => {
             console.log("save success");
           });
-        }        
+        }
       });
+  }
+
+  onInitUser() {
+    this.user = null;
+    const token = this.$localStorage.retrieve('authenticationToken') || this.$sessionStorage.retrieve('authenticationToken') || '';
+    if (token !== undefined && token !== null && token !== '') {
+      this.accountService.identity().subscribe(res => {
+        if (res) {
+          console.log("User", res);
+          this.user = res;
+          this.store.dispatch(new AddUser(res));
+        };
+      });
+    }
+    this.cartService.refreshCart(token === undefined || token === null || token === '');
   }
 
   onOpenLoginDialog() {
@@ -68,14 +82,19 @@ export class MainHeaderComponent implements OnInit {
       autoFocus: true,
     }).onClose.subscribe(({ userInfo }) => {
       if (userInfo) {
+        this.onInitUser();
         this.store.dispatch(new AddUser(userInfo))
       }
     });
   }
 
+  onLogout() {
+    this.store.dispatch(new ClearUser());
+    this.$localStorage.clear();
+    this.onInitUser();
+  }
+
   navigateToCart() {
     this.router.navigate(["/main-pages/cart"])
   }
-
-
 }

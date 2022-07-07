@@ -44,10 +44,10 @@
                     href="/checkout/shipping?isIntendedCart=1">Thay đổi</a>
                 </div>
                 <div class="customer_info">
-                  <p class="customer_info__name">Hoàng Mạnh Hùng</p><i></i>
-                  <p class="customer_info__phone">0859936808</p>
+                  <p class="customer_info__name">{{orderInfos[0]?.name}}</p><i></i>
+                  <p class="customer_info__phone">{{orderInfos[0]?.phone}}</p>
                 </div>
-                <div class="address">18 ngõ 32 Đỗ Đức Dục, Phường Mễ Trì, Quận Nam Từ Liêm, Hà Nội</div>
+                <div class="address">{{orderInfos[0]?.address}}</div>
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@
                 <span class="prices__value--noted">(Đã bao gồm VAT nếu có)</span>
               </div>
             </div>
-          </div><button class="styles__StyledButton-sc-hokrdw-0 bsEPkA">Mua Hàng (0)</button>
+          </div><button class="styles__StyledButton-sc-hokrdw-0 bsEPkA">Mua Hàng ({{totalQuantity}})</button>
         </div>
       </div>
     </div>

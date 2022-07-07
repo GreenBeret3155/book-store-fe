@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { ProductModel } from '../../shared/model/product.model';
@@ -19,6 +19,7 @@ export class ProductDetailPageComponent implements OnInit {
   totalCost: number = 0;
 
   constructor(private route: ActivatedRoute,
+    private router: Router,
     private productService : ProductService,
     private store: Store<AppState>
   ) { }
@@ -60,7 +61,11 @@ export class ProductDetailPageComponent implements OnInit {
       this.item.quantity = this.itemQuantity;
       this.item.isSelected = true;
       this.store.dispatch(new ProductActions.ReplaceProduct(_.clone(this.item)));
+      this.navigateToCart()
     }
   }
 
+  navigateToCart() {
+    this.router.navigate(["/main-pages/cart"])
+  }
 }

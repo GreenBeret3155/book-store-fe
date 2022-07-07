@@ -7,28 +7,31 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../app.state';
 import { ProductModel } from '../../model/product.model';
 import { InitProduct } from '../../../@core/actions/product.actions';
+import { OrderInfoModel } from '../../model/order-info.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class OrderInfoService {
   constructor(private http: HttpClient,
     private store: Store<AppState>,) {
   }
 
-  public refreshCart(isNoUserRefresh?: boolean){
-    if (isNoUserRefresh){
-      this.store.dispatch(new InitProduct([]))
-      return ;
-    }
-    console.log(123);
+  // public refreshCart(isNoUserRefresh?: boolean){
+  //   if (isNoUserRefresh){
+  //     this.store.dispatch(new InitProduct([]))
+  //     return ;
+  //   }
     
-    this.getAllCartItems().subscribe(res => {
-      const listCartItems : ProductModel[] = res.body;
-      this.store.dispatch(new InitProduct(listCartItems))
-    }, () => {
-      this.store.dispatch(new InitProduct([]))
-    })
+  //   this.getAllCartItems().subscribe(res => {
+  //     const listCartItems : ProductModel[] = res.body;
+  //     this.store.dispatch(new InitProduct(listCartItems))
+  //   }, () => {
+  //     this.store.dispatch(new InitProduct([]))
+  //   })
+  // }
+  public sortDefaultOrderInfos(input : OrderInfoModel[]):void{
+    input.sort((a,b) => b.state - a.state);
   }
 
   public saveCart(data, req?) {
@@ -39,8 +42,8 @@ export class CartService {
     });
   }
 
-  public getAllCartItems(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/cart`, {
+  public getAllOrderInfos(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/order-info`, {
       observe: 'response'
     });
   }

@@ -164,11 +164,11 @@ export const NB_CORE_PROVIDERS = [
       useClass: AuthInterceptor,
       multi: true
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthExpiredInterceptor,
-      multi: true
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthExpiredInterceptor,
+    //   multi: true
+    // },
   ]
 })
 export class CoreModule {

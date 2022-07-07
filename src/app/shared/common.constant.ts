@@ -74,6 +74,7 @@ export class Constants {
   static TYPE_INTEGER: string = 'TYPE_INTEGER';
   static TYPE_DATE: string = 'TYPE_DATE';
   static TYPE_TIME: string = 'TYPE_TIME';
+  static STATE_DEFAULT_ORDER_INFO: number = 2;
 }
 
 export enum CHART_MAP_CONST {

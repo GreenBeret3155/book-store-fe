@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, SimpleChange } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as _ from 'lodash';
-import { AddProduct, ReplaceProduct } from '../../../@core/actions/product.actions';
+import { AddProduct, DeleteProduct, ReplaceProduct } from '../../../@core/actions/product.actions';
 import { AppState } from '../../../app.state';
 import { ProductModel } from '../../../shared/model/product.model';
 
@@ -34,6 +34,10 @@ export class CartItemComponent implements OnInit {
   onCheckboxChange($event){
     this.item.isSelected = $event;
     this.saveProductToCart(this.item);
+  }
+
+  onDeleteItem(){
+    this.store.dispatch(new DeleteProduct(this.item));
   }
 
   saveProductToCart(item: any) {    
