@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MainPagesRoutingModule } from './main-pages-routing.module';
 import { MainPagesComponent } from './main-pages.component';
 import { ThemeModule } from '../@theme/theme.module';
-import { NbActionsModule, NbButtonModule, NbCardModule, NbChatComponent, NbChatFormComponent, NbChatMessageComponent, NbChatMessageFileComponent, NbChatModule, NbChatOptions, NbContextMenuModule, NbDialogModule, NbIconModule, NbInputModule, NbLayoutModule, NbMenuModule, NbSearchModule, NbSelectModule, NbSidebarModule, NbUserModule } from '@nebular/theme';
+import { NbAccordionModule, NbActionsModule, NbButtonModule, NbCardModule, NbChatComponent, NbChatFormComponent, NbChatMessageComponent, NbChatMessageFileComponent, NbChatModule, NbChatOptions, NbContextMenuModule, NbDialogModule, NbIconModule, NbInputModule, NbLayoutModule, NbMenuModule, NbSearchModule, NbSelectModule, NbSidebarModule, NbUserModule } from '@nebular/theme';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { TranslateModule } from '@ngx-translate/core';
@@ -23,6 +23,10 @@ import { ProductDetailPageComponent } from './product-detail-page/product-detail
 import { QuantityComponent } from './components/quantity/quantity.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { ListOrderInfoComponent } from './components/list-order-info/list-order-info.component';
+import { ComfirmOrderComponent } from './components/comfirm-order/comfirm-order.component';
+import { OrderPageComponent } from './order-page/order-page.component';
+import { OrderPageItemHeaderComponent } from './components/order-page-item-header/order-page-item-header.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -41,6 +45,7 @@ const NB_MODULES = [
   NbCardModule,
   NbDialogModule.forChild(),
   NbChatModule,
+  NbAccordionModule
 ];
 
 @NgModule({
@@ -55,6 +60,10 @@ const NB_MODULES = [
     QuantityComponent,
     CartPageComponent,
     CartItemComponent,
+    ListOrderInfoComponent,
+    ComfirmOrderComponent,
+    OrderPageComponent,
+    OrderPageItemHeaderComponent,
   ],
   imports: [
     ...NB_MODULES,
@@ -71,6 +80,6 @@ const NB_MODULES = [
     PaginationModule
   ],
   exports:[],
-  entryComponents:[]
+  entryComponents:[ListOrderInfoComponent, ComfirmOrderComponent]
 })
 export class MainPagesModule { }

@@ -52,9 +52,6 @@ export class MainHeaderComponent implements OnInit {
             element.isSelected = element.isSelected ? 1 : 0;
             return element;
           })
-
-          console.log(e);
-
           this.cartService.saveCart(e).subscribe(() => {
             console.log("save success");
           });

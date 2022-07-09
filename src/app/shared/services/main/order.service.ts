@@ -12,35 +12,19 @@ import { OrderInfoModel } from '../../model/order-info.model';
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export class OrderService {
   constructor(private http: HttpClient,
     private store: Store<AppState>,) {
   }
 
-  public refreshCart(isNoUserRefresh?: boolean){
-    if (isNoUserRefresh){
-      this.store.dispatch(new InitProduct([]))
-      return ;
-    }
-    
-    this.getAllCartItems().subscribe(res => {
-      const listCartItems : ProductModel[] = res.body;
-      this.store.dispatch(new InitProduct(listCartItems))
-    }, () => {
-      this.store.dispatch(new InitProduct([]))
-    })
-  }
-
-  public saveCart(data, req?) {
-    const options = createRequestOption(req);
-    return this.http.post<any>(`${environment.apiUrl}/cart`, data, {
-      params: options,
+  public saveOrder(data) {
+    return this.http.post<any>(`${environment.apiUrl}/order`, data, {
       observe: 'response'
     });
   }
 
-  public getAllCartItems(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/cart`, {
+  public getAllOrders(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/order-detail`, {
       observe: 'response'
     });
   }
@@ -51,22 +35,10 @@ export class CartService {
     });
   }
 
-  public transformProductsToOrder(input: any[]): any[] {
-    return input.filter( e => e.isSelected).map(e => {
-      if(e.author){
-        e.authorName = e.author.name;
-      }
-      if(e.quantity != null && e.price){
-        e.totalPrice = e.quantity*e.price;
-      }else{
-        e.totalPrice = 0;
-      }
-      if(!e.productId){
-        e.productId = e.id;
-      }
-      e.isSelected = e.isSelected ? 1 : 0;
-      return e;
-    })
+  public delete(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/action/delete`, data, {
+      observe: 'response'
+    });
   }
 
   public getAllAction(): Observable<any> {

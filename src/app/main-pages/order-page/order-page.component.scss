@@ -1,0 +1,148 @@
+.container {
+  width: 1270px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.main-title {
+  margin: 0 0 30px 0;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+nb-accordion-item{
+  margin-bottom: 50px;
+}
+
+// nb-accordion-item-body{
+//   background-color: #1a94ff;
+//   color: white;
+// }
+
+.ekuyi {
+  background: rgb(255, 255, 255);
+  border-radius: 4px;
+  font-size: 13px;
+  margin-bottom: 20px;
+  padding: 16px;
+  width: 100%;
+}
+
+.hBsvqt {
+  border-bottom: 1px solid rgb(235, 235, 240);
+  padding-bottom: 12px;
+  color: rgb(128, 128, 137);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+
+.title{
+  margin-right: 5px;
+}
+
+.hBZYMQ .product {
+  display: flex;
+  flex-direction: row;
+  padding: 16px 0px;
+  border-bottom: 1px solid rgb(235, 235, 240);
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.hBZYMQ .product .detail {
+  display: flex;
+}
+
+.hBZYMQ .product .product-info {
+  margin: 0px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hBZYMQ .product .product-info .product-name {
+  margin-bottom: 6px;
+}
+
+.hBZYMQ .product .price {
+  min-width: 120px;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  display: flex;
+}
+
+.hBVEFq {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.hBVEFq .total-money {
+  font-size: 17px;
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.button-group-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.button-group-box .button-group {
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.button-group-box .button-group div {
+  padding: 12px 8px;
+  height: 36px;
+  border-radius: 4px;
+  border: 1px solid rgb(11, 116, 229);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: rgb(11, 116, 229);
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.customer_info {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.customer_info p {
+  margin: 0px;
+}
+
+.customer_info i {
+  display: block;
+  width: 1px;
+  height: 20px;
+  background-color: rgb(235, 235, 240);
+  margin: 0px 8px;
+}
+
+.title-p{
+  font-size: 1.1rem; 
+  font-weight: bold;
+}
+
+nb-icon{
+  margin-right: 5px;
+}

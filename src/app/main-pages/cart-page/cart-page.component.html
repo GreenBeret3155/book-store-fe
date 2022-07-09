@@ -1,5 +1,5 @@
-<div class="styles__StyledMainComponent-sc-1mncg38-0 dvFPWG">
-  <div class="Container-sc-itwfbd-0 hfMLFx">
+<div class="dvFPWG">
+  <div class="hfMLFx">
     <div class="main-title">
       <h4>Giỏ Hàng</h4>
     </div>
@@ -15,7 +15,7 @@
             <span>Đơn giá</span>
             <span>Số lượng</span>
             <span>Thành tiền</span>
-            <span class="remove-all" (click) = "onClearCart()">
+            <span class="remove-all" (click)="onClearCart()">
               <nb-icon icon="trash-2-outline"></nb-icon>
             </span>
           </div>
@@ -34,24 +34,24 @@
           </div>
         </div>
       </div>
-      <div class="styles__Right-sc-1mncg38-3 eEhtFa">
+      <div class="eEhtFa">
         <div class="right-inner" style="top: -240px;">
           <div>
             <div class="flcp_container" style="border-radius: 4px;">
               <div class="Section__Container-sc-r6ysni-0 styles__StyledAddressBlock-sc-vgfrvy-0 bVA-DDf cTGPxG">
                 <div class="block-header">
                   <h3 class="block-header__title">Giao tới</h3><a class="block-header__nav"
-                    href="/checkout/shipping?isIntendedCart=1">Thay đổi</a>
+                    (click)="onClickViewListOrderInfos()">Thay đổi</a>
                 </div>
                 <div class="customer_info">
-                  <p class="customer_info__name">{{orderInfos[0]?.name}}</p><i></i>
-                  <p class="customer_info__phone">{{orderInfos[0]?.phone}}</p>
+                  <p class="customer_info__name">{{selectedOrderInfo?.name}}</p><i></i>
+                  <p class="customer_info__phone">{{selectedOrderInfo?.phone}}</p>
                 </div>
-                <div class="address">{{orderInfos[0]?.address}}</div>
+                <div class="address">{{selectedOrderInfo?.address}}</div>
               </div>
             </div>
           </div>
-          <div class="styles__StyledPriceSummary-sc-12mfsgy-0 iRKLRb">
+          <div class="iRKLRb">
             <ul class="prices__items">
               <li class="prices__item">
                 <div class="prices__text">Tạm tính</div>
@@ -68,7 +68,9 @@
                 <span class="prices__value--noted">(Đã bao gồm VAT nếu có)</span>
               </div>
             </div>
-          </div><button class="styles__StyledButton-sc-hokrdw-0 bsEPkA">Mua Hàng ({{totalQuantity}})</button>
+          </div>
+          <button [ngClass]="{'bsEPkA' : isValidBuy, 'disabled-bsEPkA' : !isValidBuy}" [disabled]="!isValidBuy" (click)="onClickBuy()"
+            >Mua Hàng ({{totalQuantity}})</button>
         </div>
       </div>
     </div>

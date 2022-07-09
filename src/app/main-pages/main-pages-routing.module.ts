@@ -4,6 +4,7 @@ import { NotFoundComponent } from '../pages/miscellaneous/not-found/not-found.co
 import { DownloadPageComponent } from '../shared/components/download-page/download-page.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { MainPagesComponent } from './main-pages.component';
+import { OrderPageComponent } from './order-page/order-page.component';
 import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
 import { ProductSearchPageComponent } from './product-search-page/product-search-page.component';
 
@@ -44,6 +45,10 @@ const routes: Routes = [{
     {
       path: 'cart',
       component: CartPageComponent,
+    },
+    {
+      path: 'order',
+      component: OrderPageComponent,
     },
     // {
     //   path: '',

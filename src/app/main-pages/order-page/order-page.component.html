@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="main-title">Quản lý đơn hàng</div>
+  <nb-accordion multi>
+    <nb-accordion-item *ngFor="let orderDetail of orderDetails">
+      <nb-accordion-item-header style="padding: 0 1.25rem 0 1.25rem;">
+        <div class="ekuyi">
+          <div class="hBsvqt">
+            <nb-icon [icon]="getOrderStateIcon(orderDetail.order.state)"
+              [status]="getOrderStateStatusColor(orderDetail.order.state)"></nb-icon>
+            <span class="main-status">{{getOrderStateName(orderDetail.order.state)}}</span>
+          </div>
+          <div class="hBZYMQ">
+            <div *ngFor="let item of orderDetail.items">
+              <div class="product">
+                <div class="detail">
+                  <span class="quantity">x{{item.quantity}}</span>
+                  <div class="product-info">
+                    <p class="product-name">{{item.name}}</p>
+                  </div>
+                </div>
+                <div class="price"><span>{{item.totalPrice | currency: "VND"}}</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="hBVEFq">
+            <div class="total-money">
+              <div class="title">Tổng tiền:</div>
+              <div class="total">{{orderDetail.orderValue | currency: "VND"}}</div>
+            </div>
+          </div>
+        </div>
+      </nb-accordion-item-header>
+      <nb-accordion-item-body>
+        <p class="title-p">Thông tin giao hàng</p>
+        <div>
+          <div class="customer_info">
+            <p class="customer_info__name">{{orderDetail.info.name}}</p><i></i>
+            <p class="customer_info__phone">{{orderDetail.info.phone}}</p>
+          </div>
+          <div class="address">{{orderDetail.info.address}}</div>
+        </div>
+        <div style="margin-top: 20px; display: flex; justify-content: space-between;">
+          <p class="title-p">Thời gian đặt hàng: {{orderDetail.order.orderTime | date:'short':'+0700'}}</p>
+          <div class="button-group-box">
+            <div class="button-group">
+              <div *ngIf="canCancelOrder(orderDetail.order.state)">Hủy đơn hàng</div>
+            </div>
+          </div>
+        </div>
+      </nb-accordion-item-body>
+    </nb-accordion-item>
+  </nb-accordion>
+</div>

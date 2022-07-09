@@ -75,6 +75,9 @@ export class Constants {
   static TYPE_DATE: string = 'TYPE_DATE';
   static TYPE_TIME: string = 'TYPE_TIME';
   static STATE_DEFAULT_ORDER_INFO: number = 2;
+  static ORDER_STATE = ["Đang xử lý đơn hàng","Đã xác nhận đơn hàng","Đang giao hàng", "Giao hàng thành công", "Đơn hàng bị hủy"]
+  static ORDER_STATE_ICON = ["rewind-right-outline","person-done-outline","cube-outline", "checkmark-circle-2-outline", "close-square-outline"]
+  static ORDER_STATE_STATUS_COLOR = ["warning","info","primary", "success", "danger"]
 }
 
 export enum CHART_MAP_CONST {

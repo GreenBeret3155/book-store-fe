@@ -1,0 +1,38 @@
+<nb-card>
+  <nb-card-header class="d-flex">
+    Danh sách thông tin đặt hàng
+    <button class="ml-auto p-2" nbButton hero status="primary" (click)="dismiss()">
+      <nb-icon icon="close-outline"></nb-icon>
+    </button>
+  </nb-card-header>
+  <nb-card-body>
+    <ngx-datatable class="bootstrap"
+                   [columnMode]="'flex'"
+                   [rows]="orderInfos"
+                   [columns]="columns"
+                   rowHeight="auto"
+                   [headerHeight]="50"
+                   [footerHeight]="0"
+    >
+      <ng-container *ngFor="let col of columns">
+        <ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flexGrow">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            {{ column.name }}
+          </ng-template>
+          <ng-template let-value="value" let-rowIndex="rowIndex" ngx-datatable-cell-template let-row="row">
+            <ng-container [ngSwitch]="col.prop">
+              <ng-container *ngSwitchCase="'state'">
+                <button nbButton class="p-1" status="success" ghost title="'Chọn làm thông tin đặt hàng'" (click)="onSelectInfo(row)">
+                  <nb-icon icon="checkmark" pack="eva" size="tiny"></nb-icon>
+                </button>
+              </ng-container>
+              <ng-container *ngSwitchDefault >
+                <span [ngClass]="{'selected_info' : rowIndex === isSelectedItemIndex}">{{ value }}</span>
+              </ng-container>
+            </ng-container>
+          </ng-template>
+        </ngx-datatable-column>
+      </ng-container>
+    </ngx-datatable>
+  </nb-card-body>
+</nb-card>

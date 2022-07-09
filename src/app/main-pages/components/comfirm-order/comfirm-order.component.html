@@ -1,0 +1,70 @@
+<nb-card>
+  <nb-card-header class="d-flex">
+    Danh sách thông tin đặt hàng
+    <button class="ml-auto p-2" nbButton hero status="primary" (click)="dismiss()">
+      <nb-icon icon="close-outline"></nb-icon>
+    </button>
+  </nb-card-header>
+  <nb-card-body>
+    <p class="title-p">Thông tin sản phẩm</p>
+    <ngx-datatable class="bootstrap"
+                   [columnMode]="'flex'"
+                   [rows]="selectedProducts"
+                   [columns]="columns"
+                   rowHeight="auto"
+                   [headerHeight]="50"
+                   [footerHeight]="0"
+    >
+      <ng-container *ngFor="let col of columns">
+        <ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flexGrow">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            {{ column.name }}
+          </ng-template>
+          <ng-template let-value="value" let-rowIndex="rowIndex" ngx-datatable-cell-template let-row="row">
+            <ng-container [ngSwitch]="col.prop">
+              <ng-container *ngSwitchCase="'state'">
+                <button nbButton class="p-1" status="success" ghost title="'Chọn làm thông tin đặt hàng'" (click)="onSelectInfo(row)">
+                  <nb-icon icon="checkmark" pack="eva" size="tiny"></nb-icon>
+                </button>
+              </ng-container>
+              <ng-container *ngSwitchCase="'price'">
+                {{value | currency: "VND"}}
+              </ng-container>
+              <ng-container *ngSwitchCase="'totalPrice'">
+                {{value | currency: "VND"}}
+              </ng-container>
+              <ng-container *ngSwitchDefault >
+                {{ value }}
+              </ng-container>
+            </ng-container>
+          </ng-template>
+        </ngx-datatable-column>
+      </ng-container>
+    </ngx-datatable>
+
+    <div class="eEhtFa">
+      <div class="right-inner">
+          <div class="flcp_container">
+            <p class="title-p">Thông tin giao hàng</p>
+            <div class="cTGPxG">
+              <div class="customer_info">
+                <p class="customer_info__name">{{selectedOrderInfo?.name}}</p><i></i>
+                <p class="customer_info__phone">{{selectedOrderInfo?.phone}}</p>
+              </div>
+              <div class="address">{{selectedOrderInfo?.address}}</div>
+            </div>
+          </div>
+        <div class="iRKLRb">
+          <div class="prices__total">
+            <div class="prices__content">
+              <p class="title-p">Tổng giá trị đơn hàng</p>
+              <div class="prices__value prices__value--empty">{{totalPrice | currency: "VND"}}</div>
+              <span class="prices__value--noted">(Đã bao gồm VAT nếu có)</span>
+            </div>
+          </div>
+        </div>
+        <button class="bsEPkA" (click)="onClickBuy()">Xác nhận đặt hàng</button>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

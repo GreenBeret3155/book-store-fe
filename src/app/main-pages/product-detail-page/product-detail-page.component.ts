@@ -50,7 +50,7 @@ export class ProductDetailPageComponent implements OnInit {
   addProductToCart() {    
     if(this.item){
       this.item.quantity = this.itemQuantity;
-      this.item.isSelected = true;
+      this.item.isSelected = false;
       this.store.dispatch(new ProductActions.AddProduct(_.clone(this.item)));
     }
   }
