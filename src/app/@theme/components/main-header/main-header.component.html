@@ -11,24 +11,42 @@
 					</span>
 				</div>
 			</div>
-			<form onsubmit="event.preventDefault()" class="form-inline my-2 my-lg-0">
+			<!-- <form onsubmit="event.preventDefault()" class="form-inline my-2 my-lg-0">
 				<input class="form-control mr-sm-2" type="text" placeholder="Search">
 				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-			</form>
+			</form> -->
 		</div>
 
-		<div class="user-cart-box">
-			<div class="user-detail-box">
-				<img class="profile-icon" style="height: 50px;" src="assets/images/anonymous.png">
-				<span class="user-detail" (click) = "onOpenLoginDialog()">
-					<span>Tài khoản</span>
-					<!-- <span>Hoàng Mạnh Hùng</span> -->
-				</span>
-			</div>
+		<!-- <div class="user-cart-box">
 			<div class="cart-detail" (click)="navigateToCart()">
 				<img class="profile-icon" style="height: 50px;" src="assets/images/cart.png">
 				<span id="number-above-cart">{{totalQuantity}}</span>
 				<span>Giỏ hàng</span>
+			</div>
+		</div> -->
+		<div class="dropdown">
+			<!-- <nb-user data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [onlyPicture]="false"
+				[name]="user?.login" (click)="openMenu = !openMenu">
+			</nb-user> -->
+			<div class="user-detail-box">
+				<img class="profile-icon" style="height: 50px;" src="assets/images/anonymous.png">
+				<span class="user-detail">
+					<span>Tài khoản</span>
+					<span *ngIf="user" >{{user?.lastName}} <nb-icon icon="arrow-down"></nb-icon></span>
+				</span>
+			</div>
+			<div class="dropdown-content">
+				<!-- <li [formGroup]="profileForm">
+					<ng-select formControlName="profileId" [items]="profiles" bindLabel="profileName" bindValue="id" fullWidth
+						[clearable]="false" title="{{checkTitle(profileForm.get('profileId').value)}}">
+						<ng-template ng-option-tmp let-item="item" maxlength="20">
+							<div title="{{item.profileName}}">{{item.profileName}}</div>
+						</ng-template>
+					</ng-select>
+				</li> -->
+				<!-- <li (click)="openDialogSearchFavorite()">Đánh dấu trang</li> -->
+				<li (click)="router.navigate(['auth/change-password'])">Đổi mật khẩu</li>
+				<li (click)="router.navigate(['auth/logout'])">Log out</li>
 			</div>
 		</div>
 	</div>

@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.themeService.changeTheme('default');
     this.loginForm = this.fb.group({
-      account: [null, Validators.required],
-      password: [null, Validators.required],
+      account: ['admin', Validators.required],
+      password: ['Mic2020#!@#@', Validators.required],
       rememberMe: [true],
       recaptchaReactive: ['', this.showCaptcha ? [ Validators.required] : []],
     });

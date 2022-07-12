@@ -12,8 +12,10 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const token = this.$localStorage.retrieve('authenticationToken') || this.$sessionStorage.retrieve('authenticationToken') || '';
+    console.log("token", token);
+    
     if (token === undefined || token === null || token === '') {
-      localStorage.clear();
+      // localStorage.clear();
       this.router.navigate(['/auth/login']);
       return false;
     }

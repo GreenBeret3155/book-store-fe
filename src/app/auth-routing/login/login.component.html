@@ -1,20 +1,7 @@
 <div class="row" style="width: 100%;height: 100%; margin-left: unset; margin-right: unset">
   <div class="image-left"></div>
   <div class="col" style="width: 40%; padding: 20px">
-    <h1 id="title" class="title custom-title">HỆ THỐNG THEO DÕI VÀ ĐÁNH GIÁ CÁC CHỈ SỐ PHÁT TRIỂN NGÀNH TT&TT</h1>
-    <!--<nb-alert *ngIf="showMessages.error && errors?.length && !submitted" outline="danger" role="alert">-->
-    <!--  <p class="alert-title"><b>Oh snap!</b></p>-->
-    <!--  <ul class="alert-message-list">-->
-    <!--    <li *ngFor="let error of errors" class="alert-message">{{ error }}</li>-->
-    <!--  </ul>-->
-    <!--</nb-alert>-->
-
-    <!--<nb-alert *ngIf="showMessages.success && messages?.length && !submitted" outline="success" role="alert">-->
-    <!--  <p class="alert-title"><b>Hooray!</b></p>-->
-    <!--  <ul class="alert-message-list">-->
-    <!--    <li *ngFor="let message of messages" class="alert-message">{{ message }}</li>-->
-    <!--  </ul>-->
-    <!--</nb-alert>-->
+    <h1 id="title" class="title custom-title">ADMIN PAGES</h1>
 
     <nb-alert outline="danger" *ngIf="authenticationError" closable (close)="onClose()">{{'login.failIn'|translate}}</nb-alert>
     <form [formGroup]="loginForm"  aria-labelledby="title">
