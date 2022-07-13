@@ -20,6 +20,11 @@ const routes: Routes = [{
         .then(m => m.UserManagementModule)
     },
     {
+      path: 'product-management',
+      loadChildren: () => import('../admin-pages/product-management/product-management.module')
+        .then(m => m.ProductManagementModule)
+    },
+    {
       path: 'chat-offline',
       loadChildren: () => import('../pages/chat-offline/chat-offline.module')
         .then(m => m.ChatOfflineModule),

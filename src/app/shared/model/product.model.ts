@@ -22,7 +22,9 @@ export interface IProductModel {
   thumbnailUrl?: string,
   quantity?:number,
   isSelected?:any,
-  cartId?:number
+  cartId?:number,
+  updateUser?:string,
+  updateTime?:Date
   }
   
   export class ProductModel implements IProductModel {
@@ -46,7 +48,9 @@ export interface IProductModel {
                 public thumbnailUrl?: string,
                 public quantity?:number,
                 public isSelected?:any,
-                public cartId?: number) {
+                public cartId?: number,
+                public updateUser?:string,
+                public updateTime?:Date) {
     }
   }
   

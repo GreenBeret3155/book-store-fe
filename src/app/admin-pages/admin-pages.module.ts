@@ -37,7 +37,7 @@ const NB_MODULES = [
 @NgModule({
   declarations: [
     AdminPagesComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     ...NB_MODULES,
