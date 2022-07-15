@@ -8,7 +8,7 @@
               <picture class="webpimg-container">
                 <source type="image/webp">
                 <img
-                  [src]="item?.thumbnailUrl"
+                  [src]="item?.thumbnailUrl | imagePathResolver"
                   [alt]="item?.name"
                   class="fWjUGo" style="width: 600px; z-index: 0;">
               </picture>

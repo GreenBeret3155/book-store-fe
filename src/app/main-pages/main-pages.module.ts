@@ -27,6 +27,7 @@ import { ListOrderInfoComponent } from './components/list-order-info/list-order-
 import { ComfirmOrderComponent } from './components/comfirm-order/comfirm-order.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { OrderPageItemHeaderComponent } from './components/order-page-item-header/order-page-item-header.component';
+import { ShareLibModuleModule } from '../share-lib-module/share-lib-module.module';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -67,6 +68,7 @@ const NB_MODULES = [
   ],
   imports: [
     ...NB_MODULES,
+    ShareLibModuleModule,
     CommonModule,
     MainPagesRoutingModule,
     ThemeModule,

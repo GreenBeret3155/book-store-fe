@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment'
 export enum ChartType {
   AREASPLINE = 'AREASPLINE',
   BAR_TIMELINE = 'BAR_TIMELINE',
@@ -78,6 +79,7 @@ export class Constants {
   static ORDER_STATE = ["Đang xử lý đơn hàng","Đã xác nhận đơn hàng","Đang giao hàng", "Giao hàng thành công", "Đơn hàng bị hủy"]
   static ORDER_STATE_ICON = ["rewind-right-outline","person-done-outline","cube-outline", "checkmark-circle-2-outline", "close-square-outline"]
   static ORDER_STATE_STATUS_COLOR = ["warning","info","primary", "success", "danger"]
+  static CDN_URL = `${environment.apiUrl}/get?f=`;
 }
 
 export enum CHART_MAP_CONST {

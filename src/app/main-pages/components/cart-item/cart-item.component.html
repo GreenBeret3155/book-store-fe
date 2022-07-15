@@ -8,13 +8,13 @@
               <input type="checkbox" [ngModel]="item.isSelected" (ngModelChange)="onCheckboxChange($event)"><span class="checkbox-fake"></span>
             </label>
           </div>
-          <a class="product__img" href="/product-p10866303.html?spid=20479476">
+          <a class="product__img">
             <picture class="webpimg-container">
-              <img [src]="item?.thumbnailUrl" [alt]="item?.name" class="WebpImg__StyledImg-sc-h3ozu8-0 fWjUGo" style="width: 100px; z-index: 0;">
+              <img [src]="item?.thumbnailUrl | imagePathResolver" [alt]="item?.name" class="WebpImg__StyledImg-sc-h3ozu8-0 fWjUGo" style="width: 100px; z-index: 0;">
             </picture>
           </a>
           <div class="product__content">
-            <a class="product__name" target="_blank" href="/product-p10866303.html?spid=20479476">{{item?.name}}</a>
+            <a class="product__name" target="_blank">{{item?.name}}</a>
           </div>
         </div>
       </div>
