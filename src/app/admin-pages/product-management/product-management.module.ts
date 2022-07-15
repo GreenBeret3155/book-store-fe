@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { PaginationModule } from '../../shared/components/pagination/pagination.module';
-import { NbActionsModule, NbButtonModule, NbCardModule, NbDialogModule, NbIconModule, NbInputModule, NbLayoutModule, NbSearchModule, NbSelectModule } from '@nebular/theme';
+import { NbActionsModule, NbButtonModule, NbCardModule, NbDialogModule, NbIconModule, NbInputModule, NbLayoutModule, NbSearchModule, NbSelectModule, NbToggleModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 
 const NB_MODULES = [
@@ -24,6 +24,7 @@ const NB_MODULES = [
   NbInputModule,
   NbCardModule,
   NbDialogModule.forChild(),
+  NbToggleModule
 ];
 
 @NgModule({

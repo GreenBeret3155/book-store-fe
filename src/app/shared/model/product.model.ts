@@ -23,6 +23,7 @@ export interface IProductModel {
   quantity?:number,
   isSelected?:any,
   cartId?:number,
+  status?:number,
   updateUser?:string,
   updateTime?:Date
   }
@@ -49,6 +50,7 @@ export interface IProductModel {
                 public quantity?:number,
                 public isSelected?:any,
                 public cartId?: number,
+                public status?:number,
                 public updateUser?:string,
                 public updateTime?:Date) {
     }

@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment'
 export enum ChartType {
   AREASPLINE = 'AREASPLINE',
   BAR_TIMELINE = 'BAR_TIMELINE',
@@ -74,6 +75,11 @@ export class Constants {
   static TYPE_INTEGER: string = 'TYPE_INTEGER';
   static TYPE_DATE: string = 'TYPE_DATE';
   static TYPE_TIME: string = 'TYPE_TIME';
+  static LIST_STATUS: any[] = [
+    {label: 'Hoạt động', value: 1},
+    {label: 'Không hoạt động', value: 0}
+  ];
+  static CDN_URL = `${environment.apiUrl}/get?f=`;
 }
 
 export enum CHART_MAP_CONST {

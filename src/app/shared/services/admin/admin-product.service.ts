@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
 import { createRequestOption } from '../../util/request-util';
 import { tap } from 'rxjs/operators';
+import { ProductModel } from '../../model/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,12 @@ export class AdminProductService {
 
   public getProductById(id: number): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/get-products/${id}`, {
+      observe: 'response'
+    });
+  }
+
+  public saveProduct(item: ProductModel): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/save-product`, item, {
       observe: 'response'
     });
   }

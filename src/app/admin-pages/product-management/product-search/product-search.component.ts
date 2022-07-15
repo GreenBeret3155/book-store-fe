@@ -1,12 +1,13 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NbDialogService, NbIconConfig, NbToastrService } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
 import { SessionStorageService } from 'ngx-webstorage';
 import { Page } from '../../../@core/model/page.model';
 import { ConfirmDialogComponent } from '../../../share-lib-module/confirm-dialog/confirm-dialog.component';
+import { Constants } from '../../../shared/common.constant';
 import { IProductModel } from '../../../shared/model/product.model';
 import { AdminProductService } from '../../../shared/services/admin/admin-product.service';
 
@@ -31,11 +32,13 @@ export class ProductSearchComponent implements OnInit {
   searchForm: FormGroup = this.fb.group({
     authorId: [null],
     categoryId: [null],
-    q: [null]
+    q: [null],
+    status: [1, Validators.required]
   });
   authors: any;
   categories: any;
   selected: any[] = [];
+  lstStatus = Constants.LIST_STATUS;
 
   constructor(
     private router: Router,
@@ -57,6 +60,7 @@ export class ProductSearchComponent implements OnInit {
     this.adminProductService.getAllCategories().subscribe(res => {
       this.categories = res.body;
     });
+    this.setPage({offset: 0});
   }
 
   onSelect({ selected }) {
@@ -77,7 +81,8 @@ export class ProductSearchComponent implements OnInit {
       size: this.page.size,
       authorId: this.searchForm.value.authorId,
       categoryId: this.searchForm.value.categoryId,
-      q: this.searchForm.value.q
+      q: this.searchForm.value.q,
+      status: this.searchForm.value.status
     }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad));
   }
 
@@ -91,13 +96,13 @@ export class ProductSearchComponent implements OnInit {
   new() {
     this.sessionStorageService.store('chartFilter', this.searchForm.getRawValue());
     this.sessionStorageService.store('chartPageInfo', this.page);
-    this.router.navigate([`/pages/dynamic-config/old-chart/chart/new`]);
+    this.router.navigate([`/admin-pages/product-management/new`]);
   }
 
   edit(event) {
     this.sessionStorageService.store('chartFilter', this.searchForm.getRawValue());
     this.sessionStorageService.store('chartPageInfo', this.page);
-    this.router.navigate([`/pages/dynamic-config/old-chart/chart/${event.id}/edit`]);
+    this.router.navigate([`/admin-pages/product-management/edit/${event.id}`]);
   }
   delete(row: any) {
     // const ref = this.dialogService.open(ConfirmDialogComponent, {

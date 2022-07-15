@@ -17,7 +17,7 @@
       </nb-card-header>
       <nb-card-body class="h-100">
         <form [formGroup]="searchForm" class="row">
-          <div class="col-lg-4">
+          <div class="col-lg-3">
             <div class="form-group">
               <label class="label">Tác giả</label>
               <ng-select [clearAllText]="'Xóa'" formControlName="authorId" [items]="authors" bindValue="id"
@@ -26,7 +26,7 @@
               </ng-select>
             </div>
           </div>
-          <!-- <div class="col-lg-4">
+          <!-- <div class="col-lg-3">
             <div class="form-group">
               <label class="label">Category</label>
               <ng-select
@@ -41,7 +41,7 @@
               </ng-select>
             </div>
           </div> -->
-          <div class="col-lg-4">
+          <div class="col-lg-3">
             <div class="form-group">
               <label class="label">Category</label>
               <ng-select [clearAllText]="'Xóa'" formControlName="categoryId" [items]="categories" bindLabel="name"
@@ -49,7 +49,14 @@
               </ng-select>
             </div>
           </div>
-          <div class="col-lg-4 form-group ">
+          <div class="col-lg-3 form-group">
+            <label class="label">Trạng thái<span class="text-danger ml-2">*</span></label>
+            <ng-select fullWidth appendTo="body"  [items]="lstStatus" bindLabel="label" bindValue="value"
+                      [clearable]="false" 
+                      formControlName="status">
+            </ng-select>
+          </div>
+          <div class="col-lg-3 form-group ">
             <label class="label">Tên sản phẩm</label>
             <input id="titleChart-input" nbInput fullWidth formControlName="q" trim="blur"
                    (keyup.enter)="page.pageNumber=0;setPage(page)" autofocus>

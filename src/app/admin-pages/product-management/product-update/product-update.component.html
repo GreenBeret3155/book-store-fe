@@ -1,2 +1,131 @@
-<img [src]="imageUrl" style="max-width: 500px;" >
-<input id="uploadBtn" type="file" class="upload" (change)="fileChange($event)"/>
+<form [formGroup]="productForm">
+  <nb-card>
+    <nb-card-header>{{isUpdate ? "Thêm mới sản phẩm" : "Chỉnh sửa sản phẩm" }}
+    </nb-card-header>
+    <nb-card-body>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="label">ID sản phẩm<span class="text-danger ml-2">*</span></label>
+            <input autofocus nbInput fullWidth class="form-control" [readOnly]="isReadOnly" formControlName="id" status="{{(productForm.get('id').invalid
+                 &&this.productForm.get('id')?.touched) ? 'danger' : null }}" trim="blur">
+            <!-- <ngx-inline-message [message]="'catGraphKpi.column.kpiId'" [formName]="productForm.get('kpiId')">
+            </ngx-inline-message> -->
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="label">Tên sản phẩm<span class="text-danger ml-2">*</span></label>
+            <input nbInput fullWidth class="form-control" formControlName="name" status="{{(this.productForm.get('name').invalid
+                 &&this.productForm.get('name')?.touched) ? 'danger' : null }}" trim="blur">
+            <!-- <ngx-inline-message [message]="'catGraphKpi.label.keyword'" [formName]="productForm.get('kpiName')">
+            </ngx-inline-message> -->
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="label">Hình ảnh sản phẩm<span class="text-danger ml-2">*</span></label>
+            <div style="margin-left: 20px; border: 2px dashed #8f9bb3;display: flex; justify-content: space-around; padding: 5px;">
+              <img [src]="imageUrl ? imageUrl : 'assets/images/noimage.png'" style="width: 400px;">
+              <input id="uploadBtn" type="file" class="upload" (change)="fileChange($event)" />
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="label">Tác giả</label>
+            <ng-select [clearAllText]="'Xóa'" formControlName="authorId" [items]="authors" bindValue="id"
+                       bindLabel="name">
+            </ng-select>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="label">Category</label>
+            <ng-select [clearAllText]="'Xóa'" formControlName="categoryId" [items]="categories" bindLabel="name"
+                       bindValue="id">
+            </ng-select>
+          </div>
+        </div>
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="label">Giá niêm yết<span class="text-danger ml-2">*</span></label>
+            <input nbInput fullWidth class="form-control" formControlName="price" status="{{(this.productForm.get('price').invalid
+                 &&this.productForm.get('price')?.touched) ? 'danger' : null }}" trim="blur">
+            <!-- <ngx-inline-message [message]="'catGraphKpi.column.kpiDisplay'" [formName]="productForm.get('kpiDisplay')">
+            </ngx-inline-message> -->
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="label">Giá gốc<span class="text-danger ml-2">*</span></label>
+            <input nbInput fullWidth class="form-control" formControlName="originalPrice" status="{{(this.productForm.get('originalPrice').invalid
+                 &&this.productForm.get('originalPrice')?.touched) ? 'danger' : null }}" trim="blur">
+            <!-- <ngx-inline-message [message]="'catGraphKpi.column.kpiDisplay'" [formName]="productForm.get('kpiDisplay')">
+            </ngx-inline-message> -->
+          </div>
+        </div>
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="label">Giá giảm<span class="text-danger ml-2">*</span></label>
+            <input nbInput fullWidth class="form-control" [readOnly]="isReadOnly" formControlName="discount" status="{{(this.productForm.get('discount').invalid
+                 &&this.productForm.get('discount')?.touched) ? 'danger' : null }}" trim="blur">
+            <!-- <ngx-inline-message [message]="'catGraphKpi.column.kpiDisplay'" [formName]="productForm.get('kpiDisplay')">
+            </ngx-inline-message> -->
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label class="label">Phần trăm giảm<span class="text-danger ml-2">*</span></label>
+            <input nbInput fullWidth class="form-control" [readOnly]="isReadOnly" formControlName="discountRate" status="{{(this.productForm.get('discountRate').invalid
+                 &&this.productForm.get('discountRate')?.touched) ? 'danger' : null }}" trim="blur">
+            <!-- <ngx-inline-message [message]="'catGraphKpi.column.kpiDisplay'" [formName]="productForm.get('kpiDisplay')">
+            </ngx-inline-message> -->
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <div class="form-group">
+            <label class="label" style="width: 100%">Trạng thái</label>
+            <nb-toggle id="status" fullWidth formControlName="status"></nb-toggle>
+            <!-- <ngx-inline-message [message]="'catGraphKpi.label.status' | translate"
+              [formName]="productForm.get('status')"></ngx-inline-message> -->
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="label">Mô tả ngắn</label>
+            <textarea rows="4" nbInput fullWidth class="form-control" formControlName="shortDescription" status="{{(this.productForm.get('shortDescription').invalid
+            &&this.productForm.get('shortDescription')?.touched) ? 'danger' : null }}" trim="blur"></textarea>
+            <!-- <ngx-inline-message [message]="'catGraphKpi.column.description'"
+              [formName]="productForm.get('description')">
+            </ngx-inline-message> -->
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="label">Mô tả</label>
+            <textarea rows="4" nbInput fullWidth class="form-control" formControlName="description" status="{{(this.productForm.get('description').invalid
+                 &&this.productForm.get('description')?.touched) ? 'danger' : null }}" trim="blur"></textarea>
+            <!-- <ngx-inline-message [message]="'catGraphKpi.column.description'"
+              [formName]="productForm.get('description')">
+            </ngx-inline-message> -->
+          </div>
+        </div>
+      </div>
+    </nb-card-body>
+    <nb-card-footer>
+      <div class=" row col-lg-12">
+        <div class="col-lg-1 form-group">
+          <button nbButton (click)="save()" [disabled]="productForm.invalid">Lưu lại</button>
+        </div>
+        <div class="col-lg-1 form-group">
+          <button nbButton (click)="cancel()">Hủy bỏ</button>
+        </div>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</form>
