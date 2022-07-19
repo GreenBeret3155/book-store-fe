@@ -28,12 +28,37 @@ export class ChatService {
     });
   }
 
+  getConversationByRoomId(roomId:number, req?) {
+    const options = createRequestOption(req);
+    return this.http.get<any>(`${environment.apiUrl}/room/conversation/${roomId}`, {
+      params: options,
+      observe: 'response'
+    });
+  }
+
+  getAllChatRoomsByUser(req?) {
+    const options = createRequestOption(req);
+    return this.http.get<any>(`${environment.apiUrl}/chat-rooms`, {
+      params: options,
+      observe: 'response'
+    });
+  }
+
+  getChatRoomsByRoomId(roomId: number, req?) {
+    const options = createRequestOption(req);
+    return this.http.get<any>(`${environment.apiUrl}/chat-room/${roomId}`, {
+      params: options,
+      observe: 'response'
+    });
+  }
+
+
   sortChatMessageModel(messages: ChatMessageModel[]) : void{
     messages.sort((a: ChatMessageModel, b: ChatMessageModel) => a.id > b.id ? 1 : -1);
   }
 
-  handleReceiveMessage(message: ChatMessageReceiveModel, currentUser: UserModel): ChatMessageModel{
-    if(message.senderId == -99) currentUser = BOT_USER;
+  handleReceiveMessage(message: ChatMessageReceiveModel, currentUser: UserModel, client: UserModel): ChatMessageModel{
+    // if(message.senderId == -99) currentUser = BOT_USER;
     let contentType : string = "text";
     switch (message.contentType){
       case 1:
@@ -44,13 +69,14 @@ export class ChatService {
         contentType = "file";
         break;
     }
+
     const isReply: boolean = message.senderId == currentUser.id ;
 
-    return new ChatMessageModel(message.id, message.content, message.createdAt, isReply, contentType, currentUser);
+    return new ChatMessageModel(message.id, message.content, message.createdAt, isReply, contentType, client);
   }
 
-  handleReceiveMessages(messages: ChatMessageReceiveModel[], currentUser: UserModel): ChatMessageModel[]{
-    const tranformed : ChatMessageModel[] = messages.map(e => this.handleReceiveMessage(e, currentUser));
+  handleReceiveMessages(messages: ChatMessageReceiveModel[], currentUser: UserModel, client: UserModel): ChatMessageModel[]{
+    const tranformed : ChatMessageModel[] = messages.map(e => this.handleReceiveMessage(e, currentUser, client));    
     return tranformed;
   }
 }

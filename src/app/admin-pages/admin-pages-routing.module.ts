@@ -25,9 +25,9 @@ const routes: Routes = [{
         .then(m => m.ProductManagementModule)
     },
     {
-      path: 'chat-offline',
-      loadChildren: () => import('../pages/chat-offline/chat-offline.module')
-        .then(m => m.ChatOfflineModule),
+      path: 'admin-chat',
+      loadChildren: () => import('./admin-chat/admin-chat.module')
+        .then(m => m.AdminChatModule),
     },
     {
       path: 'download-file/:link',

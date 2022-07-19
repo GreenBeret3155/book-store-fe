@@ -1,0 +1,124 @@
+<div class="row">
+  <nb-card class="col-lg-3 chat userChatList" style="padding-left: 0px;padding-right: 0px">
+    <nb-card-header class="position-relative" [formGroup]="searchForm">
+      <input type="text" nbInput fullWidth placeholder="Tìm kiếm" formControlName="userKeyword"
+             (keyup.enter)="getUsers(searchForm.value.userKeyword, true)">
+      <button nbButton status="primary" class="position-absolute" (click)="getUsers(searchForm.value.userKeyword, true)"
+              ghost
+              style=" right: 22px">
+        <nb-icon icon="search-outline" pack="eva" size="small"></nb-icon>
+      </button>
+      <button [outline]="false" ghost class="close-button" style="bottom: 14px!important;right: 50px!important;"
+              nbButton status="danger"
+              *ngIf="searchForm.value.userKeyword" (click)="searchForm.patchValue({
+              userKeyword: ''
+              })">
+        <nb-icon icon="close-outline"></nb-icon>
+      </button>
+    </nb-card-header>
+    <nb-list (scroll)="loadUserNext($event)">
+      <nb-list-item *ngFor="let user of showRooms" class="userChat "
+                    style="position: relative;padding-top: 10px!important;padding-bottom: 10px!important;"
+                    [ngClass]="{'selectedUser': (user?.client.id === roomSelected?.client.id)}">
+        <nb-user name="{{user?.client.login}}"
+                 (click)="selectRoom(user)"
+                 badgeStatus="danger"
+                 class="userList"
+                 title="{{user?.lastMessageContent}}"
+                 size="giant"
+                 [picture]="user?.client.avatar | imagePathResolver"
+                 badgePosition="bottom right"></nb-user>
+        <div class="sub-infor-date" style="padding-left: 49px;margin-top: -3px!important;"
+             *ngIf="user?.lastMessageTime || user?.lastMessageContent">
+          <span>{{user?.lastMessageTime | date:'short':'+0700'}}</span>
+        </div>
+        <!-- <span id="number-above-cart">{{user?.unreadAmount}}</span> -->
+        <!-- <span class="spanMessage" *ngIf="user?.numNotifyUnread">{{user?.numNotifyUnread}}</span> -->
+      </nb-list-item>
+    </nb-list>
+  </nb-card>
+  <div class="col-lg-9" style="position: relative">
+    <div class="option row">
+      <button ghost nbButton status="danger" title="Xóa tin nhắn" size="large">
+        <nb-icon icon="trash-2-outline">
+        </nb-icon>
+      </button>
+    </div>
+    <!-- <div class="row d-flex justify-content-center" style="position: absolute; top: 80px; right: 50%; z-index: 9999"
+         *ngIf="newMess && receiveUser?.numNotifyUnread > 0">
+      <label class="label" style="color: #a52626">Có {{receiveUser?.numNotifyUnread}} tin nhắn mới</label>
+    </div>
+    <div class="option row">
+      <div class="position-relative">
+        <input type="text" *ngIf="showSearch" nbInput placeholder="Tìm kiếm tin nhắn" [(ngModel)]="keywordMes"
+               (keydown.enter)="getMesssage(receiveUser, true , true , keywordMes)">
+        <button [outline]="false" ghost class="close-button" style="bottom: 5px!important;right: -12px!important;"
+                nbButton status="danger"
+                *ngIf="keywordMes" (click)="keywordMes = ''">
+          <nb-icon icon="close-outline"></nb-icon>
+        </button>
+      </div>
+      <button ghost nbButton title="{{showSearch? 'Ẩn tìm kiếm' : 'Hiện tìm kiếm'}}" size="large"
+              (click)="showSearch = !showSearch; keywordMes = '' " class="ml-2">
+        <nb-icon icon="search-outline">
+        </nb-icon>
+      </button>
+      <button ghost nbButton status="success" title="Refresh" size="large"
+              (click)="refresh()" class="ml-2">
+        <nb-icon icon="refresh-outline">
+        </nb-icon>
+      </button>
+      <button *ngIf="showOption && selectedMessage && !selectedMessage.hasDeleteMessage" ghost nbButton status="warning"
+              (click)="openForward(selectedMessage)" title="Chuyển tiếp" size="large">
+        <i class="fa fa-share" aria-hidden="true"></i>
+      </button>
+      <button ghost nbButton status="danger"
+              *ngIf="canDelete && showOption && selectedMessage && !selectedMessage.hasDeleteMessage"
+              (click)="deleteMessage(selectedMessage)" title="Xóa tin nhắn" size="large">
+        <nb-icon icon="trash-2-outline">
+        </nb-icon>
+      </button>
+    </div> -->
+    <!-- <input type="file" #chatFile style="display: none"
+           accept="image/png, image/jpeg ,  application/msword , application/pdf , application/vnd.openxmlformats-officedocument.spreadsheetml.sheet , application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+           (change)="uploadFile(chatFile.files)">
+    <nb-chat [nbSpinner]="isLoading" [scrollBottom]="scrollBot" class="chat" size="medium"
+             title="{{receiveUser?.username}}">
+      <nb-chat-message *ngFor="let message of messages; let i = index"
+                       (click)="openOption(message)"
+                       [type]="message?.type"
+                       [message]="message?.content"
+                       [avatar]="(message?.userIdSent !== currentUser?.id ) ? receiveUser?.avatar : message?.avatar"
+                       [showAvatar] = "( message?.userIdSent !== messages[i -1]?.userIdSent || i === 0)"
+                       [ngClass]="{'selectedMessage': true, 'active': (selectedMessage?.id === message.id) && !message.hasDeleteMessage , 'deleteMessage': (message?.hasDeleteMessage)}"
+                       [date]="message?.createDate"
+                       [showDate]="i!== 0 ? moment(message?.createDate).date() !== moment(messages[i - 1]?.createDate).date() : true"
+                       [url]="message?.url"
+                       [reply]="(message?.userIdSent !== currentUser?.id) ? false : true"
+                       [files]="message?.files"
+      >
+      </nb-chat-message>
+
+      <nb-chat-form #chatFormComponent [dropFiles]="false" [showButton]="false"
+                    (send)="sendMessage($event , chatFormComponent.droppedFiles , receiveUser)">
+      </nb-chat-form>
+    </nb-chat> -->
+    <!-- <label *ngIf="receiveUser?.timeNewest" style="position: absolute; top: 43px; left: 30px;z-index: 999"
+           class="label">{{receiveUser?.timeNewest|dateFormat}}</label>
+    <button nbButton (click)="chatFile.click() "
+            class="button-upload">
+      <nb-icon icon="attach-outline"></nb-icon>
+    </button>
+    <button [outline]="false" ghost class="close-button" style="" nbButton status="danger"
+            *ngIf="chatFormComponent.message" (click)="chatFormComponent.message = ''">
+      <nb-icon icon="close-outline"></nb-icon>
+    </button>
+    <button nbButton status="primary" *ngIf="showScrollBottom"
+            style="border-radius: 100%;width: 40px;height: 40px; position: absolute; right: 30px;bottom: 150px; padding: unset"
+            (click)="scrollToBot()">
+      <nb-icon icon="arrow-ios-downward-outline"></nb-icon>
+    </button> -->
+    
+    <ngx-chat-window  [chatRoom]="roomSelected" [userInfo]="roomSelected?.client"></ngx-chat-window>
+  </div>
+</div>

@@ -82,6 +82,11 @@ export class Constants {
   static CDN_URL = `${environment.apiUrl}/get?f=`;
 }
 
+export enum NOTIFICATION_TYPE_CONST {
+  NEW_ROOM = 1,
+  UPDATE_ROOM = 2
+}
+
 export enum CHART_MAP_CONST {
   BORER_SERIES = '#CCC',
   HOVER_SERIES_COLOR = '#BADA55',

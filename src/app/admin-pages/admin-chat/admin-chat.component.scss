@@ -1,0 +1,94 @@
+.spanMessage {
+  position: absolute;
+  top: 50%;
+  color: #ffffff;
+  background-color: rgba(255, 7, 7, 0.78);
+  padding: 5px;
+  right: 0%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  border-radius: 5px;
+  min-width: 35px;
+  text-align: center;
+}
+
+.active {
+  background-color: rgb(34, 46, 69);
+}
+
+.userList {
+  cursor: pointer;
+}
+
+.selectedMessage:hover {
+  background-color: rgb(34, 46, 69);
+}
+
+.option {
+  position: absolute;
+  right: 30px;
+  top: 13px;
+  z-index: 9;
+  background-color: #222b45;
+  //height: 50px;
+  //width: 97.55%;
+}
+
+.chat {
+  height: 75vh !important;
+}
+
+//.deleteMessage {
+//  .nb-theme-dark nb-chat-message.reply nb-chat-message-text .text {
+//    background-color: #9E9E9E;
+//    color: #1a1f33;
+//  }
+//}
+
+.sub-infor {
+  position: absolute;
+  left: 17%;
+  z-index: 9999;
+  bottom: 0;
+}
+.sub-infor-date  {
+
+}
+@media screen and (min-device-width: 720px) and (max-width: 1366px) {
+  .chat {
+    height: 65vh !important;
+  }
+  .sub-infor {
+    left: 27%;
+  }
+}
+
+.selectedUser {
+  background-color: gray;
+}
+
+.button-upload {
+  position: absolute !important;
+  left: 31px !important;
+  bottom: 46px !important;
+  background: #192038 !important;
+  border-color: #151a30 !important;
+  //border-left: unset!important;
+  border-top: unset !important;
+  border-bottom: unset !important;
+  border-right-color: #192038 !important;
+  border-left-color: #151a30 !important;
+  border-radius: unset !important;
+  box-shadow: none !important;
+}
+
+.close-button {
+  position: absolute;
+  right: 33px!important;
+  bottom: 45px!important;
+  outline: none!important;
+  box-shadow: none!important;
+  background: unset!important;
+  border: unset!important;
+}
+
