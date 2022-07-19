@@ -42,6 +42,8 @@ export class ProductSearchPageComponent implements OnInit {
   }
 
   onSuccess(data: any | null, headers: HttpHeaders, page: number): void {
+    console.log("X-Total-Count", Number(headers.get('X-Total-Count')));
+    
     this.page.totalElements = Number(headers.get('X-Total-Count')) || 154;
     this.page.totalPages = this.page.totalElements ? Math.floor(this.page.totalElements/this.page.size) + 1 : 0; 
     this.page.pageNumber = page || 0;

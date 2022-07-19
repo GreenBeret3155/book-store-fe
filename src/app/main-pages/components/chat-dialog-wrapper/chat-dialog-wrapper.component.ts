@@ -42,8 +42,11 @@ export class ChatDialogWrapperComponent implements OnInit {
       }
     },()=>{
       console.log("error get room");
-      
     })
+  }
+
+  handleClickCloseButtonEvent($event){
+    this.isShowChatDialog = !this.isShowChatDialog
   }
 
   sendMessage(message: any){

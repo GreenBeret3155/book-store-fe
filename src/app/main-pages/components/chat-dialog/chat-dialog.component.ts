@@ -1,6 +1,7 @@
-import { Component, Injectable, Input, OnInit, Type } from '@angular/core';
-import {Stomp} from '@stomp/stompjs';
+import { Component, EventEmitter, Injectable, Input, OnDestroy, OnInit, Output, Type } from '@angular/core';
+import { Stomp } from '@stomp/stompjs';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { fromEvent } from 'rxjs';
 import * as SockJS from 'sockjs-client';
 import { environment } from '../../../../environments/environment';
 import { ChatMessageModel, ChatMessageReceiveModel } from '../../../shared/model/chat-message.model';
@@ -13,12 +14,16 @@ import { ChatService } from '../../../shared/services/chat.service';
   templateUrl: './chat-dialog.component.html',
   styleUrls: ['./chat-dialog.component.scss']
 })
-export class ChatDialogComponent implements OnInit {
+export class ChatDialogComponent implements OnInit, OnDestroy {
   @Input() chatRoom: ChatRoomModel;
   @Input() userInfo: UserModel;
-  messages : any[] = [];
+  @Output() clickCloseButtonEvent: EventEmitter<any> = new EventEmitter<any>();
+  messages: ChatMessageModel[] = [];
   chatTitle: string = "Shop Bot";
-  constructor(private localStorage: LocalStorageService, 
+  isScrollBottom: boolean = true;
+  pageMessageCounter: number = 1;
+  isLoadedOlderMessageEmpty: boolean = false;
+  constructor(private localStorage: LocalStorageService,
     private sessionStorage: SessionStorageService,
     private chatService: ChatService) { }
 
@@ -26,12 +31,37 @@ export class ChatDialogComponent implements OnInit {
     this.getConversationAndConnectWs()
   }
 
-  title = 'grokonez';
-  description = 'Angular-WebSocket Demo';
+  ngOnDestroy(): void {
+    this.disconnect();
+  }
 
-  greetings: string[] = [];
+  ngAfterViewInit(): void {
+    fromEvent(Array.from(document.getElementsByClassName('scrollable')).slice(-1)[0], 'scroll')
+      .subscribe((e: Event) => {
+        let oldmessref = document.getElementsByTagName('nb-chat-message')[0] as HTMLElement | null
+        if (!oldmessref) return;
+        if (!(e.target as HTMLElement).scrollTop && !this.isLoadedOlderMessageEmpty) {
+          this.chatService.getConversation({
+            page: this.pageMessageCounter,
+            size: 20
+          }).subscribe((response) => {            
+            if (response.body && response.body.length) {
+              this.isScrollBottom = false;
+              this.loadMessages(response.body);
+              this.pageMessageCounter++;
+              (e.target as HTMLElement).scrollTop = oldmessref.offsetTop;
+            } else {
+              this.isLoadedOlderMessageEmpty = true;
+            }
+          })
+        }
+      });
+  }
+  onClickCloseButton(){
+    this.clickCloseButtonEvent.emit(1);
+  }
+
   disabled = true;
-  name: string;
   private stompClient = null;
 
   setConnected(connected: boolean) {
@@ -43,7 +73,7 @@ export class ChatDialogComponent implements OnInit {
   }
 
   connect() {
-    const token = this.localStorage.retrieve('authenticationToken') || this.sessionStorage.retrieve('authenticationToken');    
+    const token = this.localStorage.retrieve('authenticationToken') || this.sessionStorage.retrieve('authenticationToken');
     const socket = new SockJS(`${environment.apiWs}/ws?access_token=${token}`);
     this.stompClient = Stomp.over(socket);
 
@@ -67,22 +97,35 @@ export class ChatDialogComponent implements OnInit {
   }
 
 
-  getConversationAndConnectWs(){
-    // this.chatService.getConversation({
-    //   page: 0,
-    //   size: 20
-    // }).subscribe((response) => {
-    //   let conversation: ChatMessageReceiveModel[] = [];
-    //   let tranformed: ChatMessageModel[] = [];
-    //   conversation = response.body;
-    //   tranformed = this.chatService.handleReceiveMessages(conversation, this.userInfo);
-    //   this.chatService.sortChatMessageModel(tranformed);
-    //   this.messages = [...tranformed, ...this.messages];
-    //   this.connect();
-    // })
-    this.loadMessages();
+  getConversationAndConnectWs() {
+    this.chatService.getConversation({
+      page: 0,
+      size: 20
+    }).subscribe((response) => {
+      this.loadMessages(response.body);
+      this.connect();
+    })
   }
   sendMessage(event: any) {
+    // console.log(event);
+    // const files = !event.files ? [] : event.files.map((file) => {
+    //   return {
+    //     url: file.src,
+    //     type: file.type,
+    //     icon: 'file-text-outline',
+    //   };
+    // });
+
+    // this.messages.push({
+    //   text: event.message,
+    //   date: new Date(),
+    //   reply: true,
+    //   type: files.length ? 'file' : 'text',
+    //   user: {
+    //     lastName: 'Jonh Doe',
+    //     avatar: 'https://i.gifer.com/no.gif',
+    //   },
+    // });
     this.sendMessageToTopic(event)
   }
 
@@ -91,92 +134,27 @@ export class ChatDialogComponent implements OnInit {
       '/app/chat',
       {},
       JSON.stringify({
-        "chatRoomId":this.chatRoom.id,
-        "senderId":this.userInfo.id,
-        "contentType":1,
+        "chatRoomId": this.chatRoom.id,
+        "senderId": this.userInfo.id,
+        "contentType": 1,
         "content": event.message
       })
     );
   }
 
-  receiveMessageFromTopic(event: any){
+  receiveMessageFromTopic(event: any) {
     console.log(event);
     const currentMessage: ChatMessageReceiveModel = JSON.parse(new TextDecoder().decode(event._binaryBody));
-    console.log("1",currentMessage);
+    console.log("1", currentMessage);
     const newMessage: ChatMessageModel = this.chatService.handleReceiveMessage(currentMessage, this.userInfo);
     console.log("2", newMessage);
     this.messages.push(newMessage);
   }
 
-  readonly tableData = {
-    columns: [ 'First Name', 'Last Name', 'Age' ],
-    rows: [
-      { firstName: 'Robert', lastName: 'Baratheon', age: 46 },
-      { firstName: 'Jaime', lastName: 'Lannister', age: 31 },
-    ],
-  };
-
-  private loadMessages(): void {
-    this.messages = [
-      {
-        type: 'link',
-        text: 'Now you able to use links!',
-        customMessageData: {
-          href: 'https://akveo.github.io/nebular/',
-          text: 'Go to Nebular',
-        },
-        reply: false,
-        date: new Date(),
-        user: {
-          name: 'Frodo Baggins',
-          avatar: 'https://i.gifer.com/no.gif',
-        },
-      },
-      {
-        type: 'link',
-        customMessageData: {
-          href: 'https://akveo.github.io/ngx-admin/',
-          text: 'Go to ngx-admin',
-        },
-        reply: true,
-        date: new Date(),
-        user: {
-          name: 'Meriadoc Brandybuck',
-          avatar: 'https://i.gifer.com/no.gif',
-        },
-      },
-      {
-        type: 'button',
-        customMessageData: 'Click to scroll down',
-        reply: false,
-        date: new Date(),
-        user: {
-          name: 'Gimli Gloin',
-          avatar: '',
-        },
-      },
-      {
-        type: 'table',
-        text: `Now let's try to add a table`,
-        customMessageData: this.tableData,
-        reply: false,
-        date: new Date(),
-        user: {
-          name: 'Fredegar Bolger',
-          avatar: 'https://i.gifer.com/no.gif',
-        },
-      },
-      {
-        type: 'table',
-        text: `And one more table but now in the reply`,
-        customMessageData: this.tableData,
-        reply: true,
-        date: new Date(),
-        user: {
-          name: 'Fredegar Bolger',
-          avatar: 'https://i.gifer.com/no.gif',
-        },
-      },
-    ]
+  loadMessages(messages: ChatMessageReceiveModel[]) {
+    let tranformed: ChatMessageModel[] = [];
+    tranformed = this.chatService.handleReceiveMessages(messages, this.userInfo);
+    this.chatService.sortChatMessageModel(tranformed);
+    this.messages = [...tranformed, ...this.messages];
   }
 }

@@ -36,8 +36,8 @@ export class LoginDialogComponent implements OnInit {
   ngOnInit() {
     this.themeService.changeTheme('default');
     this.loginForm = this.fb.group({
-      account: ['admin', Validators.required],
-      password: ['Mic2020#!@#@', Validators.required],
+      account: ['user1', Validators.required],
+      password: ['hmhhmh', Validators.required],
       rememberMe: [true],
       recaptchaReactive: ['', this.showCaptcha ? [ Validators.required] : []],
     });
