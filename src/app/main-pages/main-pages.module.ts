@@ -28,6 +28,8 @@ import { ComfirmOrderComponent } from './components/comfirm-order/comfirm-order.
 import { OrderPageComponent } from './order-page/order-page.component';
 import { OrderPageItemHeaderComponent } from './components/order-page-item-header/order-page-item-header.component';
 import { ShareLibModuleModule } from '../share-lib-module/share-lib-module.module';
+import { OrderDetailPageComponent } from './order-detail-page/order-detail-page.component';
+import { PaymentResultPageComponent } from './payment-result-page/payment-result-page.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -65,6 +67,8 @@ const NB_MODULES = [
     ComfirmOrderComponent,
     OrderPageComponent,
     OrderPageItemHeaderComponent,
+    OrderDetailPageComponent,
+    PaymentResultPageComponent,
   ],
   imports: [
     ...NB_MODULES,

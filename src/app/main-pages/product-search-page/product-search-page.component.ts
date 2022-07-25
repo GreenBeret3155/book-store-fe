@@ -15,7 +15,7 @@ export class ProductSearchPageComponent implements OnInit {
   page = new Page();
   constructor(private productService : ProductService ) {
     this.page.pageNumber = 0;
-    this.page.size = 10;
+    this.page.size = 16;
   }
 
   ngOnInit() {

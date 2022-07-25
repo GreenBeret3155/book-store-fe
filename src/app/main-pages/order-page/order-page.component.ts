@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Constants } from '../../shared/common.constant';
 import { OrderService } from '../../shared/services/main/order.service';
 
@@ -9,8 +10,9 @@ import { OrderService } from '../../shared/services/main/order.service';
 })
 export class OrderPageComponent implements OnInit {
   orderDetails : any[];
-
-  constructor(private orderService: OrderService) { }
+  ORDER_STATE = Constants.ORDER_STATE
+  constructor(private orderService: OrderService,
+    protected router: Router,) { }
 
   ngOnInit() {
     this.orderService.getAllOrders().subscribe(res => {
@@ -23,14 +25,19 @@ export class OrderPageComponent implements OnInit {
   }
 
   getOrderStateStatusColor(state :number){
-    return Constants.ORDER_STATE_STATUS_COLOR[state];
+    return this.ORDER_STATE.find(e => e.type == state).color;
   }
 
   getOrderStateIcon(state :number){
-    return Constants.ORDER_STATE_ICON[state];
+    return this.ORDER_STATE.find(e => e.type == state).icon;
   }
 
   getOrderStateName(state :number){
-    return Constants.ORDER_STATE[state];
+    return this.ORDER_STATE.find(e => e.type == state).text;
+  }
+
+  navigateOrderDetailPage(id: number){
+    this.router.navigate([`/main-pages/order-detail/${id}`]);
+    return;
   }
 }

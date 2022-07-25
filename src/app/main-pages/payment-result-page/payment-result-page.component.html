@@ -1,0 +1,18 @@
+<div class="OEUxZ">
+  <div class="heading">
+    <span>Thanh toán đơn hàng #{{orderId}}</span>
+    <span class="split">-</span>
+    <span class="status">{{stateString}}</span>
+  </div>
+  <nb-card>
+    <nb-card-header>Kết quả giao dịch</nb-card-header>
+    <nb-card-body>
+      <p>Thời gian giao dịch: {{result?.responseTime| date:'short':'+0700'}}</p>
+      <p>Giá trị đơn hàng: {{result?.amount | currency: "VND"}}</p>
+      <p>Phương thức thanh toán: {{result?.payType}}</p>
+      <p>Định danh giao dịch: {{result?.transId}}</p>
+      <p>Kết quả giao dịch: {{result?.message}}</p>
+    </nb-card-body>
+  </nb-card>
+  <p>Đợi trong {{secondsCounter}} giây bạn sẽ được đưa về trang chi tiết đơn hàng, hoặc bấm vào <a [routerLink]="detailLink">đây</a></p>
+</div>

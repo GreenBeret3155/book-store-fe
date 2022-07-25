@@ -24,13 +24,19 @@ export class OrderService {
   }
 
   public getAllOrders(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/order-detail`, {
+    return this.http.get<any>(`${environment.apiUrl}/orders-detail`, {
       observe: 'response'
     });
   }
 
-  public clearCart(): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/cart/clear`, {
+  public getOrderDetailById(orderId: number): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/order-detail/${orderId}`, {
+      observe: 'response'
+    });
+  }
+
+  public checkTransaction(data:any): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/check-transaction`, data, {
       observe: 'response'
     });
   }

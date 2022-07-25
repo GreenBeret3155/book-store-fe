@@ -45,6 +45,9 @@
             <div class="button-group">
               <div *ngIf="canCancelOrder(orderDetail.order.state)">Hủy đơn hàng</div>
             </div>
+            <div class="button-group">
+              <div (click)="navigateOrderDetailPage(orderDetail.order.id)">Xem chi tiết</div>
+            </div>
           </div>
         </div>
       </nb-accordion-item-body>

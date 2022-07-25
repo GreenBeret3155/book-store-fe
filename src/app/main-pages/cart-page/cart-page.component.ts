@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ClearAllProducts, InitProduct, RefreshProduct } from '../../@core/actions/product.actions';
 import { AppState } from '../../app.state';
+import { Constants } from '../../shared/common.constant';
 import { OrderInfoModel } from '../../shared/model/order-info.model';
 import { ProductModel } from '../../shared/model/product.model';
 import { CartService } from '../../shared/services/main/cart.service';
@@ -31,6 +32,8 @@ export class CartPageComponent implements OnInit, AfterViewInit {
   totalDiscount : number = 0;
   totalQuantity : number = 0;
   isValidBuy: boolean = false;
+  paymentType: number;
+  PAYMENT_TYPE = Constants.PAYMENT_TYPE;
 
   constructor(private store: Store<AppState>,
     private router: Router,
@@ -86,12 +89,16 @@ export class CartPageComponent implements OnInit, AfterViewInit {
   }
 
   onClickBuy() {
+    if(!this.paymentType){
+      return ;
+    }
     this.dialogService.open(ComfirmOrderComponent, {
       backdropClass: 'dark-backdrop',
       context: {
         selectedProducts: this.cartService.transformProductsToOrder(this.products),
         selectedOrderInfo: this.selectedOrderInfo,
-        totalPrice: this.totalPrice
+        totalPrice: this.totalPrice,
+        paymentType: this.paymentType,
       }
     }).onClose.subscribe(res => {      
       if(res){
@@ -127,5 +134,9 @@ export class CartPageComponent implements OnInit, AfterViewInit {
     this.totalDiscount = tp - top;
     this.totalQuantity = tq;
     this.isValidBuy = this.totalPrice > 0;
+  }
+
+  onClickRadioPayment($event){
+    this.paymentType = $event.target.value;
   }
 }

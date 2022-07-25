@@ -122,10 +122,11 @@ p {
   margin-bottom: 12px;
 }
 
-.cTGPxG .block-header__title {
+.block-header__title {
   color: rgb(128, 128, 137);
   font-weight: normal;
   margin: 0px;
+  font-size: 1.5rem;
 }
 
 .cTGPxG .customer_info {
@@ -231,4 +232,17 @@ p {
 
 .remove-all:hover{
   cursor: pointer;
+}
+
+.bVA-DDf {
+  position: relative;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: rgb(255, 255, 255);
+}
+
+.IYkXU {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
 }

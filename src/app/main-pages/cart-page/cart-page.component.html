@@ -40,8 +40,8 @@
             <div class="flcp_container" style="border-radius: 4px;">
               <div class="Section__Container-sc-r6ysni-0 styles__StyledAddressBlock-sc-vgfrvy-0 bVA-DDf cTGPxG">
                 <div class="block-header">
-                  <h3 class="block-header__title">Giao tới</h3><a class="block-header__nav"
-                    (click)="onClickViewListOrderInfos()">Thay đổi</a>
+                  <h3 class="block-header__title">Giao tới</h3>
+                  <a class="block-header__nav" (click)="onClickViewListOrderInfos()">Thay đổi</a>
                 </div>
                 <div class="customer_info">
                   <p class="customer_info__name">{{selectedOrderInfo?.name}}</p><i></i>
@@ -51,6 +51,28 @@
               </div>
             </div>
           </div>
+
+          <div class="bVA-DDf gOWblv">
+            <h3 class="block-header__title">Hình thức thanh toán</h3>
+            <div class="kPqUSk">
+              <div *ngFor="let item of PAYMENT_TYPE">
+                <label class="IYkXU">
+                  <input type="radio" readonly="" name="payment-method" [value]="item.type"
+                    (change)="onClickRadioPayment($event)">
+                  <span class="radio-fake"></span>
+                  <span class="label">
+                    <div class="eydcWx">
+                      <img class="method-icon" [src]="item.icon" width="32" height="32" alt="icon">
+                      <div class="method-content">
+                        <div class="method-content__title"><span>{{item.text}}</span></div>
+                      </div>
+                    </div>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+
           <div class="iRKLRb">
             <ul class="prices__items">
               <li class="prices__item">
@@ -69,10 +91,9 @@
               </div>
             </div>
           </div>
-          <button [ngClass]="{'bsEPkA' : isValidBuy, 'disabled-bsEPkA' : !isValidBuy}" [disabled]="!isValidBuy" (click)="onClickBuy()"
-            >Mua Hàng ({{totalQuantity}})</button>
+          <button [ngClass]="{'bsEPkA' : isValidBuy, 'disabled-bsEPkA' : !isValidBuy}" [disabled]="!isValidBuy"
+            (click)="onClickBuy()">Mua Hàng ({{totalQuantity}})</button>
         </div>
       </div>
     </div>
   </div>
-</div>
