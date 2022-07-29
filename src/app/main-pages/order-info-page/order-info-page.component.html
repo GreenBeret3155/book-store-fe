@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="main-title">Quản lý thông tin đặt hàng cá nhân</div>
+  <div class="button-group-box">
+    <div class="button-group">
+      <div (click)="createNewOrderInfo()">+ Thêm thông tin mới</div>
+    </div>
+  </div>
+  <div class="table-box">
+    <ngx-datatable class="bootstrap" [columnMode]="'flex'" [rows]="orderInfos" [columns]="columns" rowHeight="auto"
+      [headerHeight]="50" [footerHeight]="0">
+      <ng-container *ngFor="let col of columns">
+        <ngx-datatable-column prop="{{col.prop}}" name="{{col.name}}" [flexGrow]="col.flexGrow">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            {{ column.name }}
+          </ng-template>
+          <ng-template let-value="value" let-rowIndex="rowIndex" ngx-datatable-cell-template let-row="row">
+            <ng-container [ngSwitch]="col.prop">
+              <ng-container *ngSwitchCase="'state'">
+                <button *ngIf="rowIndex != isSelectedItemIndex" nbButton class="p-1" status="primary" ghost
+                  title="'Chọn làm thông tin mặc định'" (click)="onSelectInfo(row)">
+                  <nb-icon icon="checkmark" pack="eva" size="tiny"></nb-icon>
+                </button>
+              </ng-container>
+              <ng-container *ngSwitchCase="'delete'">
+                <button nbButton class="p-1" status="danger" ghost title="'Xóa thông tin đặt hàng'"
+                  (click)="onDeleteInfo(row)">
+                  <nb-icon icon="trash-2-outline" pack="eva" size="tiny"></nb-icon>
+                </button>
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                <span [ngClass]="{'selected_info' : rowIndex === isSelectedItemIndex}">{{ value }}</span>
+              </ng-container>
+            </ng-container>
+          </ng-template>
+        </ngx-datatable-column>
+      </ng-container>
+    </ngx-datatable>
+  </div>
+</div>

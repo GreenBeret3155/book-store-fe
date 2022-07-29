@@ -48,6 +48,25 @@ export class OrderInfoService {
     });
   }
 
+  public createOrderInfo(data:OrderInfoModel): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/create-order-info`,data, {
+      observe: 'response'
+    });
+  }
+
+  public makeDefaultOrderInfo(id:number): Observable<any> {
+    const data = {'id': id}
+    return this.http.post<any>(`${environment.apiUrl}/default-order-info`,data, {
+      observe: 'response'
+    });
+  }
+
+  public deleteOrderInfo(id:number): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/order-info-delete/${id}`, {
+      observe: 'response'
+    });
+  }
+
   public clearCart(): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/cart/clear`, {
       observe: 'response'

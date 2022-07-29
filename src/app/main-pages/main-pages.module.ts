@@ -30,6 +30,9 @@ import { OrderPageItemHeaderComponent } from './components/order-page-item-heade
 import { ShareLibModuleModule } from '../share-lib-module/share-lib-module.module';
 import { OrderDetailPageComponent } from './order-detail-page/order-detail-page.component';
 import { PaymentResultPageComponent } from './payment-result-page/payment-result-page.component';
+import { ChatBotDialogComponent } from './components/chat-bot-dialog/chat-bot-dialog.component';
+import { OrderInfoPageComponent } from './order-info-page/order-info-page.component';
+import { AddOrderInfoDialogComponent } from './components/add-order-info-dialog/add-order-info-dialog.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -69,6 +72,9 @@ const NB_MODULES = [
     OrderPageItemHeaderComponent,
     OrderDetailPageComponent,
     PaymentResultPageComponent,
+    ChatBotDialogComponent,
+    OrderInfoPageComponent,
+    AddOrderInfoDialogComponent,
   ],
   imports: [
     ...NB_MODULES,
@@ -86,6 +92,6 @@ const NB_MODULES = [
     PaginationModule
   ],
   exports:[],
-  entryComponents:[ListOrderInfoComponent, ComfirmOrderComponent]
+  entryComponents:[ListOrderInfoComponent, ComfirmOrderComponent, AddOrderInfoDialogComponent]
 })
 export class MainPagesModule { }

@@ -14,7 +14,6 @@ export class ListOrderInfoComponent implements OnInit , OnChanges{
   isSelectedItemIndex: number = 0;
   readonly columns = [
     {name: 'Tên người đặt hàng', prop: 'name', flexGrow: 1},
-    {name: 'Email', prop: 'email', flexGrow: 1},
     {name: 'Địa chỉ đặt hàng', prop: 'address', flexGrow: 3},
     {name: 'Số điện thoại đặt hàng', prop: 'phone', flexGrow: 1},
     {name: 'Chọn thông tin', prop: 'state', flexGrow: 0.75}

@@ -1,0 +1,46 @@
+<form [formGroup]="infoForm">
+  <nb-card>
+    <nb-card-header class="d-flex">
+      Danh sách thông tin đặt hàng
+      <button class="ml-auto p-2" nbButton hero status="primary" (click)="dismiss()">
+        <nb-icon icon="close-outline"></nb-icon>
+      </button>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="label">Tên người nhận<span class="text-danger ml-2">*</span></label>
+            <input nbInput fullWidth class="form-control" formControlName="name" status="{{(this.infoForm.get('name').invalid
+               &&this.infoForm.get('name')?.touched) ? 'danger' : null }}" trim="blur">
+            <!-- <ngx-inline-message [message]="'catGraphKpi.label.keyword'" [formName]="infoForm.get('kpiName')">
+          </ngx-inline-message> -->
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="label">Số điện thoại người nhận<span class="text-danger ml-2">*</span></label>
+            <input nbInput fullWidth class="form-control" formControlName="phone" status="{{(this.infoForm.get('phone').invalid
+               &&this.infoForm.get('phone')?.touched) ? 'danger' : null }}" trim="blur">
+            <!-- <ngx-inline-message [message]="'catGraphKpi.label.keyword'" [formName]="infoForm.get('kpiName')">
+          </ngx-inline-message> -->
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="label">Địa chỉ nhận hàng</label>
+            <textarea rows="4" nbInput fullWidth class="form-control" formControlName="address" status="{{(this.infoForm.get('address').invalid
+               &&this.infoForm.get('address')?.touched) ? 'danger' : null }}" trim="blur"></textarea>
+            <!-- <ngx-inline-message [message]="'catGraphKpi.column.description'" [formName]="infoForm.get('address')">
+          </ngx-inline-message> -->
+          </div>
+        </div>
+      </div>
+      <div class="button-group-box">
+        <div class="button-group">
+          <div (click)="save()">Lưu lại</div>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</form>

@@ -1,0 +1,19 @@
+.container {
+  height: 400px;
+  position: fixed;
+  z-index: 9999;
+  bottom: 175px;
+  right: 16px;
+}
+
+.option {
+  position: absolute;
+  right: 30px;
+  top: 5px;
+  z-index: 9;
+}
+
+nb-chat {
+  width: 100%;
+  position: absolute;
+}

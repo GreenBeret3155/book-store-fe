@@ -10,53 +10,29 @@ import { UserModel } from '../../../shared/model/user.model';
 import { ChatService } from '../../../shared/services/chat.service';
 
 @Component({
-  selector: 'ngx-chat-dialog',
-  templateUrl: './chat-dialog.component.html',
-  styleUrls: ['./chat-dialog.component.scss']
+  selector: 'ngx-chat-bot-dialog',
+  templateUrl: './chat-bot-dialog.component.html',
+  styleUrls: ['./chat-bot-dialog.component.scss']
 })
-export class ChatDialogComponent implements OnInit, OnDestroy {
+export class ChatBotDialogComponent implements OnInit {
+
   @Input() chatRoom: ChatRoomModel;
   @Input() userInfo: UserModel;
   @Output() clickCloseButtonEvent: EventEmitter<any> = new EventEmitter<any>();
   messages: ChatMessageModel[] = [];
-  chatTitle: string = "Shop Bot";
-  isScrollBottom: boolean = true;
-  pageMessageCounter: number = 1;
-  isLoadedOlderMessageEmpty: boolean = false;
+  chatTitle: string = "Trò chuyện cùng Bot";
   constructor(private localStorage: LocalStorageService,
     private sessionStorage: SessionStorageService,
     private chatService: ChatService) { }
 
   ngOnInit() {
-    this.getConversationAndConnectWs()
+    this.connect();
   }
 
   ngOnDestroy(): void {
     this.disconnect();
   }
 
-  ngAfterViewInit(): void {
-    fromEvent(Array.from(document.getElementsByClassName('scrollable')).slice(-1)[0], 'scroll')
-      .subscribe((e: Event) => {
-        let oldmessref = document.getElementsByTagName('nb-chat-message')[0] as HTMLElement | null
-        if (!oldmessref) return;
-        if (!(e.target as HTMLElement).scrollTop && !this.isLoadedOlderMessageEmpty) {
-          this.chatService.getConversation({
-            page: this.pageMessageCounter,
-            size: 20
-          }).subscribe((response) => {            
-            if (response.body && response.body.length) {
-              this.isScrollBottom = false;
-              this.loadMessages(response.body);
-              this.pageMessageCounter++;
-              (e.target as HTMLElement).scrollTop = oldmessref.offsetTop;
-            } else {
-              this.isLoadedOlderMessageEmpty = true;
-            }
-          })
-        }
-      });
-  }
   onClickCloseButton(){
     this.clickCloseButtonEvent.emit(1);
   }
@@ -65,11 +41,6 @@ export class ChatDialogComponent implements OnInit, OnDestroy {
   private stompClient = null;
 
   setConnected(connected: boolean) {
-    // this.disabled = !connected;
-
-    // if (connected) {
-    //   this.greetings = [];
-    // }
   }
 
   connect() {
@@ -79,9 +50,8 @@ export class ChatDialogComponent implements OnInit, OnDestroy {
 
     this.stompClient.connect({}, (frame) => {
       this.setConnected(true);
-      console.log('Connected: ' + frame);
 
-      this.stompClient.subscribe(`/user/${this.chatRoom.id}/queue/messages`, (content) => {
+      this.stompClient.subscribe(`/user/${this.chatRoom.id}/bot/messages`, (content) => {
         this.receiveMessageFromTopic(content);
       });
     });
@@ -96,23 +66,13 @@ export class ChatDialogComponent implements OnInit, OnDestroy {
     console.log('Disconnected!');
   }
 
-
-  getConversationAndConnectWs() {
-    this.chatService.getConversation({
-      page: 0,
-      size: 20
-    }).subscribe((response) => {
-      this.loadMessages(response.body);
-      this.connect();
-    })
-  }
   sendMessage(event: any) {
     this.sendMessageToTopic(event)
   }
 
   sendMessageToTopic(event) {
     this.stompClient.send(
-      '/app/chat',
+      '/app/chat-bot',
       {},
       JSON.stringify({
         "chatRoomId": this.chatRoom.id,
@@ -130,12 +90,5 @@ export class ChatDialogComponent implements OnInit, OnDestroy {
     const newMessage: ChatMessageModel = this.chatService.handleReceiveMessage(currentMessage, this.userInfo);
     console.log("2", newMessage);
     this.messages.push(newMessage);
-  }
-
-  loadMessages(messages: ChatMessageReceiveModel[]) {
-    let tranformed: ChatMessageModel[] = [];
-    tranformed = this.chatService.handleReceiveMessages(messages, this.userInfo);
-    this.chatService.sortChatMessageModel(tranformed);
-    this.messages = [...tranformed, ...this.messages];
   }
 }

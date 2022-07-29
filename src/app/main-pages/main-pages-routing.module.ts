@@ -9,6 +9,7 @@ import { OrderService } from '../shared/services/main/order.service';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { MainPagesComponent } from './main-pages.component';
 import { OrderDetailPageComponent } from './order-detail-page/order-detail-page.component';
+import { OrderInfoPageComponent } from './order-info-page/order-info-page.component';
 import { OrderPageComponent } from './order-page/order-page.component';
 import { PaymentResultPageComponent } from './payment-result-page/payment-result-page.component';
 import { ProductDetailPageComponent } from './product-detail-page/product-detail-page.component';
@@ -64,6 +65,10 @@ const routes: Routes = [{
     {
       path: 'order',
       component: OrderPageComponent,
+    },
+    {
+      path: 'order-info',
+      component: OrderInfoPageComponent,
     },
     {
       path: 'order-detail/:id',

@@ -45,7 +45,7 @@ export class ChatService {
         break;
     }
     const isReply: boolean = message.senderId == currentUser.id ;
-
+    
     return new ChatMessageModel(message.id, message.content, message.createdAt, isReply, contentType, currentUser);
   }
 

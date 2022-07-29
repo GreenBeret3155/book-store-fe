@@ -18,8 +18,11 @@ export class ChatDialogWrapperComponent implements OnInit {
   userInfo: UserModel;
   userInfoStore :Observable<UserModel>;
   isShowChatDialog: boolean = false;
+  isShowChatBotDialog: boolean = false;
   chatRoom : ChatRoomModel
   messages: any[];
+  position:string = '16px'
+  position2:string = '300px'
   constructor(
     private chatService: ChatService,
     private store: Store<AppState>
@@ -38,7 +41,22 @@ export class ChatDialogWrapperComponent implements OnInit {
     this.chatService.getRoomId().subscribe((response) => {
       this.chatRoom = response.body
       if(this.chatRoom.id && this.userInfo && this.userInfo.id){
-        this.isShowChatDialog = !this.isShowChatDialog
+        this.isShowChatBotDialog = false;
+        this.isShowChatDialog = !this.isShowChatDialog;
+        this.position2 = '1525px'
+      }
+    },()=>{
+      console.log("error get room");
+    })
+  }
+
+  onClickChatBotButton(){
+    this.chatService.getRoomId().subscribe((response) => {
+      this.chatRoom = response.body
+      if(this.chatRoom.id && this.userInfo && this.userInfo.id){
+        this.isShowChatDialog = false;
+        this.isShowChatBotDialog = !this.isShowChatBotDialog;
+        this.position = '1525px'
       }
     },()=>{
       console.log("error get room");
@@ -47,11 +65,17 @@ export class ChatDialogWrapperComponent implements OnInit {
 
   handleClickCloseButtonEvent($event){
     this.isShowChatDialog = !this.isShowChatDialog
+    this.resetPosition()
   }
 
-  sendMessage(message: any){
-    console.log(message);
-    
+  handleClickCloseButtonEvent2(){
+    this.isShowChatBotDialog = !this.isShowChatBotDialog
+    this.resetPosition()
+  }
+
+  resetPosition(){
+    this.position = '16px';
+    this.position2 = '300px';
   }
 
 }
