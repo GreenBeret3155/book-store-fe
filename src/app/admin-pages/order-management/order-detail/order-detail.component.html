@@ -1,0 +1,85 @@
+<div class="OEUxZ">
+  <div class="heading">
+    <span>Chi tiết đơn hàng #{{order?.order.id}}</span>
+    <span class="split">-</span>
+    <span class="status">{{stateString}}</span>
+  </div>
+  <div class="created-date">Ngày đặt hàng: {{order?.order.orderTime | date:'short':'+0700'}}</div>
+  <div class="cRRvpz">
+    <div class="gQjSfs">
+      <div class="title">Địa chỉ người nhận</div>
+      <div class="content">
+        <p class="name">{{order?.info.name}}</p>
+        <p class="address"><span>Địa chỉ: </span>{{order?.info.address}}</p>
+        <p class="phone"><span>Điện thoại: </span>{{order?.info.phone}}</p>
+      </div>
+    </div>
+    <!-- <div class="styles__StyledSection-sc-ri73gr-1 gQjSfs">
+      <div class="title">Hình thức giao hàng</div>
+      <div class="content">
+        <p><img src="https://frontend.tikicdn.com/_desktop-next/static/img/icons/tikinow/tiki-now-15@2x.png" width="58"
+            alt="TikiNow"> <span> Giao Siêu Tốc</span></p>
+        <p>Giao trước 11:00 ngày 21/07/2022</p>
+        <p>Được giao bởi TikiNOW Smart Logistics (giao từ Hà Nội)</p>
+        <p>Phí vận chuyển: 19.000đ</p>
+      </div>
+    </div> -->
+    <div class="gQjSfs">
+      <div class="title">Hình thức thanh toán</div>
+      <div class="content">
+        <p class="">{{paymentItem.text}}</p>
+        <p class="cc-info description orange">{{order?.order.message}}</p>
+      </div>
+    </div>
+    <div class="gQjSfs">
+      <div class="title">Trạng thái đơn hàng</div>
+      <div class="content">
+        <div *ngFor="let item of order?.trace">
+          <p>{{item.updateTime | date:'short':'+0700'}} - {{getStateString(item.state)}} - {{item.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="styles__StyledProductList-sc-ri73gr-3 Nbknf">
+    <thead>
+      <tr>
+        <th>Sản phẩm</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+        <th>Giảm giá</th>
+        <th>Tạm tính</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of order?.items">
+        <td>
+          <div class="product-item"><img
+              [src]="item?.thumbnailUrl | imagePathResolver"
+              alt="Sau Tang Lễ">
+            <div class="product-info">
+              <a class="product-name" href="/product-p187827433.html?spid=187827435">{{item.name}}</a>
+            </div>
+          </div>
+        </td>
+        <td class="price">{{item.price | currency: "VND"}}</td>
+        <td class="quantity">{{item.quantity}}</td>
+        <td class="discount-amount">{{item.discount | currency: "VND"}}</td>
+        <td class="raw-total">{{item.totalPrice | currency: "VND"}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <!-- <tr>
+        <td colspan="4"><span>Tạm tính</span></td>
+        <td>111.650 ₫</td>
+      </tr> -->
+      <!-- <tr>
+        <td colspan="4"><span>Phí vận chuyển</span></td>
+        <td>19.000 ₫</td>
+      </tr> -->
+      <tr>
+        <td colspan="4"><span>Tổng cộng</span></td>
+        <td><span class="sum">{{order?.orderValue | currency: "VND"}}</span></td>
+      </tr>
+    </tfoot>
+  </table><a class="view-list-order" routerLink="/main-pages/order">&lt;&lt; Quay lại đơn hàng của tôi</a>
+</div>

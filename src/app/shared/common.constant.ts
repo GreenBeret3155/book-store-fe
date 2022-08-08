@@ -80,6 +80,20 @@ export class Constants {
     {label: 'Không hoạt động', value: 0}
   ];
   static CDN_URL = `${environment.apiUrl}/get?f=`;
+  static PAYMENT_TYPE = [
+    { type: 1, icon: "assets/images/logo/payment-cod.svg", text: "Thanh toán tiền mặt khi nhận hàng" },
+    { type: 2, icon: "https://frontend.tikicdn.com/_desktop-next/static/img/icons/checkout/icon-payment-method-viettelmoney.png", text: "Thanh toán bằng Viettel Money" },
+    { type: 3, icon: "assets/images/logo/payment-momo.svg", text: "Thanh toán bằng ví MoMo" }
+  ];
+
+  static ORDER_STATE = [{type: 0, icon: "pie-chart-outline", text: "Đợi thanh toán", color: "warning" },
+    {type: 1, icon: "rewind-right-outline", text: "Đang xử lý đơn hàng", color: "warning" },
+    {type: 2, icon: "checkmark-circle-2-outline", text: "Đã thanh toán", color: "warning" },
+    {type: 3, icon: "close-square-outline", text: "Đơn hàng bị hủy", color: "danger" },
+    {type: 4, icon: "person-done-outline", text: "Đã xác nhận đơn hàng", color: "info" },
+    {type: 5, icon: "cube-outline", text: "Đang giao hàng", color: "primary" },
+    {type: 6, icon: "car-outline", text: "Giao hàng thành công", color: "success" },
+  ];
 }
 
 export enum NOTIFICATION_TYPE_CONST {
