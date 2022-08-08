@@ -19,7 +19,7 @@ export class ChatDialogComponent implements OnInit, OnDestroy {
   @Input() userInfo: UserModel;
   @Output() clickCloseButtonEvent: EventEmitter<any> = new EventEmitter<any>();
   messages: ChatMessageModel[] = [];
-  chatTitle: string = "Shop Bot";
+  chatTitle: string = "Nhân viên hỗ trợ";
   isScrollBottom: boolean = true;
   pageMessageCounter: number = 1;
   isLoadedOlderMessageEmpty: boolean = false;

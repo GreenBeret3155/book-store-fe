@@ -50,10 +50,11 @@ export class ChatBotDialogComponent implements OnInit {
 
     this.stompClient.connect({}, (frame) => {
       this.setConnected(true);
-
+      this.sendMessage({message: '/restart'});
       this.stompClient.subscribe(`/user/${this.chatRoom.id}/bot/messages`, (content) => {
         this.receiveMessageFromTopic(content);
       });
+      this.initMessage();
     });
   }
 
@@ -90,5 +91,10 @@ export class ChatBotDialogComponent implements OnInit {
     const newMessage: ChatMessageModel = this.chatService.handleReceiveMessage(currentMessage, this.userInfo);
     console.log("2", newMessage);
     this.messages.push(newMessage);
+  }
+
+  initMessage(){
+    
+    this.sendMessage({message: '/help'});
   }
 }
