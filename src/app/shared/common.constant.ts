@@ -95,6 +95,9 @@ export class Constants {
     {type: 5, icon: "cube-outline", text: "Đang giao hàng", color: "primary" },
     {type: 6, icon: "car-outline", text: "Giao hàng thành côn", color: "success" },
   ];
+  static ORDER_STATE_NUMBER = {
+    DA_HUY : 3
+  }
 }
 
 export enum CHART_MAP_CONST {

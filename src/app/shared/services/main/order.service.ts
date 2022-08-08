@@ -41,8 +41,8 @@ export class OrderService {
     });
   }
 
-  public delete(data: any): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/action/delete`, data, {
+  public changeOrderState(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/order-detail/state`, data, {
       observe: 'response'
     });
   }

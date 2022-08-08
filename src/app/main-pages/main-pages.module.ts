@@ -33,6 +33,7 @@ import { PaymentResultPageComponent } from './payment-result-page/payment-result
 import { ChatBotDialogComponent } from './components/chat-bot-dialog/chat-bot-dialog.component';
 import { OrderInfoPageComponent } from './order-info-page/order-info-page.component';
 import { AddOrderInfoDialogComponent } from './components/add-order-info-dialog/add-order-info-dialog.component';
+import { DescriptionDialogComponent } from './components/description-dialog/description-dialog.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -75,6 +76,7 @@ const NB_MODULES = [
     ChatBotDialogComponent,
     OrderInfoPageComponent,
     AddOrderInfoDialogComponent,
+    DescriptionDialogComponent,
   ],
   imports: [
     ...NB_MODULES,
@@ -92,6 +94,6 @@ const NB_MODULES = [
     PaginationModule
   ],
   exports:[],
-  entryComponents:[ListOrderInfoComponent, ComfirmOrderComponent, AddOrderInfoDialogComponent]
+  entryComponents:[ListOrderInfoComponent, ComfirmOrderComponent, AddOrderInfoDialogComponent, DescriptionDialogComponent]
 })
 export class MainPagesModule { }

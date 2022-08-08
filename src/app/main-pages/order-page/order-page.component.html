@@ -43,7 +43,7 @@
           <p class="title-p">Thời gian đặt hàng: {{orderDetail.order.orderTime | date:'short':'+0700'}}</p>
           <div class="button-group-box">
             <div class="button-group">
-              <div *ngIf="canCancelOrder(orderDetail.order.state)">Hủy đơn hàng</div>
+              <div *ngIf="canCancelOrder(orderDetail.order.state)" (click)="onCancelOrderClick(orderDetail.order.id)">Hủy đơn hàng</div>
             </div>
             <div class="button-group">
               <div (click)="navigateOrderDetailPage(orderDetail.order.id)">Xem chi tiết</div>
