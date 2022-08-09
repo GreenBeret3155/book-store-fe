@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {SharedModule} from '../../shared/shared.module';
 import {CommonModule} from '@angular/common';
 import {
+  NbAlertModule,
   NbButtonModule,
   NbCardModule,
   NbCheckboxModule, NbDatepickerModule, NbDialogModule,
@@ -24,9 +25,10 @@ import {ShareLibModuleModule} from '../../share-lib-module/share-lib-module.modu
 import {ConfirmDialogComponent} from '../../share-lib-module/confirm-dialog/confirm-dialog.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {ToasterModule} from 'angular2-toaster';
+import { AdminChangePasswordComponent } from './admin-change-password/admin-change-password.component';
 
 @NgModule({
-  declarations: [UserManagementComponent, UserConfigComponent, UserConfigUpdateComponent],
+  declarations: [UserManagementComponent, UserConfigComponent, UserConfigUpdateComponent, AdminChangePasswordComponent],
   imports: [
     ShareLibModuleModule,
     CommonModule,
@@ -42,6 +44,7 @@ import {ToasterModule} from 'angular2-toaster';
     NbListModule,
     NgSelectModule,
     NbToggleModule,
+    NbAlertModule,
     FormsModule,
     ReactiveFormsModule,
     NbInputModule,
@@ -61,7 +64,8 @@ import {ToasterModule} from 'angular2-toaster';
   ],
   entryComponents: [
     ConfirmDialogComponent,
-    UserConfigUpdateComponent
+    UserConfigUpdateComponent,
+    AdminChangePasswordComponent
   ]
 })
 export class UserManagementModule {}

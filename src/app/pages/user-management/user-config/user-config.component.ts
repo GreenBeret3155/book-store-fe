@@ -13,6 +13,8 @@ import {ToasterConfig, ToasterService} from 'angular2-toaster';
 import {TranslateService} from '@ngx-translate/core';
 import {UserConfigUpdateComponent} from '../user-config-update/user-config-update.component';
 import {DashboardService} from '../../../shared/services/dashboard.service';
+import { ChangePasswordComponent } from '../../../auth-routing/change-password/change-password.component';
+import { AdminChangePasswordComponent } from '../admin-change-password/admin-change-password.component';
 
 @Component({
   selector: 'ngx-user-config',
@@ -36,8 +38,7 @@ export class UserConfigComponent implements OnInit, AfterViewInit {
     {name: 'user.column.email', prop: 'email', flexGrow: 1},
     {name: 'user.column.status', prop: 'activated', flexGrow: 1},
     {name: 'user.column.phoneNumber', prop: 'phone', flexGrow: 1},
-    {name: 'user.column.authoritiesName', prop: 'authoritiesName', flexGrow: 1},
-    {name: 'user.column.domainCode', prop: 'domainCode', flexGrow: 1},
+    {name: 'user.column.authoritiesName', prop: 'authorities', flexGrow: 1},
     {name: 'user.column.createDate', prop: 'createdDate', flexGrow: 1},
     {name: 'user.column.active', prop: 'action_btn', flexGrow: 1}
   ];
@@ -46,11 +47,9 @@ export class UserConfigComponent implements OnInit, AfterViewInit {
   data: IUser[];
   userForm: FormGroup = this.fb.group({
     authorities: [null],
-    domains: [null],
     keyword: [null]
   });
   authorities: any[];
-  domainData: any[];
   toasterConfig: ToasterConfig = new ToasterConfig({
     animation: 'flyRight',
     newestOnTop: true
@@ -76,9 +75,6 @@ export class UserConfigComponent implements OnInit, AfterViewInit {
     })
     this.userService.authorities().subscribe(authorities => {
       this.authorities = authorities
-    });
-    this.catItemServiceService.fetch(CategoryId.DOMAIN).subscribe(domains => {
-      this.domainData = domains
     });
     this.setPage(this.page);
   }
@@ -139,19 +135,11 @@ export class UserConfigComponent implements OnInit, AfterViewInit {
   }
 
   resetPassword(user) {
-    const dialog = this.dialogService.open(ConfirmDialogComponent, {
+    const dialog = this.dialogService.open(AdminChangePasswordComponent, {
       autoFocus: true,
       context: {
-        message: 'Bạn có chắc chắn reset mật khẩu người dùng này không?'
+        name: user.login,
       },
-    });
-    dialog.onClose.subscribe(res => {
-      if (res) {
-        this.userService.resetPass(user).subscribe( () => {
-          this.toasterService.pop('success', 'Thông báo', this.translate.instant('requestPassword.requestPasswordSuccess'));
-          this.setPage(this.page);
-        })
-      }
     });
   }
 

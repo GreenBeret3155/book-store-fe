@@ -71,20 +71,17 @@
             <div class="form-group">
               <label class="label">{{'user.column.role'|translate}}<span class="text-danger ml-2">*</span></label>
 
-              <ng-select id="authoritiesId" [selectableGroup]="true" [closeOnSelect]="false"
-                         multiple="true"
-                         formControlName="authorities" appendTo="body">
-                <ng-option fullWidth *ngFor="let item of itemRoles" [value]="item.id">{{ item.name }}</ng-option>
-              </ng-select>
-
+              <ng-select fullWidth appendTo="body" [closeOnSelect]="false" [items]="authorities"
+                     bindLabel="name"
+                     bindValue="id"
+                     formControlName="authorities"
+                     multiple="true"
+                     placeholder="{{'global.select.placeholder' |translate}}"
+                     notFoundText="{{'global.select.notFoundText' |translate}}"
+                     clearAllText="{{'global.select.clearAllText' |translate}}"
+              ></ng-select>
               <ngx-inline-message [message]="'user.column.role'" [formName]="userInfo.get('authorities')">
               </ngx-inline-message>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="form-group">
-              <label class="label" style="width: 100%">{{'user.column.getAlerted'|translate}}</label>
-              <nb-toggle id="alarmLeaderId" fullWidth formControlName="alarmLeader"></nb-toggle>
             </div>
           </div>
 
@@ -94,21 +91,6 @@
               <nb-toggle id="activatedId" fullWidth formControlName="activated"></nb-toggle>
             </div>
           </div>
-
-          <div class="col-lg-4">
-            <div class="form-group">
-              <label class="label">{{'user.column.domain'|translate}}<span class="text-danger ml-2">*</span></label>
-
-              <ng-select id="domainsId" [selectableGroup]="true" [closeOnSelect]="false" [items]="domainData"
-                         multiple="true" bindLabel="itemName" bindValue="itemValue"
-                         formControlName="domains" appendTo="body">
-              </ng-select>
-
-              <ngx-inline-message [message]="'user.column.domain'" [formName]="userInfo.get('domains')">
-              </ngx-inline-message>
-            </div>
-          </div>
-
 
           <div class="col-lg-4" *ngIf="user === null || user === undefined">
             <div class="form-group">

@@ -19,4 +19,8 @@ export class AuthService {
   public requestResetPasswordComplete(body?: any): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/account/reset-password/finish`, body);
   }
+
+  public adminChangePass(body?: any): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/users/adminChangePass`, body);
+  }
 }

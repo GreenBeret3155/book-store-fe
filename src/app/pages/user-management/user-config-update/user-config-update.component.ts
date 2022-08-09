@@ -21,8 +21,6 @@ export class UserConfigUpdateComponent implements OnInit {
   @Input() user: User;
   languages: Language[];
   authorities: any[];
-  domainData: any[];
-  itemRoles;
   userInfo: FormGroup = this.fb.group({
     id: [null],
     login: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), onlyCharacterValidator(/^[a-zA-Z0-9_]{1,}$/)]],
@@ -33,10 +31,8 @@ export class UserConfigUpdateComponent implements OnInit {
     phone: ['', [Validators.required, Validators.maxLength(11), Validators.pattern('^[0-9]*')]],
     email: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
     activated: [true],
-    alarmLeader: [false],
     langKey: ['', Validators.required],
     authorities: [null, Validators.required],
-    domains: [null]
   }, {
     validators: this.MustMatch('password', 'confirmPassword')
   });
@@ -58,13 +54,8 @@ export class UserConfigUpdateComponent implements OnInit {
     this.userService.authorities().subscribe(authorities => {
       this.authorities = authorities
     });
-    this.roleService.getAllRole().subscribe(value => this.itemRoles = value.body);
     this.languages = this.getAll();
     this.userInfo.get('langKey').patchValue(this.languages[0].langKey);
-
-    this.catItemServiceService.fetch(CategoryId.DOMAIN).subscribe(domains => {
-      this.domainData = domains
-    });
 
     if (this.user !== undefined && this.user !== null) {
       this.userInfo = this.fb.group({
@@ -77,10 +68,8 @@ export class UserConfigUpdateComponent implements OnInit {
         phone: ['', [Validators.required, Validators.maxLength(11), Validators.pattern('^[0-9]*')]],
         email: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
         activated: [true],
-        alarmLeader: [false],
         langKey: ['', Validators.required],
         authorities: [null, Validators.required],
-        domains: [null]
       });
       this.userService.find(this.user.login).subscribe(res => {
         this.userInfo.patchValue(res.body);

@@ -23,5 +23,14 @@
     "backToLogin": "Đăng nhập",
     "requestPasswordTitle": "Yêu cầu lại mật khẩu",
     "requestPasswordSuccess": "Reset mật khẩu thành công, vui lòng kiểm tra email"
+  },
+  "adminChangePass": {
+    "password": "Mật khẩu",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "btnChange": "Đổi mật khẩu",
+    "changePassTitle": "Đổi mật khẩu",
+    "changePassSuccess": "Đổi mật khẩu thành công",
+    "requestPasswordSuccessEmail": "Email đã được gửi tới mail ",
+    "requestPasswordSuccess": ". Vui lòng kiểm tra hòm mail"
   }
 }
