@@ -12,6 +12,7 @@ import { debounceTime } from 'rxjs/operators';
 import { CartService } from '../../../shared/services/main/cart.service';
 import { InitProduct } from '../../../@core/actions/product.actions';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { RegisterDialogComponent } from '../../../auth-routing/register-dialog/register-dialog.component';
 
 @Component({
   selector: 'ngx-main-header',
@@ -65,7 +66,6 @@ export class MainHeaderComponent implements OnInit {
     if (token !== undefined && token !== null && token !== '') {
       this.accountService.identity().subscribe(res => {
         if (res) {
-          console.log("User", res);
           this.user = res;
           this.store.dispatch(new AddUser(res));
         };
@@ -82,6 +82,18 @@ export class MainHeaderComponent implements OnInit {
         this.onInitUser();
         this.store.dispatch(new AddUser(userInfo))
       }
+    });
+  }
+
+  onOpenRegisterDialog() {
+    const dialogNew = this.dialogService.open(RegisterDialogComponent, {
+      hasBackdrop: true,
+      closeOnBackdropClick: false
+    });
+    dialogNew.onClose.subscribe(data => {
+      // if (data.result !== undefined &&  'complete' === data.result) {
+      //   this.search();
+      // }
     });
   }
 

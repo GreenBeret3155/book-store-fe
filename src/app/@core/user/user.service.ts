@@ -69,5 +69,8 @@ export class UserService {
   updateStatusMultiple(user: any): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/users/updateStatusMultiple`, user);
   }
+
+  register(body?: any): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/register`, body, {observe: 'response' });
+  }
 }
-5

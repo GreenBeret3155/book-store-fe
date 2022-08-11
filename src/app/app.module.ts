@@ -55,6 +55,7 @@ import { LoginDialogComponent } from './auth-routing/login-dialog/login-dialog.c
 import { StoreModule } from '@ngrx/store';
 import { productReducer } from './@core/reducers/product.reducer';
 import { userReducer } from './@core/reducers/user.reducer';
+import { RegisterDialogComponent } from './auth-routing/register-dialog/register-dialog.component';
 
 
 registerLocaleData(vi, 'vi-VI', viEt);
@@ -64,7 +65,7 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, LogoutComponent, ChangePasswordComponent, RequestPasswordComponent, RequestPasswordCompleteComponent, LoginDialogComponent],
+  declarations: [AppComponent, LoginComponent, LogoutComponent, ChangePasswordComponent, RequestPasswordComponent, RequestPasswordCompleteComponent, LoginDialogComponent, RegisterDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -108,7 +109,7 @@ export function createTranslateLoader(http: HttpClient) {
       defaultLanguage: 'vi'
     })
   ],
-  entryComponents: [WarningDialogComponent, UserForwardComponent, UploadDialogComponent, ImageViewComponent, ViewChartFavoriteComponent, LoginDialogComponent],
+  entryComponents: [WarningDialogComponent, UserForwardComponent, UploadDialogComponent, ImageViewComponent, ViewChartFavoriteComponent, LoginDialogComponent, RegisterDialogComponent],
   bootstrap: [AppComponent],
   providers: [{provide: LOCALE_ID, useValue: 'vi-VI'}, DecimalPipe,
     {

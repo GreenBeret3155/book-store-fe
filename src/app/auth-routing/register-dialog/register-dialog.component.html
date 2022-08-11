@@ -1,0 +1,90 @@
+<div class="user-update-dialog">
+  <form [formGroup]="userInfo">
+    <nb-card>
+      <nb-card-header class="d-flex">
+        Form đăng ký
+        <button class="ml-auto p-2" nbButton hero status="primary" (click)="dismiss()">
+          <nb-icon icon="close-outline"></nb-icon>
+        </button>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label class="label">{{'user.column.account'|translate}}<span class="text-danger ml-2">*</span></label>
+              <input nbInput fullWidth class="form-control" formControlName="login" trim="blur">
+              <ngx-inline-message [message]="'user.column.account'" [formName]="userInfo.get('login')">
+              </ngx-inline-message>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label class="label">{{'user.column.email'|translate}}</label>
+              <input nbInput fullWidth class="form-control" formControlName="email" trim="blur">
+              <ngx-inline-message [message]="'user.column.email'" [formName]="userInfo.get('email')">
+              </ngx-inline-message>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label class="label">{{'user.column.phoneNumber'|translate}}<span
+                class="text-danger ml-2">*</span></label>
+              <input nbInput fullWidth class="form-control" formControlName="phone" trim="blur">
+              <ngx-inline-message [message]="'user.column.phoneNumber'" [formName]="this.userInfo.get('phone')">
+              </ngx-inline-message>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label class="label">{{'user.column.firstName'|translate}}<span class="text-danger ml-2">*</span></label>
+              <input nbInput fullWidth class="form-control" formControlName="lastName" trim="blur">
+              <ngx-inline-message [message]="'user.column.firstName'" [formName]="userInfo.get('lastName')">
+              </ngx-inline-message>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label class="label">{{'user.column.lastName'|translate}}<span class="text-danger ml-2">*</span></label>
+              <input nbInput fullWidth class="form-control" formControlName="firstName" trim="blur">
+              <ngx-inline-message [message]="'user.column.lastName'" [formName]="this.userInfo.get('firstName')">
+              </ngx-inline-message>
+            </div>
+          </div>
+
+          <div class="col-lg-4" *ngIf="user === null || user === undefined">
+            <div class="form-group">
+              <label class="label">{{'user.column.password'|translate}}<span class="text-danger ml-2">*</span></label>
+              <input *ngIf="user === null || user === undefined" id="passwordId" nbInput fullWidth type="password"
+                     class="form-control" formControlName="password"
+                     trim="blur">
+              <ngx-inline-message *ngIf="user === null || user === undefined" [message]="'user.column.password'"
+                                  [formName]="userInfo.get('password')">
+              </ngx-inline-message>
+            </div>
+          </div>
+          <div class="col-lg-4" *ngIf="user === null || user === undefined">
+            <div class="form-group">
+              <label class="label">{{'user.column.confirmPassword'|translate}}<span
+                class="text-danger ml-2">*</span></label>
+              <input *ngIf="user === null || user === undefined" id="confirmPasswordId" nbInput fullWidth
+                     type="password" class="form-control"
+                     formControlName="confirmPassword" trim="blur">
+              <ngx-inline-message *ngIf="user === null || user === undefined" [message]="'user.column.confirmPassword'"
+                                  [formName]="userInfo.get('confirmPassword')">
+              </ngx-inline-message>
+            </div>
+          </div>
+
+        </div>
+        <div class="row mt-3">
+          <div class="col-12 text-center">
+            <button nbButton size="small" (click)="onSave()"
+                    [disabled]="userInfo.invalid">Đăng ký ngay</button>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </form>
+</div>
