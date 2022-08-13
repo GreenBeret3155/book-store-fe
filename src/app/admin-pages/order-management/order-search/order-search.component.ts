@@ -9,6 +9,7 @@ import { Page } from '../../../@core/model/page.model';
 import { Constants } from '../../../shared/common.constant';
 import { AdminOrderService } from '../../../shared/services/admin/admin-order.service';
 import { AdminProductService } from '../../../shared/services/admin/admin-product.service';
+import { NextStateDialogComponent } from '../next-state-dialog/next-state-dialog.component';
 
 @Component({
   selector: 'ngx-order-search',
@@ -20,7 +21,7 @@ export class OrderSearchComponent implements OnInit {
   page = new Page();
   orders= [];
   columns = [
-    {name: '', prop: 'checkbox', flewGrow: 0.3},
+    // {name: '', prop: 'checkbox', flewGrow: 0.3},
     {name: 'Mã đơn hàng', prop: 'id', flexGrow: 0.5},
     {name: 'Trạng thái', prop: 'state', flexGrow: 1},
     {name: 'Giá trị đơn hàng', prop: 'amount', flexGrow: 1},
@@ -35,6 +36,7 @@ export class OrderSearchComponent implements OnInit {
   });
   selected: any[] = [];
   lstStatus = Constants.ORDER_STATE;
+  pageToLoad:number;
 
   constructor(
     private router: Router,
@@ -58,16 +60,18 @@ export class OrderSearchComponent implements OnInit {
     this.selected.push(...selected);
   }
 
-  setPage(pageInfo) {
-    const pageToLoad: number = pageInfo.offset || pageInfo.pageNumber;
+  setPage(pageInfo?:any) {
+    if(pageInfo){
+      this.pageToLoad = pageInfo.offset || pageInfo.pageNumber;
+    }
     this.adminOrderService.query({
       id: this.searchForm.value.id,
       state: this.searchForm.value.state
     },
     {
-      page: pageToLoad,
+      page: this.pageToLoad,
       size: this.page.size,
-    }).subscribe(res => this.onSuccess(res.body, res.headers, pageToLoad));
+    }).subscribe(res => this.onSuccess(res.body, res.headers, this.pageToLoad));
   }
 
   protected onSuccess(data: any | null, headers: HttpHeaders, pageIdx: number): void {
@@ -87,8 +91,39 @@ export class OrderSearchComponent implements OnInit {
     return this.lstStatus.find(e => e.type == input).text
   }
 
-  nextState(){
+  getNextState(input: any){
+    this.adminOrderService.getNextState({id: input.id}).subscribe(res => {
+      this.dialogService.open(NextStateDialogComponent, {
+        backdropClass: 'dark-backdrop',
+        context: {
+          nextState : res.body,
+          order: input
+        }
+      }).onClose.subscribe(response => {      
+        if(response){
+          response['orderId'] = input.id;
+          this.adminOrderService.nextState(response).subscribe(resp => {
+            this.notiSuccess(resp.body.message);
+            this.setPage();
+          }, error =>{
+            this.notiFail(JSON.stringify(error));
+          })
+        }
+      })
+    }, err => {
+      console.log(err);
+      this.notiFail(err.error.message);
+    })
+  }
 
+  notiSuccess(message?:string){
+    this.toasterService.success(message ? message : "Hành động thành công","Thành công");
+    return;
+  }
+
+  notiFail(message?:string){
+    this.toasterService.danger(message ? message : "Hành động thất bại", "Thất bại");
+    return;
   }
 
   delete(row: any) {

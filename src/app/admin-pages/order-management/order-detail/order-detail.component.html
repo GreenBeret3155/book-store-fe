@@ -28,7 +28,7 @@
       <div class="title">Hình thức thanh toán</div>
       <div class="content">
         <p class="">{{paymentItem.text}}</p>
-        <p class="cc-info description orange">{{order?.order.message}}</p>
+        <!-- <p class="cc-info description orange">{{order?.order.message}}</p> -->
       </div>
     </div>
     <div class="gQjSfs">
@@ -54,8 +54,7 @@
       <tr *ngFor="let item of order?.items">
         <td>
           <div class="product-item"><img
-              [src]="item?.thumbnailUrl | imagePathResolver"
-              alt="Sau Tang Lễ">
+              [src]="item?.thumbnailUrl | imagePathResolver">
             <div class="product-info">
               <a class="product-name" href="/product-p187827433.html?spid=187827435">{{item.name}}</a>
             </div>

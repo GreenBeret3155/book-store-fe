@@ -1,0 +1,52 @@
+<form [formGroup]="infoForm">
+  <nb-card>
+    <nb-card-header class="d-flex">
+      Chuyển trạng thái đơn hàng
+      <button class="ml-auto p-2" nbButton hero status="primary" (click)="dismiss()">
+        <nb-icon icon="close-outline"></nb-icon>
+      </button>
+    </nb-card-header>
+    <nb-card-body>
+      <p><b>Trạng thái cũ :</b> {{getStateByType(order.state).text}}</p>
+      <b>Chọn trạng thái mới :</b>
+      <div class="container" *ngFor="let item of nextStateItems;let i = index">
+        <label class="IYkXU">
+          <input type="radio" readonly="" name="payment-method" [value]="item.type" [checked]="i==0 ? 'checked' : '' "
+            (change)="onClickRadioChoice($event)">
+          <span class="label">
+            <div class="eydcWx">
+              <nb-icon [icon]="getOrderStateIcon(item.type)"
+              [status]="getOrderStateStatusColor(item.type)"></nb-icon>
+              <div class="method-content">
+                <div class="method-content__title"><span>{{item.text}}</span></div>
+              </div>
+            </div>
+          </span>
+        </label>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="label">Lý do chuyển trạng thái<span class="text-danger ml-2">*</span></label>
+            <!-- <input nbInput fullWidth class="form-control" formControlName="description" status="{{(this.infoForm.get('description').invalid
+               &&this.infoForm.get('description')?.touched) ? 'danger' : null }}" trim="blur"> -->
+            <textarea rows="4" nbInput fullWidth class="form-control" formControlName="description" status="{{(this.infoForm.get('description').invalid &&this.infoForm.get('description')?.touched) ? 'danger' : null }}" trim="blur"></textarea>
+            <!-- <ngx-inline-message [message]="'catGraphKpi.label.keyword'" [formName]="infoForm.get('kpiName')">
+          </ngx-inline-message> -->
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="label">Thông tin thêm</label>
+            <textarea rows="4" nbInput fullWidth class="form-control" formControlName="content" status="{{(this.infoForm.get('content').invalid &&this.infoForm.get('content')?.touched) ? 'danger' : null }}" trim="blur"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="button-group-box">
+        <div class="button-group">
+          <div (click)="save()">Lưu lại</div>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</form>

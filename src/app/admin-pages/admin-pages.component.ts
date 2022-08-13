@@ -88,9 +88,8 @@ export class AdminPagesComponent implements OnInit {
   // ];
 
   ngOnInit() {
-    this.moduleStore.subscribe(e => {
+    this.moduleStore.subscribe(e => {      
       const moduleItems = this.menuService.transformModuleItems(e);
-      console.log(moduleItems);
       this.menuItems = moduleItems;
     })
   }

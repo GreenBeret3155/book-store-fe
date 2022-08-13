@@ -29,18 +29,6 @@ const routes: Routes = [
   //   loadChildren: () => import('../app/pages/pages.module')
   //     .then(m => m.PagesModule),
   // },
-  
-  {
-    canActivate: [],
-    path: 'main-pages',
-    data: {
-      // authorities: ['ROLE_ADMIN', 'ROLE_USER'],
-      breadcrumb: {label: 'Trang chủ'}
-    },
-      // canActivate: [UserRouteAccessService],
-    loadChildren: () => import('../app/main-pages/main-pages.module')
-      .then(m => m.MainPagesModule),
-  },
   {
     canActivate: [],
     path: 'admin-pages',

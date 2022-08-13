@@ -24,7 +24,6 @@ export class MenuService {
       e.title = e.name;
       return e;
     })
-    console.log(a);
     return a;
   }
 
@@ -32,8 +31,6 @@ export class MenuService {
     let items = _.clone(input);
     input.forEach(e => {
       if(e.parentId){
-        console.log(e);
-        
         items = items.map(element => {
           if(element.id == e.parentId){
             element.children = element.children ? [...element.children, e] : [e]

@@ -13,6 +13,7 @@ import { NbActionsModule, NbButtonModule, NbCardModule, NbDialogModule, NbIconMo
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { ShareLibModuleModule } from '../../share-lib-module/share-lib-module.module';
+import { NextStateDialogComponent } from './next-state-dialog/next-state-dialog.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -29,7 +30,7 @@ const NB_MODULES = [
 ];
 
 @NgModule({
-  declarations: [OrderManagementComponent, OrderSearchComponent, OrderDetailComponent],
+  declarations: [OrderManagementComponent, OrderSearchComponent, OrderDetailComponent, NextStateDialogComponent],
   imports: [
     ...NB_MODULES,
     CommonModule,
@@ -41,6 +42,7 @@ const NB_MODULES = [
     PaginationModule,
     OrderManagementRoutingModule,
     ShareLibModuleModule
-  ]
+  ],
+  entryComponents:[NextStateDialogComponent]
 })
 export class OrderManagementModule { }

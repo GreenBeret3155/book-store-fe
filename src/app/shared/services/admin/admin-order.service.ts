@@ -33,6 +33,18 @@ export class AdminOrderService {
     });
   }
 
+  public getNextState(item: any): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/order-detail/get-next-state`, item, {
+      observe: 'response'
+    });
+  }
+
+  public nextState(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/order-detail/next`, data, {
+      observe: 'response'
+    });
+  }
+
   // public changePass(body?: any): Observable<any> {
   //   return this.http.post<any>(`${environment.apiUrl}/users/changePass`, body);
   // }

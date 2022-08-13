@@ -94,12 +94,12 @@
                   </ng-container>
                   <ng-container *ngSwitchCase="'action_btn'" class="text-right">
                     <div>
-                      <button class="p-1" nbButton status="danger" ghost
+                      <!-- <button class="p-1" nbButton status="danger" ghost
                               title="Hủy đơn hàng" (click)="delete(row)">
                         <nb-icon icon="trash-2-outline" pack="eva" size="tiny"></nb-icon>
-                      </button>
+                      </button> -->
                       <button class="p-1" nbButton status="success" ghost
-                              title="Chuyển tiếp trạng thái" (click)="nextState(row)">
+                              title="Chuyển tiếp trạng thái" (click)="getNextState(row)">
                         <nb-icon icon="arrowhead-right-outline" pack="eva" size="tiny"></nb-icon>
                       </button>
                       <button class="p-1" nbButton status="warning" ghost
