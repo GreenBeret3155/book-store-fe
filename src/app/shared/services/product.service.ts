@@ -12,7 +12,7 @@ export class ProductService {
   constructor(private http: HttpClient) {
   }
 
-  public getAllAction(req?: any): Observable<any> {
+  public getAllProducts(req?: any): Observable<any> {
     const options = createRequestOption(req);
     return this.http.get<any>(`${environment.apiUrl}/get-products`, {
       params: options,
@@ -22,6 +22,12 @@ export class ProductService {
 
   public getProductById(id: number): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/get-products/${id}`, {
+      observe: 'response'
+    });
+  }
+
+  public getAllCategories(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/categories/leaf`, {
       observe: 'response'
     });
   }

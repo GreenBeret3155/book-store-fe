@@ -23,6 +23,12 @@ export class OrderService {
     });
   }
 
+  public payOrder(data) {
+    return this.http.post<any>(`${environment.apiUrl}/pay`, data, {
+      observe: 'response'
+    });
+  }
+
   public getAllOrders(): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/orders-detail`, {
       observe: 'response'
@@ -37,6 +43,12 @@ export class OrderService {
 
   public checkTransaction(data:any): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/check-transaction`, data, {
+      observe: 'response'
+    });
+  }
+
+  public cancelOrder(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/order-detail/cancel`, data, {
       observe: 'response'
     });
   }

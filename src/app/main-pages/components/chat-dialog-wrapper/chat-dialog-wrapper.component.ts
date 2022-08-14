@@ -32,7 +32,6 @@ export class ChatDialogWrapperComponent implements OnInit {
 
   ngOnInit() {
     this.userInfoStore.subscribe((userInfo: UserModel) => {
-      console.log(userInfo);
       this.userInfo = userInfo;
     })
   }

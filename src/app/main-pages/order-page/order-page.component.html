@@ -46,6 +46,9 @@
               <div *ngIf="canCancelOrder(orderDetail.order.state)" (click)="onCancelOrderClick(orderDetail.order.id)">Hủy đơn hàng</div>
             </div>
             <div class="button-group">
+              <div *ngIf="canPay(orderDetail.order.state)" (click)="onClickPay(orderDetail.order.id)">Thanh toán đơn hàng</div>
+            </div>
+            <div class="button-group">
               <div (click)="navigateOrderDetailPage(orderDetail.order.id)">Xem chi tiết</div>
             </div>
           </div>

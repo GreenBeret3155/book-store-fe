@@ -30,7 +30,7 @@ export class OrderPageComponent implements OnInit {
   }
 
   canCancelOrder(state: number){
-    return state!= 3 && state != -1 && state != 2;
+    return Constants.LIST_STATE_DUOC_HUY.includes(state);
   }
 
   onCancelOrderClick(orderId: number){
@@ -46,10 +46,8 @@ export class OrderPageComponent implements OnInit {
   }
 
   cancelOrder(orderId: number, description: string){    
-    this.orderService.changeOrderState({
-      newState: Constants.ORDER_STATE_NUMBER.DA_HUY,
-      orderId: orderId,
-      description: description
+    this.orderService.cancelOrder({
+      id: orderId,
     }).subscribe(res => {
       if(res.body && res.body.status){
         this.onNotificationSuccess(res.body.message);
@@ -58,6 +56,28 @@ export class OrderPageComponent implements OnInit {
         this.onNotificationFailed(res.body.message);
       }
     })
+  }
+
+  canPay(state: number){
+    return state == 0;
+  }
+
+  onClickPay(orderId: number){
+    const data = {
+      id: orderId
+    }
+    this.orderService.payOrder(data).subscribe(res => {
+      if(res.body.order && res.body.order.id && res.body.paymentResponse){
+        if(res.body.paymentResponse && !res.body.paymentResponse.resultCode && res.body.paymentResponse.payUrl){
+          this.goToLink(res.body.paymentResponse.payUrl);
+        } else {
+          this.onPayOrderFail(JSON.stringify(res.body));
+        }
+        // this.router.navigate([`/main-pages/order-detail/${res.body.order.id}`])
+      }
+    }, err => {
+      this.onPayOrderFail(JSON.stringify(err));
+    });
   }
 
   getOrderStateStatusColor(state :number){
@@ -84,5 +104,14 @@ export class OrderPageComponent implements OnInit {
 
   onNotificationFailed(result: string){
     this.toastrService.danger(result, 'Thông báo')
+  }
+
+  onPayOrderFail(result: any){
+    const iconConfig: any = {icon: 'done-all-outline', pack: 'eva'};
+    this.toastrService.danger(result, 'Thanh toán thất bại')
+  }
+
+  goToLink(url: string){
+    window.open(url, "_blank");
   }
 }

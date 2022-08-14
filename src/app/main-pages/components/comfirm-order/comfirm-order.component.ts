@@ -53,6 +53,8 @@ export class ComfirmOrderComponent implements OnInit {
         }
         // this.router.navigate([`/main-pages/order-detail/${res.body.order.id}`])
       }
+    }, err => {
+      this.onOrderFail(JSON.stringify(err));
     });
   }
 
@@ -64,7 +66,7 @@ export class ComfirmOrderComponent implements OnInit {
 
   onOrderFail(result: any){
     const iconConfig: any = {icon: 'done-all-outline', pack: 'eva'};
-    this.toastrService.danger(result, 'Lỗi')
+    this.toastrService.danger(result, 'Đặt hàng thất bại')
     this.ref.close(result)
   }
 

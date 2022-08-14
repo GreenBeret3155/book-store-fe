@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   align-self: stretch;
   background-color: rgb(255, 255, 255);
+  width: 85%;
 }
 
 .content-wrapper {
@@ -18,4 +19,23 @@ ngx-product-item {
   width: 25%;
   min-height: 30vh;
   margin: 10px 0 10px 0;
+}
+
+.filter-box{
+  width: 15%;
+  padding-top: 20px;
+}
+
+.container{
+  margin-top: 20px;
+}
+
+.content__title{
+  margin-left: 5px;
+}
+
+.IYkXU {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
 }

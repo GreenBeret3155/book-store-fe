@@ -89,7 +89,7 @@ export class Constants {
 
   static ORDER_STATE = [{type: 0, icon: "pie-chart-outline", text: "Đợi thanh toán", color: "warning" },
     {type: 1, icon: "rewind-right-outline", text: "Đang xử lý đơn hàng", color: "warning" },
-    {type: 2, icon: "checkmark-circle-2-outline", text: "Đã thanh toán", color: "warning" },
+    {type: 2, icon: "checkmark-circle-2-outline", text: "Đã thanh toán", color: "info" },
     {type: 3, icon: "close-square-outline", text: "Đơn hàng bị hủy", color: "danger" },
     {type: 4, icon: "person-done-outline", text: "Đã xác nhận đơn hàng", color: "info" },
     {type: 5, icon: "cube-outline", text: "Đang giao hàng", color: "primary" },
@@ -99,6 +99,7 @@ export class Constants {
   static ORDER_STATE_NUMBER = {
     DA_HUY : 3
   }
+  static LIST_STATE_DUOC_HUY = [0,1,2,4,5];
 }
 
 export enum CHART_MAP_CONST {

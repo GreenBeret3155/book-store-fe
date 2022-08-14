@@ -1,7 +1,22 @@
 <nb-card>
   <nb-card-body>
     <div class="content-wrapper">
-      <ngx-search-section></ngx-search-section>
+      <div class="filter-box">
+        <b>Danh mục sản phẩm</b>
+        <div class="container" *ngFor="let item of categories;let i = index">
+          <label class="IYkXU">
+            <input type="radio" readonly="" name="cate" [value]="item.id" [checked]="i==0 ? 'checked' : '' "
+              (change)="onClickRadioChoice($event)">
+            <span class="label">
+              <div class="eydcWx">
+                <div class="method-content">
+                  <div class="content__title"><span>{{item.name}}</span></div>
+                </div>
+              </div>
+            </span>
+          </label>
+        </div>
+      </div>
       <div class="product-items-box">
         <ng-container *ngFor="let product of products">
           <ngx-product-item [item]="product"></ngx-product-item>
