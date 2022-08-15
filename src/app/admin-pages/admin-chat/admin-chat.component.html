@@ -38,12 +38,11 @@
     </nb-list>
   </nb-card>
   <div class="col-lg-9" style="position: relative">
-    <!-- <div class="option row">
-      <button ghost nbButton status="danger" title="Xóa tin nhắn" size="large">
-        <nb-icon icon="trash-2-outline">
-        </nb-icon>
+    <div class="option row" *ngIf="canPickMod" >
+      <button ghost nbButton status="primary" title="Chọn nhân viên hỗ trợ" size="large" (click)="pickMod()">
+        <nb-icon icon="person-outline"></nb-icon>
       </button>
-    </div> -->
+    </div>
     <!-- <div class="row d-flex justify-content-center" style="position: absolute; top: 80px; right: 50%; z-index: 9999"
          *ngIf="newMess && receiveUser?.numNotifyUnread > 0">
       <label class="label" style="color: #a52626">Có {{receiveUser?.numNotifyUnread}} tin nhắn mới</label>

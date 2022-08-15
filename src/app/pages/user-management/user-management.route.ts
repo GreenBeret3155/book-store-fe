@@ -39,8 +39,6 @@ export const userManagementRoute: Routes = [
     data: {
       breadcrumb: {
         label: 'Quản lý User',
-        // unitField: 'profile',
-        // fieldName: 'profileName'
       },
     },
     children: [
@@ -50,35 +48,9 @@ export const userManagementRoute: Routes = [
         data: {
           breadcrumb: {
             label: 'Danh sách',
-            // unitField: 'profile',
-            // fieldName: 'profileName'
           },
         }
       },
-      // {
-      //   path: 'user/new',
-      //   component: UserConfigUpdateComponent,
-      //   resolve: {
-      //     user: UserResolve
-      //   },
-      //   data: {
-      //     breadcrumb: {
-      //       label: 'Thêm mới User',
-      //     },
-      //   }
-      // },
-      // {
-      //   path: 'user/:id/edit',
-      //   component: UserConfigUpdateComponent,
-      //   resolve: {
-      //     user: UserResolve
-      //   },
-      //   data: {
-      //     breadcrumb: {
-      //       label: 'Cập nhật User',
-      //     },
-      //   }
-      // },
       {
         path: '',
         redirectTo: 'user',

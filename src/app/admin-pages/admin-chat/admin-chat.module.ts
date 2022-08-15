@@ -16,6 +16,7 @@ import { NbSecurityModule } from '@nebular/security';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { ChatWindowComponent } from './components/chat-window/chat-window.component';
 import { ShareLibModuleModule } from '../../share-lib-module/share-lib-module.module';
+import { PickModDialogComponent } from './components/pick-mod-dialog/pick-mod-dialog.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -38,7 +39,7 @@ const NB_MODULES = [
 ];
 
 @NgModule({
-  declarations: [AdminChatComponent, ChatWindowComponent],
+  declarations: [AdminChatComponent, ChatWindowComponent, PickModDialogComponent],
   imports: [
     ...NB_MODULES,
     CommonModule,
@@ -53,6 +54,7 @@ const NB_MODULES = [
     MiscellaneousModule,
     PaginationModule,
     ShareLibModuleModule
-  ]
+  ],
+  entryComponents:[PickModDialogComponent]
 })
 export class AdminChatModule { }

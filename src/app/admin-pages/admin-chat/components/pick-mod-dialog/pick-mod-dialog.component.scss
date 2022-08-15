@@ -1,0 +1,18 @@
+@import '../../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  nb-card {
+    min-width: 1200px;
+    min-height: 300px;
+  }
+}
+
+nb-card-header{
+  background: #1a94ff;
+  color: white;
+}
+
+.selected_info{
+  color: red;
+  font-weight: bold;
+}

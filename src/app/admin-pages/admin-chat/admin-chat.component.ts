@@ -15,6 +15,7 @@ import { environment } from '../../../environments/environment';
 import { Stomp } from '@stomp/stompjs';
 import { NotificationModel } from '../../shared/model/notification-model';
 import { NOTIFICATION_TYPE_CONST } from '../../shared/common.constant';
+import { PickModDialogComponent } from './components/pick-mod-dialog/pick-mod-dialog.component';
 
 @Component({
   selector: 'ngx-admin-chat',
@@ -37,6 +38,7 @@ export class AdminChatComponent implements OnInit {
   rooms: ChatRoomModel[] = [];
   showRooms: ChatRoomModel[] = [];
   userInfoStore: Observable<UserModel>;
+  canPickMod:boolean=true;
 
   constructor(
     private accountService: AccountService,
@@ -74,6 +76,7 @@ export class AdminChatComponent implements OnInit {
     this.userInfoStore.subscribe((userInfo: UserModel) => {
       this.currentUser = userInfo;
       if(this.currentUser){
+        this.canPickMod = this.currentUser.authorities.includes("ROLE_ADMIN");
         this.getRooms();
         this.connect();
       }
@@ -161,15 +164,26 @@ export class AdminChatComponent implements OnInit {
   }
 
   onNotiUpdateRoom(updateRoom: ChatRoomModel){
-    console.log([...this.rooms]);
-    
     this.rooms.forEach(e => {
       if(e.id == updateRoom.id){
         e.lastMessageContent = updateRoom.lastMessageContent;
         e.lastMessageTime = updateRoom.lastMessageTime;
       }
     })
+  }
 
-    console.log([...this.rooms]);
+  pickMod(){
+    this.dialogService.open(PickModDialogComponent, {
+      backdropClass: 'dark-backdrop',
+      context: {
+      }
+    }).onClose.subscribe(res => {      
+      if(res && res.id){
+        this.chatService.pickMod(this.roomSelected.id, res).subscribe(res => {
+          console.log(res.body);
+          
+        });
+      }
+    })
   }
 }

@@ -29,6 +29,7 @@ export class ChatWindowComponent implements OnInit, OnChanges, AfterViewInit {
   pageMessageCounter: number = 1;
   isScrollBottom: boolean = true;
   isLoadedOlderMessageEmpty: boolean = false;
+  admIds: Array<number> = [];
   constructor(private localStorage: LocalStorageService,
     private sessionStorage: SessionStorageService,
     private chatService: ChatService,
@@ -46,6 +47,9 @@ export class ChatWindowComponent implements OnInit, OnChanges, AfterViewInit {
     if (changes.chatRoom && changes.chatRoom.currentValue != null) {
       this.disconnect();
       this.getConversationAndConnectWs();
+      this.chatService.getAdminInRoom(changes.chatRoom.currentValue.id).subscribe(res => {
+        this.admIds = res.body;
+      })
       this.chatTitle = this.userInfo.firstName + ' ' + this.userInfo.lastName;
     }
   }
@@ -131,13 +135,13 @@ export class ChatWindowComponent implements OnInit, OnChanges, AfterViewInit {
 
   receiveMessageFromTopic(event: any) {
     const currentMessage: ChatMessageReceiveModel = JSON.parse(new TextDecoder().decode(event._binaryBody));
-    const newMessage: ChatMessageModel = this.chatService.handleReceiveMessage(currentMessage, this.currentUser, this.userInfo);
+    const newMessage: ChatMessageModel = this.chatService.handleReceiveMessage(currentMessage, this.currentUser, this.userInfo, this.admIds);
     this.messages.push(newMessage);
   }
 
   loadMessages(messages: ChatMessageReceiveModel[]) {
     let tranformed: ChatMessageModel[] = [];
-    tranformed = this.chatService.handleReceiveMessages(messages, this.currentUser, this.userInfo);
+    tranformed = this.chatService.handleReceiveMessages(messages, this.currentUser, this.userInfo, this.admIds);
     this.chatService.sortChatMessageModel(tranformed);
     this.messages = [...tranformed, ...this.messages];
   }
