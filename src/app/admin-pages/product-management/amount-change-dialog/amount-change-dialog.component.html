@@ -1,0 +1,48 @@
+<form [formGroup]="infoForm">
+  <nb-card>
+    <nb-card-header class="d-flex">
+      Thêm/bớt số lượng hàng trong kho
+      <button class="ml-auto p-2" nbButton hero status="primary" (click)="dismiss()">
+        <nb-icon icon="close-outline"></nb-icon>
+      </button>
+    </nb-card-header>
+    <nb-card-body>
+      <p>Số lượng sản phẩm trong kho hiện tại: {{amountInfo?.amount}}</p>
+      <div class="container" *ngFor="let item of minusPlus;let i = index">
+        <label class="IYkXU">
+          <input type="radio" readonly="" name="payment-method" [value]="item.type" [checked]="i==0 ? 'checked' : '' "
+            (change)="onClickRadioChoice($event)">
+          <span class="label">
+            <div class="eydcWx">
+              <nb-icon [icon]="getIcon(item.type)" [status]="getColor(item.type)"></nb-icon>
+              <div class="method-content">
+                <div class="method-content__title"><span>{{item.text}}</span></div>
+              </div>
+            </div>
+          </span>
+        </label>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="label">Số lượng thêm/bớt</label>
+            <input nbInput fullWidth class="form-control" formControlName="amount" trim="blur">
+            <!-- <ngx-inline-message [message]="'user.column.lastName'" [formName]="this.userInfo.get('firstName')">
+            </ngx-inline-message> -->
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="label" style="width: 100%">Sản phẩm còn kinh doanh</label>
+            <nb-toggle id="activatedId" fullWidth formControlName="activated"></nb-toggle>
+          </div>
+        </div>
+      </div>
+      <div class="button-group-box">
+        <div class="button-group">
+          <div (click)="save()">Lưu lại</div>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</form>

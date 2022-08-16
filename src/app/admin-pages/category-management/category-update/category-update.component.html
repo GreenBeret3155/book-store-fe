@@ -1,0 +1,27 @@
+<form [formGroup]="infoForm">
+  <nb-card>
+    <nb-card-header class="d-flex">
+      Danh mục
+      <button class="ml-auto p-2" nbButton hero status="primary" (click)="dismiss()">
+        <nb-icon icon="close-outline"></nb-icon>
+      </button>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="label">Tên danh mục</label>
+            <input nbInput fullWidth class="form-control" formControlName="name" trim="blur">
+            <!-- <ngx-inline-message [message]="'user.column.lastName'" [formName]="this.userInfo.get('firstName')">
+            </ngx-inline-message> -->
+          </div>
+        </div>
+      </div>
+      <div class="button-group-box">
+        <div class="button-group">
+          <div (click)="save()">Lưu lại</div>
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</form>

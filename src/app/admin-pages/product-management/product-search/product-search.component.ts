@@ -10,6 +10,7 @@ import { ConfirmDialogComponent } from '../../../share-lib-module/confirm-dialog
 import { Constants } from '../../../shared/common.constant';
 import { IProductModel } from '../../../shared/model/product.model';
 import { AdminProductService } from '../../../shared/services/admin/admin-product.service';
+import { AmountChangeDialogComponent } from '../amount-change-dialog/amount-change-dialog.component';
 
 @Component({
   selector: 'ngx-product-search',
@@ -103,6 +104,24 @@ export class ProductSearchComponent implements OnInit {
     this.sessionStorageService.store('chartFilter', this.searchForm.getRawValue());
     this.sessionStorageService.store('chartPageInfo', this.page);
     this.router.navigate([`/admin-pages/product-management/edit/${event.id}`]);
+  }
+  changeAmount(row) {
+    if(!row.id){
+      return;
+    }
+    const dialogUpdate = this.dialogService.open(AmountChangeDialogComponent, {
+      backdropClass: 'dark-backdrop',
+      context: {
+        pId: row.id
+      },
+      hasBackdrop: true,
+      closeOnBackdropClick: false
+    });
+    // dialogUpdate.onClose.subscribe(data => {
+    //   if (data.result === 'complete') {
+    //     this.search();
+    //   }
+    // });
   }
   delete(row: any) {
     // const ref = this.dialogService.open(ConfirmDialogComponent, {

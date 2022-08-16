@@ -30,6 +30,16 @@ const routes: Routes = [{
         .then(m => m.OrderManagementModule)
     },
     {
+      path: 'author-management',
+      loadChildren: () => import('../admin-pages/author-management/author-management.module')
+        .then(m => m.AuthorManagementModule)
+    },
+    {
+      path: 'category-management',
+      loadChildren: () => import('../admin-pages/category-management/category-management.module')
+        .then(m => m.CategoryManagementModule)
+    },
+    {
       path: 'admin-chat',
       loadChildren: () => import('./admin-chat/admin-chat.module')
         .then(m => m.AdminChatModule),

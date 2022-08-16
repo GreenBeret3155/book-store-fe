@@ -11,53 +11,14 @@
           </button>
           <button nbButton status="primary" size="tiny" class="ml-2" (click)="new()">
             <nb-icon icon="plus" pack="eva"></nb-icon>
-            Thêm mới sản phẩm
+            Thêm mới tác giả
           </button>
         </div>
       </nb-card-header>
       <nb-card-body class="h-100">
         <form [formGroup]="searchForm" class="row">
-          <div class="col-lg-3">
-            <div class="form-group">
-              <label class="label">Tác giả</label>
-              <ng-select [clearAllText]="'Xóa'" formControlName="authorId" [items]="authors" bindValue="id"
-                         bindLabel="name">
-
-              </ng-select>
-            </div>
-          </div>
-          <!-- <div class="col-lg-3">
-            <div class="form-group">
-              <label class="label">Category</label>
-              <ng-select
-                formControlName="groupKpiCode"
-                [items]="groupCharts$|async"
-                bindLabel="itemName"
-                [loading]="groupChartsLoading"
-                (focus)="groupChartInput$.next()"
-                [typeahead]="groupChartInput$"
-                typeToSearchText="{{'dashboard.config.chartPicker.typeToSearchText' }}"
-              >
-              </ng-select>
-            </div>
-          </div> -->
-          <div class="col-lg-3">
-            <div class="form-group">
-              <label class="label">Category</label>
-              <ng-select [clearAllText]="'Xóa'" formControlName="categoryId" [items]="categories" bindLabel="name"
-                         bindValue="id">
-              </ng-select>
-            </div>
-          </div>
-          <div class="col-lg-3 form-group">
-            <label class="label">Trạng thái<span class="text-danger ml-2">*</span></label>
-            <ng-select fullWidth appendTo="body"  [items]="lstStatus" bindLabel="label" bindValue="value"
-                      [clearable]="false" 
-                      formControlName="status">
-            </ng-select>
-          </div>
           <div class="col-lg-3 form-group ">
-            <label class="label">Tên sản phẩm</label>
+            <label class="label">Tên tác giả</label>
             <input id="titleChart-input" nbInput fullWidth formControlName="q" trim="blur"
                    (keyup.enter)="page.pageNumber=0;setPage(page)" autofocus>
           </div>
@@ -69,7 +30,7 @@
         </form>
         <ngx-datatable class="dark"
                        [columnMode]="'flex'"
-                       [rows]="products"
+                       [rows]="authors"
                        [columns]="columns"
                        [externalPaging]="true"
                        [count]="page.totalElements"
@@ -102,22 +63,8 @@
                            let-isSelected="isSelected"
                            let-onCheckboxChangeFn="onCheckboxChangeFn">
                 <ng-container [ngSwitch]="col.prop">
-                  <ng-container *ngSwitchCase="'checkbox'">
-                    <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
-                  </ng-container>
                   <ng-container *ngSwitchCase="'stt'">
                     {{rowIndex + 1 + (page.pageNumber * page.size)}}
-                  </ng-container>
-                  <ng-container *ngSwitchCase="'name'">
-                    <span title="{{value}}" class="row-data-show">
-                      {{ value && value.length > 60 ? value.substr(0, 60).concat('...') : value}}
-                    </span>
-                  </ng-container>
-                  <ng-container *ngSwitchCase="'price'">
-                    {{ value | currency: "VND" }}
-                  </ng-container>
-                  <ng-container *ngSwitchCase="'updateTime'">
-                    {{ value | date:'short':'+0700' }}
                   </ng-container>
                   <ng-container *ngSwitchDefault>
                     {{ value }}
@@ -128,15 +75,6 @@
                               title="Chỉnh sửa" (click)="edit(row)">
                         <nb-icon icon="edit-outline" pack="eva" size="tiny"></nb-icon>
                       </button>
-                      <button class="p-1" nbButton status="primary" ghost
-                              title="Thêm/bớt số lượng hàng trong kho" (click)="changeAmount(row)">
-                        <nb-icon icon="plus-square-outline" pack="eva" size="tiny"></nb-icon>
-                      </button>
-                      
-                      <!-- <button class="p-1" nbButton status="primary" ghost
-                              title="{{'configChart.label.clone'}}" (click)="clone(row)">
-                        <nb-icon icon="copy-outline" pack="eva" size="tiny"></nb-icon>
-                      </button> -->
                     </div>
                   </ng-container>
 

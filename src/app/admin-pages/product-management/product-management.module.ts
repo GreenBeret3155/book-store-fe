@@ -12,6 +12,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { PaginationModule } from '../../shared/components/pagination/pagination.module';
 import { NbActionsModule, NbButtonModule, NbCardModule, NbDialogModule, NbIconModule, NbInputModule, NbLayoutModule, NbSearchModule, NbSelectModule, NbToggleModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { AmountChangeDialogComponent } from './amount-change-dialog/amount-change-dialog.component';
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -28,7 +29,7 @@ const NB_MODULES = [
 ];
 
 @NgModule({
-  declarations: [ProductManagementComponent, ProductSearchComponent, ProductUpdateComponent],
+  declarations: [ProductManagementComponent, ProductSearchComponent, ProductUpdateComponent, AmountChangeDialogComponent],
   imports: [
     ...NB_MODULES,
     CommonModule,
@@ -40,6 +41,7 @@ const NB_MODULES = [
     ReactiveFormsModule,
     NgSelectModule,
     PaginationModule,
-  ]
+  ],
+  entryComponents: [AmountChangeDialogComponent]
 })
 export class ProductManagementModule { }
