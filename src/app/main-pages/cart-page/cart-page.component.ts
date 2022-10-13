@@ -48,6 +48,8 @@ export class CartPageComponent implements OnInit, AfterViewInit {
     //   const listCartItems : ProductModel[] = res.body;
     //   this.store.dispatch(new InitProduct(listCartItems))
     // })
+    console.log(12312321);
+    
     this.productStore.subscribe(e => {
       this.products = e;
       this.calculatePrice();
@@ -89,7 +91,7 @@ export class CartPageComponent implements OnInit, AfterViewInit {
   }
 
   onClickBuy() {
-    if(!this.paymentType){
+    if(!this.paymentType || !this.selectedOrderInfo){
       return ;
     }
     this.dialogService.open(ComfirmOrderComponent, {

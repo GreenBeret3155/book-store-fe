@@ -44,6 +44,10 @@ export class ComfirmOrderComponent implements OnInit {
       order: { paymentType: this.paymentType}
     }
     this.orderService.saveOrder(data).subscribe(res => {
+      if(res.body.order && res.body.order.id && this.paymentType == 1){
+        this.onOrderSuccess(res.body);
+        return;
+      }
       if(res.body.order && res.body.order.id && res.body.paymentResponse){
         this.onOrderSuccess(res.body);
         if(res.body.paymentResponse && !res.body.paymentResponse.resultCode && res.body.paymentResponse.payUrl){
@@ -54,7 +58,7 @@ export class ComfirmOrderComponent implements OnInit {
         // this.router.navigate([`/main-pages/order-detail/${res.body.order.id}`])
       }
     }, err => {
-      this.onOrderFail(JSON.stringify(err));
+      this.onOrderFail(err.error.message);
     });
   }
 

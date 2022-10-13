@@ -101,6 +101,7 @@ export class MainHeaderComponent implements OnInit {
     this.store.dispatch(new ClearUser());
     this.$localStorage.clear();
     this.onInitUser();
+    this.router.navigate(["/main-pages"])
   }
 
   navigateToCart() {

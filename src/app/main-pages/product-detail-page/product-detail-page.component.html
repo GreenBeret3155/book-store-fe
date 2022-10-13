@@ -22,7 +22,7 @@
   <div class="styles__StyledProductContent-sc-1f8f774-0 ewqXRk">
     <div class="header">
       <div class="brand"><span class="brand-and-author ">
-          <h6>Tác giả:&nbsp;<a href="#">Trần Thanh Phong</a></h6>
+          <h6>Tác giả:&nbsp;<a href="#">{{item?.author?.name}}</a></h6>
         </span>
       </div>
       <h1 class="title">{{item?.name}}</h1>
@@ -50,6 +50,9 @@
           </div>
         </div>
         <div class="cLYFvN add-to-cart">
+          <div class="group-button">
+            <p class="orange">{{item?.remainAmount ? (item?.remainAmount > 100 ? 'Sản phẩm còn kinh doanh' : 'Sản phẩm còn ' + item?.remainAmount + ' sản phẩm') : 'Sản phẩm ngừng kinh doanh'}}</p>
+          </div>
           <div class="group-button">
             <button type="button" class="btn btn-add-to-cart" (click)="addProductToCart()">Thêm vào giỏ hàng</button>
           </div>

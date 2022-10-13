@@ -32,6 +32,12 @@ export class ProductService {
     });
   }
 
+  public getAuthorById(id:number): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/authors/${id}`, {
+      observe: 'response'
+    });
+  }
+
   // public changePass(body?: any): Observable<any> {
   //   return this.http.post<any>(`${environment.apiUrl}/users/changePass`, body);
   // }
